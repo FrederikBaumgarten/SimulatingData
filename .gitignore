@@ -9,7 +9,7 @@
 *.docx
 analyses/.Rhistory
 *.Rapp.history
-
+*.log
 *Rplots.pdf
 *.DS_Store
 /notposting
