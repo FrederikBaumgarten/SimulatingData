@@ -52,7 +52,7 @@
 \begin{document}
 \renewcommand{\bibname}{References}%names reference list 
 
-\SweaveOpts{concordance=TRUE} % For RStudio hiccups
+%\SweaveOpts{concordance=TRUE} % For RStudio hiccups
 
 
 \title{1. The power of simulating data: a tool to design experiments, understand data limitations and improve scientific reasoning \\%(my favourite)
