@@ -2,7 +2,6 @@
 
 % required 
 \usepackage[hyphens]{url} % this wraps my URL versus letting it spill across the page, a bad habit LaTeX has
-d
 \usepackage{Sweave}
 \usepackage{graphicx}
 \usepackage{natbib}
