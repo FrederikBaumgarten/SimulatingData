@@ -46,40 +46,52 @@
 %\fancyhead[RO]{Research Proposal}
 % more optionals! %
 
-\graphicspath{ {./figures/} }% tell latex where to find photos 
+\graphicspath{ {/Users/frederik/github/SimulatingData/analyses/figures/} }% tell latex where to find figures 
 
 \begin{document}
 \renewcommand{\bibname}{References}%names reference list 
 
-%\SweaveOpts{concordance=TRUE} % For RStudio hiccups
 
-
-	\title{1. The power of simulating data: a tool to design experiments, understand data limitations and improve scientific reasoning \\%(my favourite)
+	\title{The power of simulating data: a tool to design experiments, understand data limitations and improve scientific reasoning \\%(my favourite)
 	
 	%Alternate title ideas:
-	2. Between noise and patterns: the power of data simulation in science to overcome perception biases\\
-	3. The power of simulating data: a tool for scientists from designing experiments to drawing/reaching reasonable conclusions\\
-	4. Between noise and patterns: Overcoming perception biases through data simulation
+	%2. Between noise and patterns: the power of data simulation in science to overcome perception biases\\
+	%3. The power of simulating data: a tool for scientists from designing experiments to drawing/reaching reasonable conclusions\\
+	%4. Between noise and patterns: Overcoming perception biases through data simulation
 } 
 
 
 \date{\today}
-\author{Frederik Baumgarten$^1$, Elizabeth Wolkovich, invite Andrew Gelman}
+\author{Frederik Baumgarten\textsuperscript{1,2}, EM Wolkovich\textsuperscript{1}, invite Andrew Gelman}
 \maketitle 
 
+	$^1$ Department of Forest and Conservation, Faculty of Forestry, University of British Columbia, 2424 Main Mall
+	Vancouver, BC Canada V6T 1Z4. \\
+	
+	$^2$  Swiss Federal Institute for Forest, Snow and Landscape Research WSL, Zürcherstr. 111, Birmensdorf 8903, Switzerland\\
+	
+Corresponding Author: Frederik Baumgarten; frederik.baumgarten@ubc.ca \\
+Journal: statistical report in Ecology?
+
+
+
 \section*{Abstract}
-Advertise simulation (for all: frequentists, bayesian, machine learning)
-
-What's the Problem, what do we want to save and what's the solution\\
-- Werwolf: p-values, 'sloppy', simplified stats, over-interpretation of patterns that emerge by chance\\
-- Baby: scientific standards, correct conclusions, knowing the potential and limits of a dataset\\
-- Silverbullet: Data simulation through formulation of a mathematical model and playing with the parameters and the replication\\
+Science continuously tries to explain patterns in nature that appear in data, hidden by the noise of variation caused by a myriad of influencing factors. To unravel pattern from noise, link correlation with causality and build upon the existing house of knowledge, researcher follow a scientific workflow. However, concerns about several aspects of this workflow has been raised: formulating meaningless (null) hypothesis, poor experimental designs, the replication crisis and the problematic usage of p-values and "significance" has led to biased reporting of findings, over-interpretation or wrong conclusion with patterns emerging from mathematical artefacts or by sheer chance. 
 
 
+Here we propose the integration of data simulation to the scientific workflow to facilitate overcoming these challenges by 1) developing meaningful and testable hypotheses through the formulation of mathematical/mechanistic models, 2) playing with effect size, variance and replication to generate fake-datasets, 3) exploring the potential and limitations of both the statistical method and the data set obtained, and 4) drawing conclusions that can build on the existing 'body of knowledge'.
+
+
+Furthermore, we believe that in a future world with powerful AI and machine learning algorithms that can be applied to ever larger data sets, meaningful, theoretically grounded hypotheses will be more important than ever to understand the underlying causalities. Without them, we may be able to make excellent predictions (within known limits) but without knowing the driving variables.
+
+\textbf{Keywords}: bayesian statistics, statistcal methods, quantitative ecology, hypothesis testing, scientific reasoning, experimental design, power analysis
+\newpage
 
 \section{Introduction}
 
 \subsection*{Opening example}
+A renowned researcher once explained to me the progression of a curve deriving from a dendrometer --- a device attached to the bark of a tree that stood beside us. As we observed the graph on the screen extending in real-time, he provided a passionate and insightful explanation on water relations and plant physiology. However, moments later, the responsible technician entrusted me with the fact, that the device hasn't yet recorded anything meaningful and that all data displayed couldn't possibly depict anything biologically relevant. This example - and I think most of us can share similar stories - shows the incredible ability of our minds to make sense of patterns that underpin our current believes or argument. But it also underpins our blindness of how randomness can look like. However, separating noise from a pattern is perhaps the most important skill of any researcher.
+
 Human desire for patterns even in pure noise \\
 Confirmation bias\\
 But noisy data\\
@@ -87,6 +99,15 @@ how can we ensure a standard?\\
 \subsection*{Current solutions}
 scientific workflow (fig)\\
 include experiments, null hypothesis testing and their limits(not meaningull, not testable, not interesting) , analysis -> conclusions\\
+
+					\begin{figure}
+					\centering
+					\includegraphics[width=0.9\textwidth]{Figure_Concept.pdf} 
+					\caption{Schematic overview of the current scientific workflow with its related problems and how they could be overcome with the help of data simulation. We believe that this 'extraround' not just helps to detect and solves some of these problems but that it leads to better science by attaching new findings to the established theoretical framework}
+					\label{fig:fig_1xxx}
+					\end{figure}
+					
+					
 \subsection*{Growing evidence that this is not enough}
 p-values/replication crisis/overconfidence/overinterpretation/mathematical artefacts\\
 Show famous examples. -> could expand into box\\
@@ -103,6 +124,9 @@ avoid overconfidence/overinterpretation and mathematical artefacts\\
 
 
 \section{Bus example with simulation workflow}
+We all manage to go through this world with the help of models in our minds. Most of the time we are not aware of this fact but their implications are all around us. For instance when we wait for a bus we expect the waiting time to be lets say around 7±3 min or when we readjust our expected travel time after an incidence and add the variable 'traffic jam' to our internal model. In short, whenever we have an intuitive understanding of how the world works, our brain suggests basic models - mostly oversimplified and with increasing bias as soon as we enter non-linear relationships.
+- In many practical cases we get the chance to recalibrate our internal model (or lets call it intuition). For example when the bus after 10 min is still not there and we start realizing that we need to incorporate the variable 'traffic jam'.
+But in many cases we don't get this kind of feedback or at least not in an informative way because it is too complex to grasp for our minds. While daily life is arguably not a big drawback to this issue, in science it can be. \\
 
 \subsection*{Situation}
 model - show poisson distr.
@@ -147,5 +171,16 @@ evergrowing Lit
 with AI we must learn to ask better questions\\
 the right questions and hypothesis that are testable with current + new methods. Build up house of knowledge instead of using new pattern finding algorithms\\
 how to integrate with AI?\\
+
+	\newpage
+
+
+\bibliography{Art_simulation}
+\bibliographystyle{ecolett}
+
+
+
+
+
 
 \end{document}
