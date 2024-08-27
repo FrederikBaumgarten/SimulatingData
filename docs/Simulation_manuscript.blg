@@ -2,47 +2,48 @@ This is BibTeX, Version 0.99d (TeX Live 2023)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Simulation_manuscript.aux
 The style file: ecolett.bst
-I found no \citation commands---while reading file Simulation_manuscript.aux
 Database file #1: Art_simulation.bib
-You've used 0 entries,
+Warning--I didn't find a database entry for ""
+Warning--I didn't find a database entry for "key"
+You've used 25 entries,
             2997 wiz_defined-function locations,
-            625 strings with 4382 characters,
-and the built_in function-call counts, 23 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 8
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
-chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
-int.to.chr$ -- 1
+            817 strings with 10556 characters,
+and the built_in function-call counts, 15365 in all, are:
+= -- 1206
+> -- 810
+< -- 15
++ -- 323
+- -- 285
+* -- 1228
+:= -- 2548
+add.period$ -- 74
+call.type$ -- 25
+change.case$ -- 220
+chr.to.int$ -- 24
+cite$ -- 25
+duplicate$ -- 1022
+empty$ -- 995
+format.name$ -- 360
+if$ -- 2877
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 0
-newline$ -- 4
-num.names$ -- 0
-pop$ -- 0
+missing$ -- 241
+newline$ -- 128
+num.names$ -- 100
+pop$ -- 405
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 195
 quote$ -- 0
-skip$ -- 1
+skip$ -- 278
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 737
+swap$ -- 577
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+type$ -- 225
 warning$ -- 0
-while$ -- 0
+while$ -- 112
 width$ -- 0
-write$ -- 3
-(There was 1 error message)
+write$ -- 325
+(There were 2 warnings)

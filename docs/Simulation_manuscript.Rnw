@@ -27,7 +27,7 @@
 \usepackage{xr-hyper} %refer to Fig.s in another document
 \usepackage{hyperref}
 
-\setlength{\captionmargin}{30pt}
+%\textbf{}\setlength{\captionmargin}{30pt}
 \setlength{\abovecaptionskip}{0pt}
 \setlength{\belowcaptionskip}{10pt}
 
@@ -76,51 +76,74 @@ Journal: statistical report in Ecology?
 
 
 \section*{Abstract}
-Science continuously tries to explain patterns in nature that appear in data, hidden by the noise of variation caused by a myriad of influencing factors. To unravel pattern from noise, link correlation with causality and build upon the existing house of knowledge, researcher follow a scientific workflow. However, concerns about several aspects of this workflow has been raised: formulating meaningless (null) hypothesis, poor experimental designs, the replication crisis and the problematic usage of p-values and "significance" has led to biased reporting of findings, over-interpretation or wrong conclusion with patterns emerging from mathematical artefacts or by sheer chance. 
+Science continually seeks to explain patterns in nature that are often obscured by the noise of variation caused by a myriad of influencing factors. To disentangle pattern from noise, link correlation with causality, and build upon the existing body of knowledge, researchers adhere to a scientific workflow. However, concerns have been raised about several aspects of this workflow: the formulation of meaningless (null) hypotheses, insufficient sample size, poor experimental design, and the problematic usage and interpretation of p-values. These issues have led to the reproducibility/replication crisis, biased reporting of findings, over-interpretation, or incorrect conclusions, with patterns sometimes emerging from mathematical artifacts or sheer chance.
 
+Here, we propose the integration of data simulation into the scientific workflow to address these challenges by: 1) developing meaningful and testable hypotheses through the formulation of mathematical or mechanistic models, 2) manipulating effect size, variance, sample size and replication to generate synthetic/fake datasets, 3) exploring the potential and limitations of both the statistical methods and the data obtained, and 4) drawing conclusions that can reliably build upon the existing `body of knowledge'.
 
-Here we propose the integration of data simulation to the scientific workflow to facilitate overcoming these challenges by 1) developing meaningful and testable hypotheses through the formulation of mathematical/mechanistic models, 2) playing with effect size, variance and replication to generate fake-datasets, 3) exploring the potential and limitations of both the statistical method and the data set obtained, and 4) drawing conclusions that can build on the existing 'body of knowledge'.
-
-
-Furthermore, we believe that in a future world with powerful AI and machine learning algorithms that can be applied to ever larger data sets, meaningful, theoretically grounded hypotheses will be more important than ever to understand the underlying causalities. Without them, we may be able to make excellent predictions (within known limits) but without knowing the driving variables.
+We expect that in a future dominated by powerful AI and machine learning algorithms applied to ever-larger datasets, meaningful, theoretically grounded hypotheses will be more important than ever for revealing underlying causalities. Without the understanding of causality, we may excel at making predictions within known limits, yet fail to understand the driving variables behind them.
 
 \textbf{Keywords}: bayesian statistics, statistcal methods, quantitative ecology, hypothesis testing, scientific reasoning, experimental design, power analysis
 \newpage
 
 \section{Introduction}
 
-\subsection*{Opening example}
-A renowned researcher once explained to me the progression of a curve deriving from a dendrometer --- a device attached to the bark of a tree that stood beside us. As we observed the graph on the screen extending in real-time, he provided a passionate and insightful explanation on water relations and plant physiology. However, moments later, the responsible technician entrusted me with the fact, that the device hasn't yet recorded anything meaningful and that all data displayed couldn't possibly depict anything biologically relevant. This example - and I think most of us can share similar stories - shows the incredible ability of our minds to make sense of patterns that underpin our current believes or argument. But it also underpins our blindness of how randomness can look like. However, separating noise from a pattern is perhaps the most important skill of any researcher.
+\subsection*{The constant search for patterns}
+A renowned researcher once explained to me the progression of a curve from a device attached to the bark of a tree next to us. As we watched the curve expand in real time on the screen, he gave a passionate and insightful explanation on the water relations of trees. A few moments later, however, the technician in charge entrusted me with the fact that the fluctuations on the graph emerged largely at random during the installation and calibration process and that the data displayed could not possibly represent anything biologically meaningful. This anecdote---which may sound familiar to many of us---illustrates 1) our tendency to interpret data in a way that supports our pre-existing beliefs, also known as confirmation bias \citep{nickersonConfirmationBiasUbiquitous1998}, and 2) our incredible ability to recognise patterns even when there are none, or in other words, our poor intuition to judge what randomly generated data may look like. Human evolution has equipped us with a hypersensitive pattern detector and a set of cognitive biases \citep{tverskyJudgmentUncertaintyHeuristics1974} that help us survive but get in the way of objective science. However, distinguishing between noise and pattern is perhaps the most important skill for any researcher. 
 
-Human desire for patterns even in pure noise \\
-Confirmation bias\\
-But noisy data\\
-how can we ensure a standard?\\
-\subsection*{Current solutions}
-scientific workflow (fig)\\
-include experiments, null hypothesis testing and their limits(not meaningull, not testable, not interesting) , analysis -> conclusions\\
+\subsection*{How can we ensure scientific standards?}
+To overcome cognitive biases and objectify science, researchers usually follow a scientific workflow illustrated in Figure \ref{fig:fig_1xxx}) that traditionally starts with identifying a research question and formulating a hypothesis and ends with a conclusion based on the statistical outcome given the data obtained and the hypothesis at hand (see for example \citet{schwabTenSimpleRules2022a}). 
 
 					\begin{figure}
 					\centering
-					\includegraphics[width=0.9\textwidth]{Figure_Concept.pdf} 
-					\caption{Schematic overview of the current scientific workflow with its related problems and how they could be overcome with the help of data simulation. We believe that this 'extraround' not just helps to detect and solves some of these problems but that it leads to better science by attaching new findings to the established theoretical framework}
+					\includegraphics[width=0.9\textwidth]{figure_1.pdf} 
+					\caption{Schematic overview of the current scientific workflow (blue circle) with its related problems (red text) and how some of them can be anticipated with the help of data simulation (loop in yellow). The critical step is the translation of a verbal hypothesis into a mechanistic model expressed in mathematical terms. We believe that this 'extraround'  fosters a better understanding of underlying processes founded in theory, clear predictions that can be evaluated and overall better science. The questions summarized in the green box should be addressed in the simulation loop before continuing on the blue circle, e.g. prior to the start of real data gathering/exploration.}
 					\label{fig:fig_1xxx}
 					\end{figure}
 					
-					
-\subsection*{Growing evidence that this is not enough}
-p-values/replication crisis/overconfidence/overinterpretation/mathematical artefacts\\
-Show famous examples. -> could expand into box\\
-\subsection*{Some people hope to address this through machine learning}
-machines search for patterns without or less bias (or at least in a systematic/objective way)\\
-machine learning is usually amechanistic\\
+However, there is growing evidence that following this workflow is not enough. Serious concerns have been raised in the last decades that jeopardize/question scientific integrity and credibility and may slow down scientific progress despite of a record breaking and still increasing publishing rate (REF). Or as \citet{ioannidisWhyMostPublished2005a} put it in his title: “Why most published research findings are false". Going through the traditional workflow we briefly outline some major concerns and pitfalls (see also Figure \ref{fig:fig_1xxx}).
+
+\subsection*{Hypothesis and predictions}
+Beyond the purely exploratory nature of a study, a hypothesis well-founded in current theory is essential for causal inference and reasoning \citep{rajtmajerHowFailureFalsify2022}. However, studies greatly differ in the usefulness of their stated hypotheses, which can range from non-existent to too vague, subjective, untestable, multidirectional, or lacking any direction. Additionally, the common practice of testing to falsify or reject a null hypothesis has been shown to be of limited utility in most cases. This is because null hypotheses often oversimplify complex relationships into a binary outcome and are frequently rejected due to the myriad of influencing factors contributing to data variability \citep{rajtmajerHowFailureFalsify2022}. Null hypotheses are particularly problematic when combined with the common practice of significance testing (NHST; null hypothesis significance testing), making them unsuitable as a cornerstone in scientific research. \citep{szucsWhenNullHypothesis2017}, see also the problems involved with p-values and `significance' below. 
+
+\subsection*{Experimental design and sample size}
+
+
+
+
+Many studies are under-sampled and lack statistical power. . More precisely, they lack statistical power to detect and are prone to find statistically significant results by chance when in fact there is none (\cite{halseyFickleValueGenerates2015} see below), which has led to a replication crisis in many disciplines with many studies not being able to reproduce previously published results  \citep{ioannidisWhyMostPublished2005a, baker500ScientistsLift2016, camererEvaluatingReplicabilitySocial2018}. 
+interactions
+
+\subsection*{Problematic use of p-values}
+
+A widely recognized problem, despite its prime role in statistical inference arise from the usage of p-values \citep{amrheinScientistsRiseStatistical2019, amrheinEarthFlat052017, halseyFickleValueGenerates2015}. Many studies misinterpret `statistical significance' as direct proof for both relevancy and certainty (REF). Even if p-values are interpreted correctly the multitude of tests often performed in a single study can lead to a 'fishing strategy' also known as p-hacking, that increases the chance of getting a statistically significant result \citep{stefanBigLittleLies2023}. Finding a p < 0.05 during the process of exploring and analyzing data can occur largely unintentional. Most analysis can easily find hundreds of possible ways and combinations to find a potentially relevant pattern, e.g. by including/excluding variables or subgroups. \citet{gelmanGardenForkingPaths2013} illustrated this problem with the metaphor of `the garden of the forking paths' pointing at the importance of study pre-registration and the awareness of the choices we make during the analysis \citep{rubinDoesPreregistrationImprove2020, }.
+Hypothesizing after the results are known (HARKing) is an additional pitfall that sometimes dangerously attaches causal reasoning to significant results \citep{kerr}. Finally, these mentioned problems feed into a reporting and publication bias \citep{yangPublicationBiasImpacts2023, linQuantifyingPublicationBias2018} that can substantially distort the literature as was shown for meta-analyses \citep{vanzwetSignificanceFilterWinner2021}. Overall, there is a trend to abandon p-values and to retire `statisitical significance' as an outdated concept \citep{amrheinAbandoningStatisticalSignificance2019, bernerWhyHowWe2022, mcshaneAbandonStatisticalSignificance2019, woolstonPsychologyJournalBans2015, wassersteinMovingWorld052019, leeAlternativesValueConfidence2016}. 
+
+
+
+\subsection*{mathematical artefacts}
+In some cases the way data are analyzed or displayed create patterns, that arise from mathematical properties, sometimes hard to understand. A famous example is the regression to the mean that is responsible for many reported effects that were later found to be overestimated or not present at all (REF, \cite{k}, dunninger kruger effect). 
+
+Example of decreasing sensitivity from Lizzie? An example in recent ecology research 
+
+
+\subsection*{Will AI and machine learning help us?}
+The steep rise in machine learning has propelled recent advancements of artificial intelligence (AI). Current applications excell human-level intelligence by far in many aspects (REF) offering new opportunities for science REF. Many disciplines have already benefited from these very recent advancements, eg.... However, technologies to date are limited to pattern recognition based on correlations only \citep{pearlSevenToolsCausal2019}. The critical ingredient lacking is the ability of causal reasoning - a feature so far limited to humans  \citep{pearlSevenToolsCausal2019}. While it might be possible that we see further improvements towards logic and reasoning in AI systems the separation of causality from correlation will likely continue to play a pivotal role in science. Therefore 
+
 problem with hypothesis remain. searching for a model so it includes much of the assumptions/hypotheses expected from a useful model\\
-\subsection*{Aim}
-We propose an updated approach focussed on simulation + show how to do it\\
+
+
+\subsection*{Aim: The three steps of data simulation}
+%1. translation of verbal hypothesis into a mechanistic model
+%2. power analysis: explore sample and effect size, variation etc
+%3. model predictions and assumptions
+Here, we propose a small addition/adjustment to the traditional scientific workflow: The integration of data simulation prior to data gathering or exploration (Figure \ref{fig:fig_1xxx}). Concretely, this involves 1) the translation of a verbal/conceptual hypothesis into a mechanistic model, well-founded in theory, 2) the exploration of the potential and limit of the generated dataset (e.g. power analysis) and 3) prediction and model checks....\\
+
+We believe that incorporating these three steps are vital to do better i) greatly stimulate our mechanistic understanding of underlying processes, ii) facilitate to move away from p-values and significance testing and towards evaluating model parameters such as effect sizes and error intervals,  a vital tool to do better science and show how to do it\\
 Helps to address current gaps/limitations:\\
 build hypothesis, then formulation of mathematical model\\
 better design experiments\\
-avoid overconfidence/overinterpretation and mathematical artefacts\\
+
+In the following we go through some concrete examples and show how this procedure can look like. 
 
 
 \section{Bus example with simulation workflow}
@@ -172,6 +195,9 @@ with AI we must learn to ask better questions\\
 the right questions and hypothesis that are testable with current + new methods. Build up house of knowledge instead of using new pattern finding algorithms\\
 how to integrate with AI?\\
 
+\section*{stuff I did't find place yet}
+
+\cite{wolkovichFourstepBayesianWorkflow2024a}
 	\newpage
 
 

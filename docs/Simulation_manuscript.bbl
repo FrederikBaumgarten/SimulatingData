@@ -1,4 +1,161 @@
-\begin{thebibliography}{0}
+\begin{thebibliography}{25}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Amrhein \emph{et~al.}(2019{\natexlab{a}})Amrhein, Gelman, Greenland
+  \& McShane}]{amrheinAbandoningStatisticalSignificance2019}
+Amrhein, V., Gelman, A., Greenland, S. \& McShane, B.B. (2019{\natexlab{a}}).
+\newblock Abandoning statistical significance is both sensible and practical.
+\newblock Tech. Rep. e27657v1, PeerJ Inc.
+
+\bibitem[{Amrhein \emph{et~al.}(2019{\natexlab{b}})Amrhein, Greenland \&
+  McShane}]{amrheinScientistsRiseStatistical2019}
+Amrhein, V., Greenland, S. \& McShane, B. (2019{\natexlab{b}}).
+\newblock Scientists rise up against statistical significance.
+\newblock \emph{Nature}, 567, 305--307.
+
+\bibitem[{Amrhein \emph{et~al.}(2017)Amrhein, {Korner-Nievergelt} \&
+  Roth}]{amrheinEarthFlat052017}
+Amrhein, V., {Korner-Nievergelt}, F. \& Roth, T. (2017).
+\newblock The earth is flat (p {$>$} 0.05): Significance thresholds and the
+  crisis of unreplicable research.
+\newblock \emph{PeerJ}, 5, e3544.
+
+\bibitem[{Baker(2016)}]{baker500ScientistsLift2016}
+Baker, M. (2016).
+\newblock 1,500 scientists lift the lid on reproducibility.
+\newblock \emph{Nature}, 533, 452--454.
+
+\bibitem[{Berner \& Amrhein(2022)}]{bernerWhyHowWe2022}
+Berner, D. \& Amrhein, V. (2022).
+\newblock Why and how we should join the shift from significance testing to
+  estimation.
+\newblock \emph{Journal of Evolutionary Biology}, 35, 777--787.
+
+\bibitem[{Camerer \emph{et~al.}(2018)Camerer, Dreber, Holzmeister, Ho, Huber,
+  Johannesson, Kirchler, Nave, Nosek, Pfeiffer, Altmejd, Buttrick, Chan, Chen,
+  Forsell, Gampa, Heikensten, Hummer, Imai, Isaksson, Manfredi, Rose,
+  Wagenmakers \& Wu}]{camererEvaluatingReplicabilitySocial2018}
+Camerer, C.F., Dreber, A., Holzmeister, F., Ho, T.H., Huber, J., Johannesson,
+  M., Kirchler, M., Nave, G., Nosek, B.A., Pfeiffer, T., Altmejd, A., Buttrick,
+  N., Chan, T., Chen, Y., Forsell, E., Gampa, A., Heikensten, E., Hummer, L.,
+  Imai, T., Isaksson, S., Manfredi, D., Rose, J., Wagenmakers, E.J. \& Wu, H.
+  (2018).
+\newblock Evaluating the replicability of social science experiments in
+  {{Nature}} and {{Science}} between 2010 and 2015.
+\newblock \emph{Nature Human Behaviour}, 2, 637--644.
+
+\bibitem[{Gelman \& Loken(2013)}]{gelmanGardenForkingPaths2013}
+Gelman, A. \& Loken, E. (2013).
+\newblock The garden of forking paths: {{Why}} multiple comparisons can be a
+  problem, even when there is no ``fishing expedition'' or ``p-hacking'' and
+  the research hypothesis was posited ahead of time.
+\newblock \emph{Department of Statistics, Columbia University}, 348, 3.
+
+\bibitem[{Halsey \emph{et~al.}(2015)Halsey, {Curran-Everett}, Vowler \&
+  Drummond}]{halseyFickleValueGenerates2015}
+Halsey, L.G., {Curran-Everett}, D., Vowler, S.L. \& Drummond, G.B. (2015).
+\newblock The fickle {{P}} value generates irreproducible results.
+\newblock \emph{Nature Methods}, 12, 179--185.
+
+\bibitem[{Ioannidis(2005)}]{ioannidisWhyMostPublished2005a}
+Ioannidis, J.P.A. (2005).
+\newblock Why {{Most Published Research Findings Are False}}.
+\newblock \emph{PLOS Medicine}, 2, e124.
+
+\bibitem[{Lee(2016)}]{leeAlternativesValueConfidence2016}
+Lee, D.K. (2016).
+\newblock Alternatives to {{P}} value: Confidence interval and effect size.
+\newblock \emph{Korean Journal of Anesthesiology}, 69, 555--562.
+
+\bibitem[{Lin \& Chu(2018)}]{linQuantifyingPublicationBias2018}
+Lin, L. \& Chu, H. (2018).
+\newblock Quantifying {{Publication Bias}} in {{Meta-Analysis}}.
+\newblock \emph{Biometrics}, 74, 785--794.
+
+\bibitem[{McShane \emph{et~al.}(2019)McShane, Gal, Gelman, Robert \&
+  Tackett}]{mcshaneAbandonStatisticalSignificance2019}
+McShane, B.B., Gal, D., Gelman, A., Robert, C. \& Tackett, J.L. (2019).
+\newblock Abandon {{Statistical Significance}}.
+\newblock \emph{The American Statistician}, 73, 235--245.
+
+\bibitem[{Nickerson(1998)}]{nickersonConfirmationBiasUbiquitous1998}
+Nickerson, R.S. (1998).
+\newblock Confirmation {{Bias}}: {{A Ubiquitous Phenomenon}} in {{Many
+  Guises}}.
+\newblock \emph{Review of General Psychology}, 2, 175--220.
+
+\bibitem[{Pearl(2019)}]{pearlSevenToolsCausal2019}
+Pearl, J. (2019).
+\newblock The seven tools of causal inference, with reflections on machine
+  learning.
+\newblock \emph{Commun. ACM}, 62, 54--60.
+
+\bibitem[{Rajtmajer \emph{et~al.}(2022)Rajtmajer, Errington \&
+  Hillary}]{rajtmajerHowFailureFalsify2022}
+Rajtmajer, S.M., Errington, T.M. \& Hillary, F.G. (2022).
+\newblock How failure to falsify in high-volume science contributes to the
+  replication crisis.
+\newblock \emph{eLife}, 11, e78830.
+
+\bibitem[{Rubin(2020)}]{rubinDoesPreregistrationImprove2020}
+Rubin, M. (2020).
+\newblock Does preregistration improve the credibility of research findings?
+\newblock \emph{The Quantitative Methods for Psychology}, 16, 376--390.
+
+\bibitem[{Schwab \emph{et~al.}(2022)Schwab, Janiaud, Dayan, Amrhein, Panczak,
+  Palagi, Hemkens, Ramon, Rothen, Senn, Furrer \&
+  Held}]{schwabTenSimpleRules2022a}
+Schwab, S., Janiaud, P., Dayan, M., Amrhein, V., Panczak, R., Palagi, P.M.,
+  Hemkens, L.G., Ramon, M., Rothen, N., Senn, S., Furrer, E. \& Held, L.
+  (2022).
+\newblock Ten simple rules for good research practice.
+\newblock \emph{PLOS Computational Biology}, 18, e1010139.
+
+\bibitem[{Stefan \& Sch{\"o}nbrodt(2023)}]{stefanBigLittleLies2023}
+Stefan, A.M. \& Sch{\"o}nbrodt, F.D. (2023).
+\newblock Big little lies: A compendium and simulation of p-hacking strategies.
+\newblock \emph{Royal Society Open Science}, 10, 220346.
+
+\bibitem[{Szucs \& Ioannidis(2017)}]{szucsWhenNullHypothesis2017}
+Szucs, D. \& Ioannidis, J.P.A. (2017).
+\newblock When {{Null Hypothesis Significance Testing Is Unsuitable}} for
+  {{Research}}: {{A Reassessment}}.
+\newblock \emph{Frontiers in Human Neuroscience}, 11.
+
+\bibitem[{Tversky \& Kahneman(1974)}]{tverskyJudgmentUncertaintyHeuristics1974}
+Tversky, A. \& Kahneman, D. (1974).
+\newblock Judgment under {{Uncertainty}}: {{Heuristics}} and {{Biases}}.
+\newblock \emph{Science}, 185, 1124--1131.
+
+\bibitem[{Van~Zwet \& Cator(2021)}]{vanzwetSignificanceFilterWinner2021}
+Van~Zwet, E.W. \& Cator, E.A. (2021).
+\newblock The significance filter, the winner's curse and the need to shrink.
+\newblock \emph{Statistica Neerlandica}, 75, 437--452.
+
+\bibitem[{Wasserstein \emph{et~al.}(2019)Wasserstein, Schirm \&
+  Lazar}]{wassersteinMovingWorld052019}
+Wasserstein, R.L., Schirm, A.L. \& Lazar, N.A. (2019).
+\newblock Moving to a {{World Beyond}} ``p {$<$} 0.05''.
+\newblock \emph{The American Statistician}, 73, 1--19.
+
+\bibitem[{Wolkovich \emph{et~al.}(2024)Wolkovich, Davies, Pearse \&
+  Betancourt}]{wolkovichFourstepBayesianWorkflow2024a}
+Wolkovich, E.M., Davies, T.J., Pearse, W.D. \& Betancourt, M. (2024).
+\newblock A four-step {{Bayesian}} workflow for improving ecological science.
+
+\bibitem[{Woolston(2015)}]{woolstonPsychologyJournalBans2015}
+Woolston, C. (2015).
+\newblock Psychology journal bans {{P}} values.
+\newblock \emph{Nature}, 519, 9--9.
+
+\bibitem[{Yang \emph{et~al.}(2023)Yang, {S{\'a}nchez-T{\'o}jar}, O'Dea, Noble,
+  Koricheva, Jennions, Parker, Lagisz \&
+  Nakagawa}]{yangPublicationBiasImpacts2023}
+Yang, Y., {S{\'a}nchez-T{\'o}jar}, A., O'Dea, R.E., Noble, D.W.A., Koricheva,
+  J., Jennions, M.D., Parker, T.H., Lagisz, M. \& Nakagawa, S. (2023).
+\newblock Publication bias impacts on effect size, statistical power, and
+  magnitude ({{Type M}}) and sign ({{Type S}}) errors in ecology and
+  evolutionary biology.
+\newblock \emph{BMC Biology}, 21, 71.
 
 \end{thebibliography}
