@@ -120,13 +120,13 @@ Hypothesizing after the results are known (HARKing) is an additional pitfall tha
 
 
 
-\subsection*{mathematical artefacts}
+\subsection*{Mathematical artefacts}
 In some cases the way data are analyzed or displayed create patterns, that arise from mathematical properties, sometimes hard to understand. A famous example is the regression to the mean that is responsible for many reported effects that were later found to be overestimated or not present at all (REF, \cite{k}, dunninger kruger effect). 
 
 Example of decreasing sensitivity from Lizzie? An example in recent ecology research 
 
 
-\subsection*{Will AI and machine learning help us?}
+\subsection*{Will AI solve these issues?}
 The steep rise in machine learning has propelled recent advancements of artificial intelligence (AI). Current applications excell human-level intelligence by far in many aspects (REF) offering new opportunities for science REF. Many disciplines have already benefited from these very recent advancements, eg.... However, technologies to date are limited to pattern recognition based on correlations only \citep{pearlSevenToolsCausal2019}. The critical ingredient lacking is the ability of causal reasoning - a feature so far limited to humans  \citep{pearlSevenToolsCausal2019}. While it might be possible that we see further improvements towards logic and reasoning in AI systems the separation of causality from correlation will likely continue to play a pivotal role in science. Therefore 
 
 problem with hypothesis remain. searching for a model so it includes much of the assumptions/hypotheses expected from a useful model\\
@@ -136,7 +136,15 @@ problem with hypothesis remain. searching for a model so it includes much of the
 %1. translation of verbal hypothesis into a mechanistic model
 %2. power analysis: explore sample and effect size, variation etc
 %3. model predictions and assumptions
-Here, we propose a small addition/adjustment to the traditional scientific workflow: The integration of data simulation prior to data gathering or exploration (Figure \ref{fig:fig_1xxx}). Concretely, this involves 1) the translation of a verbal/conceptual hypothesis into a mechanistic model, well-founded in theory, 2) the exploration of the potential and limit of the generated dataset (e.g. power analysis) and 3) prediction and model checks....\\
+Here, we propose a small addition/adjustment to the traditional scientific workflow: The integration of data simulation prior to data gathering or exploration (Figure \ref{fig:fig_1xxx}). Concretely, this involves the following three steps:
+%1) the translation of a verbal/conceptual hypothesis into a mechanistic model, well-founded in theory, 2) the exploration of the potential and limit of the generated dataset (e.g. power analysis) and 3) prediction and model checks....\\
+
+\subsection*{1. Translation of verbal hypothesis into a mechanistic model}
+Models are hypothesis that we evaluate based on our data. Hence, multiple hypothesis testing means applying multiple models. To constrain and justify this process to a reasonable set of hypothesis we propose to build up mechanistic models by incorporating existing knowledge about the influencing variables and their relationships in question. Which explanatory variables are influencing y? Is it linear or non-linear? What do we know from the literature? This step nudges us to think carefully about our hypothesis in terms of model parameters---a great way to translate subjective and conceptual hypothesis to objective mathematical formulations.
+
+\subsection*{2. Power analysis: Tweak the model and simulate}
+We don't propose a common power analysis based on some significance threshold to calculate the probability of correctly rejecting a null hypothesis when it is false (1 - $\beta$). There is nothing wrong with that approach and we even think this a good start. However, here we propose to go further: Explore your model by simulating data from it. Is it doing what you think it is? Generate your fake dataset by manipulating sample size, effect size(s), errorterms and relationships within the mechanistic model to explore how your model behaves. This is a playful, yet powerful way to design an experiment and understanding what your model does. You will find out about the potentials and limits of your model. Besides assessing the statistical power we suggest to focus on m
+
 
 We believe that incorporating these three steps are vital to do better i) greatly stimulate our mechanistic understanding of underlying processes, ii) facilitate to move away from p-values and significance testing and towards evaluating model parameters such as effect sizes and error intervals,  a vital tool to do better science and show how to do it\\
 Helps to address current gaps/limitations:\\
@@ -146,43 +154,68 @@ better design experiments\\
 In the following we go through some concrete examples and show how this procedure can look like. 
 
 
-\section{Bus example with simulation workflow}
-We all manage to go through this world with the help of models in our minds. Most of the time we are not aware of this fact but their implications are all around us. For instance when we wait for a bus we expect the waiting time to be lets say around 7±3 min or when we readjust our expected travel time after an incidence and add the variable 'traffic jam' to our internal model. In short, whenever we have an intuitive understanding of how the world works, our brain suggests basic models - mostly oversimplified and with increasing bias as soon as we enter non-linear relationships.
-- In many practical cases we get the chance to recalibrate our internal model (or lets call it intuition). For example when the bus after 10 min is still not there and we start realizing that we need to incorporate the variable 'traffic jam'.
-But in many cases we don't get this kind of feedback or at least not in an informative way because it is too complex to grasp for our minds. While daily life is arguably not a big drawback to this issue, in science it can be. \\
+%\section{Bus example with simulation workflow}
+%We all manage to go through this world with the help of models in our minds. Most of the time we are not aware of this fact but their implications are all around us. For instance when we wait for a bus we expect the waiting time to be lets say around 7±3 min or when we readjust our expected travel time after an incidence and add the variable 'traffic jam' to our internal model. In short, whenever we have an intuitive understanding of how the world works, our brain suggests basic models - mostly oversimplified and with increasing bias as soon as we enter non-linear relationships.
+%- In many practical cases we get the chance to recalibrate our internal model (or lets call it intuition). For example when the bus after 10 min is still not there and we start realizing that we need to incorporate the variable 'traffic jam'.
+%But in many cases we don't get this kind of feedback or at least not in an informative way because it is too complex to grasp for our minds. While daily life is arguably not a big drawback to this issue, in science it can be. \\
 
-\subsection*{Situation}
-model - show poisson distr.
-simulate
-\subsection*{no what?}
-still waiting for the bus...outlayer?\\
-update the model - assumptions\\
-add variable traffic jam\\
+%\subsection*{Situation}
+%model - show poisson distr.
+
+%\subsection*{no what?}
+%still waiting for the bus...outlayer?\\
+%update the model - assumptions\\
+%add variable traffic jam\\
 
 
-\section{Biological example - how to do it}
-question based + we walk through each one.\\
+\section*{Example 1:  Plant growth and nitrogen}
+Data simulation is best shown in practice. The example presented here along with more complex ones can also be performed through the R script available in the supplement. \\
+Every study starts with a research question. So lets start with this one: What is the influence of nitrogen fertilization on plant growth? We might want to perform an experiment on sunflowers and fertilize some with nitrogen to assess the biomass after one season. So our dependent variable y is biomass and we might have a clunky hypothesis that plants grow more when fertilized with nitrogen.
 
-\subsection*{what influences y?}
-nitrogen
+\subsection*{What influences y in what way?}
+Here we can dive deep into the literature. What do we know that influences plant growth? Let's pick nitrogen concentration for simplicity to start with. Lets further assume there is a positive linear relationship of plant growth and nitrogen concentration. So we can express this relationship in a basic linear model with an intercept a (e.g. the biomass at zero nitrogen), a slope b (e.g. the increase of biomass per 1 unit increase in nitrogen) and an error term that captures the natural variability:
 
-\subsection*{what form? linear/nonlinear, near Gaussian, Poisson}
-linear
+\begin{lstlisting}
+	# Building up a mechanistic model
+	y = a+b*x + error #model formula with x being nitrogen concentration
+	error = rnorm(n,0,sigma) #error distribution 
+\end{lstlisting}
 
-\subsection*{What assumptions are reasonable?}
-for y, alpha, beta\\
-for effect sizes (parameters)\\
-for x data\\
--> pick some for this example\\
+Note that we chose an error distribution that is drawn from a normal distribution with mean 0 and a standard deviation of sigma.
 
-\subsection*{Simulate! }
+\subsection*{Setting model parameters}
+This is the where things get interesting and concrete: What do you think your model parameter should look like? In other words, what biomass do we expect under no nitrogen fertilization? What is the increase in biomass per unit increase in nitrogen? And how variable is this relationship, e.g. what is the background noise? Lets put some numbers here:
+\begin{lstlisting}
+	# specifying model parameters:
+	a <- 30 #intercept
+	b <- 7 #slope (effect size)
+	sigma <- 5 #standard deviation of the error distribution.
+\end{lstlisting}
 
+\subsection*{Simulate!}
+In order to simulate we only need to set sample size and create a meaningful range of x values, i.e. nitrogen concentrations:
+\begin{lstlisting}
+	n <- 50 #sample size
+	x<-rnorm(n,10,4) #create data for nitrogen concentration
+	y<-a+b*x + rnorm(n,0,sigma) #generate y values
+	fake<-data.frame(x,y)
+\end{lstlisting}
+
+
+\subsection*{Fit your model and check the outcome}
+Using your fake dataset you can fit your model, check if the model parameters are in the range you expect them to be and plot them. This is basically your hypothesis as concrete as it gets. 
+\begin{lstlisting}
+	fit_1<-stan_glm(y~x, data=fake) # fit the model
+	print(fit_1, digits=2)
+	plot(fake$x,fake$y, main="Data and fitted regression line")
+	a_hat<-coef(fit_1)[1]
+	b_hat<-coef(fit_1)[2]
+	abline(a_hat, b_hat)
+\end{lstlisting}
 
 \section*{How to use this - Play!}
-so many ways, we highlight just a few 
+Going back and forward you use this tool to better understand what your model is doing. Is that a reasonable effect size? Is the sample size high enough to detect the effect with reasonable certainty? What if the background noise is much higher? You may realized quickly that this loop will give you confidence in your study design and analysis beyond a simple power analysis. 
 
-\subsection*{Power analysis}
-to better design experiments\\
 
 \subsection*{Avoiding overconfidence}
 play with replication while holding variance and effect size constant. p-value figure\\

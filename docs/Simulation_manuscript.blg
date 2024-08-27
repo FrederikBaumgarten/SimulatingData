@@ -4,10 +4,11 @@ The top-level auxiliary file: Simulation_manuscript.aux
 The style file: ecolett.bst
 Database file #1: Art_simulation.bib
 Warning--I didn't find a database entry for ""
-Warning--I didn't find a database entry for "key"
+Warning--I didn't find a database entry for "kerr"
+Warning--I didn't find a database entry for "k"
 You've used 25 entries,
             2997 wiz_defined-function locations,
-            817 strings with 10556 characters,
+            819 strings with 10561 characters,
 and the built_in function-call counts, 15365 in all, are:
 = -- 1206
 > -- 810
@@ -46,4 +47,4 @@ warning$ -- 0
 while$ -- 112
 width$ -- 0
 write$ -- 325
-(There were 2 warnings)
+(There were 3 warnings)
