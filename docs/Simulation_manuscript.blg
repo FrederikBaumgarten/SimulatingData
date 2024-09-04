@@ -5,46 +5,45 @@ The style file: ecolett.bst
 Database file #1: Art_simulation.bib
 Warning--I didn't find a database entry for ""
 Warning--I didn't find a database entry for "kerr"
-Warning--I didn't find a database entry for "k"
-You've used 25 entries,
+You've used 28 entries,
             2997 wiz_defined-function locations,
-            819 strings with 10561 characters,
-and the built_in function-call counts, 15365 in all, are:
-= -- 1206
-> -- 810
-< -- 15
-+ -- 323
-- -- 285
-* -- 1228
-:= -- 2548
-add.period$ -- 74
-call.type$ -- 25
-change.case$ -- 220
-chr.to.int$ -- 24
-cite$ -- 25
-duplicate$ -- 1022
-empty$ -- 995
-format.name$ -- 360
-if$ -- 2877
+            840 strings with 11278 characters,
+and the built_in function-call counts, 17075 in all, are:
+= -- 1341
+> -- 896
+< -- 17
++ -- 358
+- -- 315
+* -- 1359
+:= -- 2836
+add.period$ -- 83
+call.type$ -- 28
+change.case$ -- 245
+chr.to.int$ -- 27
+cite$ -- 28
+duplicate$ -- 1138
+empty$ -- 1108
+format.name$ -- 399
+if$ -- 3198
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 241
-newline$ -- 128
-num.names$ -- 100
-pop$ -- 405
+missing$ -- 267
+newline$ -- 143
+num.names$ -- 112
+pop$ -- 451
 preamble$ -- 1
-purify$ -- 195
+purify$ -- 217
 quote$ -- 0
-skip$ -- 278
+skip$ -- 312
 stack$ -- 0
-substring$ -- 737
-swap$ -- 577
+substring$ -- 815
+swap$ -- 638
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 225
+type$ -- 252
 warning$ -- 0
-while$ -- 112
+while$ -- 124
 width$ -- 0
-write$ -- 325
-(There were 3 warnings)
+write$ -- 363
+(There were 2 warnings)
