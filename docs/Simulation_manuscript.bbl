@@ -1,35 +1,41 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{42}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
-\bibitem[{Amrhein \emph{et~al.}(2019{\natexlab{a}})Amrhein, Gelman, Greenland
-  \& McShane}]{amrheinAbandoningStatisticalSignificance2019}
-Amrhein, V., Gelman, A., Greenland, S. \& McShane, B.B. (2019{\natexlab{a}}).
+\bibitem[{Amrhein \emph{et~al.}(2019)Amrhein, Gelman, Greenland \&
+  McShane}]{amrheinAbandoningStatisticalSignificance2019}
+Amrhein, V., Gelman, A., Greenland, S. \& McShane, B.B. (2019).
 \newblock Abandoning statistical significance is both sensible and practical.
 \newblock Tech. Rep. e27657v1, PeerJ Inc.
 
-\bibitem[{Amrhein \emph{et~al.}(2019{\natexlab{b}})Amrhein, Greenland \&
-  McShane}]{amrheinScientistsRiseStatistical2019}
-Amrhein, V., Greenland, S. \& McShane, B. (2019{\natexlab{b}}).
-\newblock Scientists rise up against statistical significance.
-\newblock \emph{Nature}, 567, 305--307.
-
 \bibitem[{Amrhein \emph{et~al.}(2017)Amrhein, {Korner-Nievergelt} \&
-  Roth}]{amrheinEarthFlat052017}
+  Roth}]{amrheinEarthFlat0052017}
 Amrhein, V., {Korner-Nievergelt}, F. \& Roth, T. (2017).
 \newblock The earth is flat (p {$>$} 0.05): Significance thresholds and the
   crisis of unreplicable research.
 \newblock \emph{PeerJ}, 5, e3544.
+
+\bibitem[{Anderson \emph{et~al.}(2000)Anderson, Burnham \&
+  Thompson}]{andersonNullHypothesisTesting2000}
+Anderson, D.R., Burnham, K.P. \& Thompson, W.L. (2000).
+\newblock Null {{Hypothesis Testing}}: {{Problems}}, {{Prevalence}}, and an
+  {{Alternative}}.
+\newblock \emph{The Journal of Wildlife Management}, 64, 912--923.
 
 \bibitem[{Baker(2016)}]{baker500ScientistsLift2016}
 Baker, M. (2016).
 \newblock 1,500 scientists lift the lid on reproducibility.
 \newblock \emph{Nature}, 533, 452--454.
 
-\bibitem[{Berner \& Amrhein(2022)}]{bernerWhyHowWe2022}
-Berner, D. \& Amrhein, V. (2022).
-\newblock Why and how we should join the shift from significance testing to
-  estimation.
-\newblock \emph{Journal of Evolutionary Biology}, 35, 777--787.
+\bibitem[{Barnett \emph{et~al.}(2005)Barnett, {van der Pols} \&
+  Dobson}]{barnettRegressionMeanWhat2005}
+Barnett, A.G., {van der Pols}, J.C. \& Dobson, A.J. (2005).
+\newblock Regression to the mean: What it is and how to deal with it.
+\newblock \emph{International Journal of Epidemiology}, 34, 215--220.
+
+\bibitem[{Box(1976)}]{boxScienceStatistics1976}
+Box, G.E.P. (1976).
+\newblock Science and {{Statistics}}.
+\newblock \emph{Journal of the American Statistical Association}, 71, 791--799.
 
 \bibitem[{Camerer \emph{et~al.}(2018)Camerer, Dreber, Holzmeister, Ho, Huber,
   Johannesson, Kirchler, Nave, Nosek, Pfeiffer, Altmejd, Buttrick, Chan, Chen,
@@ -44,6 +50,30 @@ Camerer, C.F., Dreber, A., Holzmeister, F., Ho, T.H., Huber, J., Johannesson,
   {{Nature}} and {{Science}} between 2010 and 2015.
 \newblock \emph{Nature Human Behaviour}, 2, 637--644.
 
+\bibitem[{Cumming(2013)}]{cummingUnderstandingNewStatistics2013}
+Cumming, G. (2013).
+\newblock \emph{Understanding the New Statistics: {{Effect}} Sizes, Confidence
+  Intervals, and Meta-Analysis}.
+\newblock Routledge.
+
+\bibitem[{DiRenzo \emph{et~al.}(2023)DiRenzo, Hanks \&
+  Miller}]{direnzoPracticalGuideUnderstanding2023}
+DiRenzo, G.V., Hanks, E. \& Miller, D.A.W. (2023).
+\newblock A practical guide to understanding and validating complex models
+  using data simulations.
+\newblock \emph{Methods in Ecology and Evolution}, 14, 203--217.
+
+\bibitem[{Douglas(2000)}]{douglasInductiveRiskValues2000}
+Douglas, H. (2000).
+\newblock Inductive {{Risk}} and {{Values}} in {{Science}}.
+\newblock \emph{Philosophy of Science}, 67, 559--579.
+
+\bibitem[{Gelman \emph{et~al.}(2019)Gelman, Carlin \&
+  Nallamothu}]{gelmanORBITACoronaryStents2019}
+Gelman, A., Carlin, J.B. \& Nallamothu, B.K. (2019).
+\newblock {{ORBITA}} and coronary stents: {{A}} case study in the analysis and
+  reporting of clinical trials.
+
 \bibitem[{Gelman \& Loken(2013)}]{gelmanGardenForkingPaths2013}
 Gelman, A. \& Loken, E. (2013).
 \newblock The garden of forking paths: {{Why}} multiple comparisons can be a
@@ -51,38 +81,72 @@ Gelman, A. \& Loken, E. (2013).
   the research hypothesis was posited ahead of time.
 \newblock \emph{Department of Statistics, Columbia University}, 348, 3.
 
+\bibitem[{Gelman \& Shalizi(2013)}]{gelmanPhilosophyPracticeBayesian2013}
+Gelman, A. \& Shalizi, C.R. (2013).
+\newblock Philosophy and the practice of {{Bayesian}} statistics.
+\newblock \emph{British Journal of Mathematical and Statistical Psychology},
+  66, 8--38.
+
+\bibitem[{Gigerenzer(2004)}]{gigerenzerMindlessStatistics2004}
+Gigerenzer, G. (2004).
+\newblock Mindless statistics.
+\newblock \emph{The Journal of Socio-Economics}, 33, 587--606.
+
+\bibitem[{Goodman \& Berlin(1994)}]{goodmanUsePredictedConfidence1994}
+Goodman, S.N. \& Berlin, J.A. (1994).
+\newblock The {{Use}} of {{Predicted Confidence Intervals When Planning
+  Experiments}} and the {{Misuse}} of {{Power When Interpreting Results}}.
+\newblock \emph{Annals of Internal Medicine}, 121, 200--206.
+
 \bibitem[{Halsey \emph{et~al.}(2015)Halsey, {Curran-Everett}, Vowler \&
   Drummond}]{halseyFickleValueGenerates2015}
 Halsey, L.G., {Curran-Everett}, D., Vowler, S.L. \& Drummond, G.B. (2015).
 \newblock The fickle {{P}} value generates irreproducible results.
 \newblock \emph{Nature Methods}, 12, 179--185.
 
+\bibitem[{Haselton \& Buss(2000)}]{haseltonErrorManagementTheory2000}
+Haselton, M.G. \& Buss, D.M. (2000).
+\newblock Error management theory: A new perspective on biases in cross-sex
+  mind reading.
+\newblock \emph{Journal of Personality and Social Psychology}, 78, 81--91.
+
 \bibitem[{Ioannidis(2005)}]{ioannidisWhyMostPublished2005a}
 Ioannidis, J.P.A. (2005).
 \newblock Why {{Most Published Research Findings Are False}}.
 \newblock \emph{PLOS Medicine}, 2, e124.
 
-\bibitem[{Kruger \& Dunning(1999)}]{krugerUnskilledUnawareIt1999}
-Kruger, J. \& Dunning, D. (1999).
-\newblock Unskilled and unaware of it: How difficulties in recognizing one's
-  own incompetence lead to inflated self-assessments.
-\newblock \emph{Journal of personality and social psychology}, 77, 1121.
+\bibitem[{Kerr(1998)}]{kerrHARKingHypothesizingResults1998}
+Kerr, N.L. (1998).
+\newblock {{HARKing}}: {{Hypothesizing After}} the {{Results}} are {{Known}}.
+\newblock \emph{Personality and Social Psychology Review}, 2, 196--217.
 
-\bibitem[{Lee(2016)}]{leeAlternativesValueConfidence2016}
-Lee, D.K. (2016).
-\newblock Alternatives to {{P}} value: Confidence interval and effect size.
-\newblock \emph{Korean Journal of Anesthesiology}, 69, 555--562.
+\bibitem[{Kunda(1990)}]{kundaCaseMotivatedReasoning1990}
+Kunda, Z. (1990).
+\newblock The case for motivated reasoning.
+\newblock \emph{Psychological Bulletin}, 108, 480--498.
 
-\bibitem[{Lin \& Chu(2018)}]{linQuantifyingPublicationBias2018}
-Lin, L. \& Chu, H. (2018).
-\newblock Quantifying {{Publication Bias}} in {{Meta-Analysis}}.
-\newblock \emph{Biometrics}, 74, 785--794.
+\bibitem[{Lele(2020)}]{leleHowShouldWe2020}
+Lele, S.R. (2020).
+\newblock How {{Should We Quantify Uncertainty}} in {{Statistical Inference}}?
+\newblock \emph{Frontiers in Ecology and Evolution}, 8.
 
-\bibitem[{McShane \emph{et~al.}(2019)McShane, Gal, Gelman, Robert \&
-  Tackett}]{mcshaneAbandonStatisticalSignificance2019}
-McShane, B.B., Gal, D., Gelman, A., Robert, C. \& Tackett, J.L. (2019).
-\newblock Abandon {{Statistical Significance}}.
-\newblock \emph{The American Statistician}, 73, 235--245.
+\bibitem[{Lucas(2020)}]{lucasTranslucentBoxInterpretable2020}
+Lucas, T.C.D. (2020).
+\newblock A translucent box: Interpretable machine learning in ecology.
+\newblock \emph{Ecological Monographs}, 90, e01422.
+
+\bibitem[{Muff \emph{et~al.}(2022)Muff, Nilsen, O'Hara \&
+  Nater}]{muffRewritingResultsSections2022}
+Muff, S., Nilsen, E.B., O'Hara, R.B. \& Nater, C.R. (2022).
+\newblock Rewriting results sections in the language of evidence.
+\newblock \emph{Trends in Ecology \& Evolution}, 37, 203--210.
+
+\bibitem[{Neyman \& Pearson(1933)}]{neymanIXProblemMost1933}
+Neyman, J. \& Pearson, E.S. (1933).
+\newblock On the problem of the most efficient tests of statistical hypotheses.
+\newblock \emph{Philosophical Transactions of the Royal Society of London,
+  Series A: Containing Papers of a Mathematical or Physical Character}, 231,
+  289--337.
 
 \bibitem[{Nickerson(1998)}]{nickersonConfirmationBiasUbiquitous1998}
 Nickerson, R.S. (1998).
@@ -96,6 +160,28 @@ Pearl, J. (2019).
   learning.
 \newblock \emph{Commun. ACM}, 62, 54--60.
 
+\bibitem[{Perezgonzalez(2015)}]{perezgonzalezFisherNeymanPearsonNHST2015}
+Perezgonzalez, J.D. (2015).
+\newblock Fisher, {{Neyman-Pearson}} or {{NHST}}? {{A}} tutorial for teaching
+  data testing.
+\newblock \emph{Frontiers in Psychology}, 6.
+
+\bibitem[{Pichler \& Hartig(2023)}]{pichlerMachineLearningDeep2023}
+Pichler, M. \& Hartig, F. (2023).
+\newblock Machine learning and deep learning---{{A}} review for ecologists.
+\newblock \emph{Methods in Ecology and Evolution}, 14, 994--1016.
+
+\bibitem[{Popovic \emph{et~al.}(2024)Popovic, Mason, Drobniak, Marques, Potts,
+  Joo, Altwegg, Burns, McCarthy, Johnston, Nakagawa, McMillan, Devarajan,
+  Taggart, Wunderlich, Mair, {Mart{\'i}nez-Lanfranco}, Lagisz \&
+  Pottier}]{popovicFourPrinciplesImproved2024}
+Popovic, G., Mason, T.J., Drobniak, S.M., Marques, T.A., Potts, J., Joo, R.,
+  Altwegg, R., Burns, C.C.I., McCarthy, M.A., Johnston, A., Nakagawa, S.,
+  McMillan, L., Devarajan, K., Taggart, P.L., Wunderlich, A., Mair, M.M.,
+  {Mart{\'i}nez-Lanfranco}, J.A., Lagisz, M. \& Pottier, P. (2024).
+\newblock Four principles for improved statistical ecology.
+\newblock \emph{Methods in Ecology and Evolution}, 15, 266--281.
+
 \bibitem[{Rajtmajer \emph{et~al.}(2022)Rajtmajer, Errington \&
   Hillary}]{rajtmajerHowFailureFalsify2022}
 Rajtmajer, S.M., Errington, T.M. \& Hillary, F.G. (2022).
@@ -103,30 +189,41 @@ Rajtmajer, S.M., Errington, T.M. \& Hillary, F.G. (2022).
   replication crisis.
 \newblock \emph{eLife}, 11, e78830.
 
-\bibitem[{Rubin(2020)}]{rubinDoesPreregistrationImprove2020}
-Rubin, M. (2020).
-\newblock Does preregistration improve the credibility of research findings?
-\newblock \emph{The Quantitative Methods for Psychology}, 16, 376--390.
+\bibitem[{Romeijn(2014)}]{romeijnPhilosophyStatistics2014}
+Romeijn, J.W. (2014).
+\newblock The {{Stanford Encyclopedia}} of {{Philosophy}}.
 
-\bibitem[{Schwab \emph{et~al.}(2022)Schwab, Janiaud, Dayan, Amrhein, Panczak,
-  Palagi, Hemkens, Ramon, Rothen, Senn, Furrer \&
-  Held}]{schwabTenSimpleRules2022a}
-Schwab, S., Janiaud, P., Dayan, M., Amrhein, V., Panczak, R., Palagi, P.M.,
-  Hemkens, L.G., Ramon, M., Rothen, N., Senn, S., Furrer, E. \& Held, L.
-  (2022).
-\newblock Ten simple rules for good research practice.
-\newblock \emph{PLOS Computational Biology}, 18, e1010139.
+\bibitem[{Rothman \& Greenland(2018)}]{rothmanPlanningStudySize2018}
+Rothman, K.J. \& Greenland, S. (2018).
+\newblock Planning {{Study Size Based}} on {{Precision Rather Than Power}}.
+\newblock \emph{Epidemiology}, 29, 599.
+
+\bibitem[{Simmonds \emph{et~al.}(2024)Simmonds, Adjei, Cretois, Dickel,
+  {Gonz{\'a}lez-Gil}, Laverick, Mandeville, Mandeville, Ovaskainen,
+  {Sicacha-Parada}, Skarstein \&
+  O'Hara}]{simmondsRecommendationsQuantitativeUncertainty2024}
+Simmonds, E.G., Adjei, K.P., Cretois, B., Dickel, L., {Gonz{\'a}lez-Gil}, R.,
+  Laverick, J.H., Mandeville, C.P., Mandeville, E.G., Ovaskainen, O.,
+  {Sicacha-Parada}, J., Skarstein, E.S. \& O'Hara, B. (2024).
+\newblock Recommendations for quantitative uncertainty consideration in ecology
+  and evolution.
+\newblock \emph{Trends in Ecology \& Evolution}, 39, 328--337.
+
+\bibitem[{Singal \emph{et~al.}(2017)Singal, Chateau \&
+  Brownell}]{singalPrenatalAntidepressantUse2017a}
+Singal, D., Chateau, D. \& Brownell, M. (2017).
+\newblock Prenatal {{Antidepressant Use}} and {{Autism Spectrum Disorder}}.
+\newblock \emph{JAMA}, 318, 664--665.
+
+\bibitem[{Steel(2010)}]{steelEpistemicValuesArgument2010}
+Steel, D. (2010).
+\newblock Epistemic {{Values}} and the {{Argument}} from {{Inductive Risk}}.
+\newblock \emph{Philosophy of Science}, 77, 14--34.
 
 \bibitem[{Stefan \& Sch{\"o}nbrodt(2023)}]{stefanBigLittleLies2023}
 Stefan, A.M. \& Sch{\"o}nbrodt, F.D. (2023).
 \newblock Big little lies: A compendium and simulation of p-hacking strategies.
 \newblock \emph{Royal Society Open Science}, 10, 220346.
-
-\bibitem[{Szucs \& Ioannidis(2017)}]{szucsWhenNullHypothesis2017}
-Szucs, D. \& Ioannidis, J.P.A. (2017).
-\newblock When {{Null Hypothesis Significance Testing Is Unsuitable}} for
-  {{Research}}: {{A Reassessment}}.
-\newblock \emph{Frontiers in Human Neuroscience}, 11.
 
 \bibitem[{Tukey(1977)}]{tukeyExploratoryDataAnalysis1977}
 Tukey, J.W. (1977).
@@ -138,8 +235,8 @@ Tversky, A. \& Kahneman, D. (1974).
 \newblock Judgment under {{Uncertainty}}: {{Heuristics}} and {{Biases}}.
 \newblock \emph{Science}, 185, 1124--1131.
 
-\bibitem[{Van~Zwet \& Cator(2021)}]{vanzwetSignificanceFilterWinner2021}
-Van~Zwet, E.W. \& Cator, E.A. (2021).
+\bibitem[{{van Zwet} \& Cator(2021)}]{vanzwetSignificanceFilterWinners2021}
+{van Zwet}, E.W. \& Cator, E.A. (2021).
 \newblock The significance filter, the winner's curse and the need to shrink.
 \newblock \emph{Statistica Neerlandica}, 75, 437--452.
 
@@ -157,16 +254,6 @@ Wolkovich, E.M., Auerbach, J., Chamberlain, C.J., Buonaiuto, D.M., Ettinger,
 \newblock A simple explanation for declining temperature sensitivity with
   warming.
 \newblock \emph{Global Change Biology}, 27, 4947--4949.
-
-\bibitem[{Wolkovich \emph{et~al.}(2024)Wolkovich, Davies, Pearse \&
-  Betancourt}]{wolkovichFourstepBayesianWorkflow2024a}
-Wolkovich, E.M., Davies, T.J., Pearse, W.D. \& Betancourt, M. (2024).
-\newblock A four-step {{Bayesian}} workflow for improving ecological science.
-
-\bibitem[{Woolston(2015)}]{woolstonPsychologyJournalBans2015}
-Woolston, C. (2015).
-\newblock Psychology journal bans {{P}} values.
-\newblock \emph{Nature}, 519, 9--9.
 
 \bibitem[{Yang \emph{et~al.}(2023)Yang, {S{\'a}nchez-T{\'o}jar}, O'Dea, Noble,
   Koricheva, Jennions, Parker, Lagisz \&
