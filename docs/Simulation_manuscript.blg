@@ -3,47 +3,48 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Simulation_manuscript.aux
 The style file: ecolett.bst
 Database file #1: Art_simulation.bib
-Warning--empty journal in gelmanORBITACoronaryStents2019
+Warning--I didn't find a database entry for "mcelreath2020"
+Warning--I didn't find a database entry for "morris2019"
 Warning--empty journal in romeijnPhilosophyStatistics2014
-You've used 42 entries,
+You've used 50 entries,
             2997 wiz_defined-function locations,
-            939 strings with 14703 characters,
-and the built_in function-call counts, 24791 in all, are:
-= -- 1975
-> -- 1228
-< -- 27
-+ -- 493
-- -- 429
-* -- 1921
-:= -- 4126
-add.period$ -- 124
-call.type$ -- 42
-change.case$ -- 352
-chr.to.int$ -- 42
-cite$ -- 44
-duplicate$ -- 1668
-empty$ -- 1656
-format.name$ -- 543
-if$ -- 4663
+            1000 strings with 16757 characters,
+and the built_in function-call counts, 29844 in all, are:
+= -- 2378
+> -- 1484
+< -- 30
++ -- 597
+- -- 519
+* -- 2336
+:= -- 4950
+add.period$ -- 148
+call.type$ -- 50
+change.case$ -- 422
+chr.to.int$ -- 50
+cite$ -- 51
+duplicate$ -- 1998
+empty$ -- 1991
+format.name$ -- 659
+if$ -- 5615
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 386
-newline$ -- 212
-num.names$ -- 168
-pop$ -- 648
+missing$ -- 463
+newline$ -- 252
+num.names$ -- 200
+pop$ -- 774
 preamble$ -- 1
-purify$ -- 311
+purify$ -- 373
 quote$ -- 0
-skip$ -- 480
+skip$ -- 568
 stack$ -- 0
-substring$ -- 1237
-swap$ -- 906
+substring$ -- 1518
+swap$ -- 1097
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 375
-warning$ -- 2
-while$ -- 188
+type$ -- 447
+warning$ -- 1
+while$ -- 224
 width$ -- 0
-write$ -- 541
-(There were 2 warnings)
+write$ -- 645
+(There were 3 warnings)

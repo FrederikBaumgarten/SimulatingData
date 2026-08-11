@@ -1,4 +1,4 @@
-\begin{thebibliography}{42}
+\begin{thebibliography}{50}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Amrhein \emph{et~al.}(2019)Amrhein, Gelman, Greenland \&
@@ -68,11 +68,17 @@ Douglas, H. (2000).
 \newblock Inductive {{Risk}} and {{Values}} in {{Science}}.
 \newblock \emph{Philosophy of Science}, 67, 559--579.
 
-\bibitem[{Gelman \emph{et~al.}(2019)Gelman, Carlin \&
-  Nallamothu}]{gelmanORBITACoronaryStents2019}
-Gelman, A., Carlin, J.B. \& Nallamothu, B.K. (2019).
-\newblock {{ORBITA}} and coronary stents: {{A}} case study in the analysis and
-  reporting of clinical trials.
+\bibitem[{Fraser \emph{et~al.}(2018)Fraser, Parker, Nakagawa, Barnett \&
+  Fidler}]{fraserQuestionableResearchPractices2018}
+Fraser, H., Parker, T., Nakagawa, S., Barnett, A. \& Fidler, F. (2018).
+\newblock Questionable research practices in ecology and evolution.
+\newblock \emph{PLOS ONE}, 13, e0200303.
+
+\bibitem[{Gelman \& Carlin(2014)}]{gelmanPowerCalculationsAssessing2014}
+Gelman, A. \& Carlin, J. (2014).
+\newblock Beyond {{Power Calculations}}: {{Assessing Type S}} ({{Sign}}) and
+  {{Type M}} ({{Magnitude}}) {{Errors}}.
+\newblock \emph{Perspectives on Psychological Science}, 9, 641--651.
 
 \bibitem[{Gelman \& Loken(2013)}]{gelmanGardenForkingPaths2013}
 Gelman, A. \& Loken, E. (2013).
@@ -86,6 +92,13 @@ Gelman, A. \& Shalizi, C.R. (2013).
 \newblock Philosophy and the practice of {{Bayesian}} statistics.
 \newblock \emph{British Journal of Mathematical and Statistical Psychology},
   66, 8--38.
+
+\bibitem[{Gelman \emph{et~al.}(2020)Gelman, Vehtari, Simpson, Margossian,
+  Carpenter, Yao, Kennedy, Gabry, B{\"u}rkner \&
+  Modr{\'a}k}]{gelmanBayesianWorkflow2020}
+Gelman, A., Vehtari, A., Simpson, D., Margossian, C.C., Carpenter, B., Yao, Y.,
+  Kennedy, L., Gabry, J., B{\"u}rkner, P.C. \& Modr{\'a}k, M. (2020).
+\newblock Bayesian {{Workflow}}.
 
 \bibitem[{Gigerenzer(2004)}]{gigerenzerMindlessStatistics2004}
 Gigerenzer, G. (2004).
@@ -104,11 +117,11 @@ Halsey, L.G., {Curran-Everett}, D., Vowler, S.L. \& Drummond, G.B. (2015).
 \newblock The fickle {{P}} value generates irreproducible results.
 \newblock \emph{Nature Methods}, 12, 179--185.
 
-\bibitem[{Haselton \& Buss(2000)}]{haseltonErrorManagementTheory2000}
-Haselton, M.G. \& Buss, D.M. (2000).
-\newblock Error management theory: A new perspective on biases in cross-sex
-  mind reading.
-\newblock \emph{Journal of Personality and Social Psychology}, 78, 81--91.
+\bibitem[{Hoenig \& Heisey(2001)}]{hoenigAbusePowerPervasive2001}
+Hoenig, J.M. \& Heisey, D.M. (2001).
+\newblock The {{Abuse}} of {{Power}}: {{The Pervasive Fallacy}} of {{Power
+  Calculations}} for {{Data Analysis}}.
+\newblock \emph{The American Statistician}, 55, 19--24.
 
 \bibitem[{Ioannidis(2005)}]{ioannidisWhyMostPublished2005a}
 Ioannidis, J.P.A. (2005).
@@ -120,10 +133,22 @@ Kerr, N.L. (1998).
 \newblock {{HARKing}}: {{Hypothesizing After}} the {{Results}} are {{Known}}.
 \newblock \emph{Personality and Social Psychology Review}, 2, 196--217.
 
+\bibitem[{Kimmel \emph{et~al.}(2023)Kimmel, Avolio \&
+  Ferraro}]{kimmelEmpiricalEvidenceWidespread2023}
+Kimmel, K., Avolio, M.L. \& Ferraro, P.J. (2023).
+\newblock Empirical evidence of widespread exaggeration bias and selective
+  reporting in ecology.
+\newblock \emph{Nature Ecology \& Evolution}, 7, 1525--1536.
+
 \bibitem[{Kunda(1990)}]{kundaCaseMotivatedReasoning1990}
 Kunda, Z. (1990).
 \newblock The case for motivated reasoning.
 \newblock \emph{Psychological Bulletin}, 108, 480--498.
+
+\bibitem[{Lakens(2022)}]{lakensSampleSizeJustification2022a}
+Lakens, D. (2022).
+\newblock Sample {{Size Justification}}.
+\newblock \emph{Collabra: Psychology}, 8, 33267.
 
 \bibitem[{Lele(2020)}]{leleHowShouldWe2020}
 Lele, S.R. (2020).
@@ -134,6 +159,13 @@ Lele, S.R. (2020).
 Lucas, T.C.D. (2020).
 \newblock A translucent box: Interpretable machine learning in ecology.
 \newblock \emph{Ecological Monographs}, 90, e01422.
+
+\bibitem[{Maxwell \emph{et~al.}(2008)Maxwell, Kelley \&
+  Rausch}]{maxwellSampleSizePlanning2008}
+Maxwell, S.E., Kelley, K. \& Rausch, J.R. (2008).
+\newblock Sample {{Size Planning}} for {{Statistical Power}} and {{Accuracy}}
+  in {{Parameter Estimation}}.
+\newblock \emph{Annual Review of Psychology}, 59, 537--563.
 
 \bibitem[{Muff \emph{et~al.}(2022)Muff, Nilsen, O'Hara \&
   Nater}]{muffRewritingResultsSections2022}
@@ -198,6 +230,12 @@ Rothman, K.J. \& Greenland, S. (2018).
 \newblock Planning {{Study Size Based}} on {{Precision Rather Than Power}}.
 \newblock \emph{Epidemiology}, 29, 599.
 
+\bibitem[{Schad \emph{et~al.}(2021)Schad, Betancourt \&
+  Vasishth}]{schadPrincipledBayesianWorkflow2021}
+Schad, D.J., Betancourt, M. \& Vasishth, S. (2021).
+\newblock Toward a principled {{Bayesian}} workflow in cognitive science.
+\newblock \emph{Psychological Methods}, 26, 103--126.
+
 \bibitem[{Simmonds \emph{et~al.}(2024)Simmonds, Adjei, Cretois, Dickel,
   {Gonz{\'a}lez-Gil}, Laverick, Mandeville, Mandeville, Ovaskainen,
   {Sicacha-Parada}, Skarstein \&
@@ -224,6 +262,12 @@ Steel, D. (2010).
 Stefan, A.M. \& Sch{\"o}nbrodt, F.D. (2023).
 \newblock Big little lies: A compendium and simulation of p-hacking strategies.
 \newblock \emph{Royal Society Open Science}, 10, 220346.
+
+\bibitem[{Touchon \& McCoy(2016)}]{touchonMismatchCurrentStatistical2016}
+Touchon, J.C. \& McCoy, M.W. (2016).
+\newblock The mismatch between current statistical practice and doctoral
+  training in ecology.
+\newblock \emph{Ecosphere}, 7, e01394.
 
 \bibitem[{Tukey(1977)}]{tukeyExploratoryDataAnalysis1977}
 Tukey, J.W. (1977).
@@ -254,6 +298,14 @@ Wolkovich, E.M., Auerbach, J., Chamberlain, C.J., Buonaiuto, D.M., Ettinger,
 \newblock A simple explanation for declining temperature sensitivity with
   warming.
 \newblock \emph{Global Change Biology}, 27, 4947--4949.
+
+\bibitem[{Wolkovich \emph{et~al.}(2026)Wolkovich, Davies, Pearse \&
+  Betancourt}]{wolkovichFourstepSimulationbasedWorkflow2026}
+Wolkovich, E.M., Davies, T.J., Pearse, W.D. \& Betancourt, M. (2026).
+\newblock A four-step simulation-based workflow for ecological analysis and
+  science.
+\newblock \emph{Philosophical Transactions of the Royal Society A:
+  Mathematical, Physical and Engineering Sciences}, 384, 20250252.
 
 \bibitem[{Yang \emph{et~al.}(2023)Yang, {S{\'a}nchez-T{\'o}jar}, O'Dea, Noble,
   Koricheva, Jennions, Parker, Lagisz \&

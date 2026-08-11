@@ -8,7 +8,7 @@
 \usepackage{amsmath}
 \usepackage{textcomp}%among other things, it allows degrees C to be added
 \usepackage{float}
-\usepackage[utf8]{inputenc} % allow funny letters in citations 
+%\usepackage[utf8]{inputenc} % allow funny letters in citations 
 \usepackage[nottoc]{tocbibind} %should add Re fences to the table of contents?
 \usepackage{amsmath} % making nice equations 
 \usepackage{listings} % add in stan code
@@ -26,6 +26,7 @@
 
 \usepackage{xr-hyper} %refer to Fig.s in another document
 \usepackage{hyperref}
+\usepackage{enumitem}
 
 %\textbf{}\setlength{\captionmargin}{30pt}
 \setlength{\abovecaptionskip}{0pt}
@@ -64,24 +65,26 @@
 \renewcommand{\bibname}{References}%names reference list 
 
 
-	\title{A simulation loop for ecological study design and inference:\\
-		from mechanistic hypotheses to precision-based conclusions \\%(my favourite)
+	\title{Simulate before you sample: a three-step loop for designing ecological studies}%(my favourite)\\
+	
 	
 	%Alternate title ideas:
+	% From verbal hypotheses to study designs: a simulation loop for planning ecological research}\\
 	%2. Between noise and patterns: the power of data simulation in science to overcome perception biases\\
 	%3. The power of simulating data: a tool for scientists from designing experiments to drawing/reaching reasonable conclusions\\
 	%4. Between noise and patterns: Overcoming perception biases through data simulation
-} 
 
 
 \date{\today}
-\author{Frederik Baumgarten\textsuperscript{1,2}, Valentin Amrhein\textsuperscript{2}, EM Wolkovich\textsuperscript{1}}
+\author{Frederik Baumgarten\textsuperscript{1,2}, Andrew Gelman?\textsuperscript{3}, Valentin Amrhein\textsuperscript{2}, EM Wolkovich\textsuperscript{1}}
 \maketitle 
 
 	$^1$ Department of Forest and Conservation, Faculty of Forestry, University of British Columbia, 2424 Main Mall
-	Vancouver, BC Canada V6T 1Z4. \\
+	Vancouver, BC Canada V6T 1Z4. 
 	
-	$^2$  Department of Environmental Sciences-Botany, University of Basel, Schönbeinstrasse 6, Basel 4056, Switzerland. \\
+	$^2$  Department of Environmental Sciences-Botany, University of Basel, Schönbeinstrasse 6, Basel 4056, Switzerland. 
+	
+	$^3$  Department of Statistics and Political Science, Columbia University, New York City, NY, United States. 
 	
 Corresponding author: Frederik Baumgarten; \href{mailto:frederik.baumgarten@ubc.ca}{frederik.baumgarten@unibas.ch} \\
 Target journal: Methods in Ecology and Evolution (Methods) \\
@@ -90,11 +93,49 @@ Target journal: Methods in Ecology and Evolution (Methods) \\
 
 \section*{Abstract}
 
-A core skill in empirical science is to separate pattern from noise: judging whether an apparent signal in the data reflects a reproducible process or the combined effects of variability, measurement limitations, sampling design, and model assumptions. To make such judgements more reliable, researchers typically follow a workflow—from posing a question and formulating hypotheses and predictions, to designing a study, collecting data, fitting statistical models, and interpreting and communicating results. Yet repeated methodological critiques across disciplines have highlighted persistent weaknesses in this scientific workflow, including vague or weakly testable hypotheses, insufficient sample sizes, and an overreliance on null-hypothesis significance testing that promotes dichotomous “significant / non-significant” interpretations and selective reporting.\\
-Here we propose a small but practical addition to the workflow: a “simulation loop” implemented before data collection (or early in analysis) to make assumptions explicit and to anticipate what the planned data can and cannot reveal. The loop has three steps: (1) translate a conceptual hypothesis into an explicit generative (mechanistic) model; (2) simulate and visualise data implied by that model to scrutinise assumptions about effect sizes, variability, and measurement limitations; and (3) iterate design choices (e.g. sample size, treatment levels, the range of predictor values, measurement error, model structure) using criteria focused on estimation quality—especially interval widths (precision), bias, and robustness to plausible misspecification—rather than binary detect/not-detect framing.\\ 
-We provide worked examples with reproducible R code, including linear and non-linear cases, and show how the simulation loop can reveal identifiability limits, guide sampling toward decision-relevant precision, and increase transparency in modelling choices.
+\begin{enumerate}[leftmargin=*, itemsep=0.6em, topsep=0.6em, label=\arabic*.]
+	
+	\item Much of what an ecological study can reveal is fixed before any data are
+	collected. Sample size, treatment levels, the range of predictor values and
+	measurement effort together determine which effects can be estimated, and how
+	precisely. Yet these choices are often made by convention, or planned only
+	against a significance threshold, which promotes dichotomous
+	``significant\,/\,non-significant'' thinking from the outset.
+	
+	\item Here we propose a practical addition to the research workflow: a
+	\emph{simulation loop}, carried out entirely before data collection. The loop
+	has three steps: (1) translate a conceptual hypothesis into an explicit
+	generative model; (2) simulate and visualise the data that model implies, to
+	scrutinise assumptions about effect sizes, variability and measurement
+	limitations; and (3) iterate design choices---sample size, treatment levels,
+	predictor range, measurement effort---using criteria focused on estimation
+	quality, especially interval width (precision) and bias, rather than binary
+	detect/not-detect framing. We illustrate the loop with worked linear and
+	non-linear examples and reproducible \textsf{R} code, requiring no specialised
+	statistical machinery beyond base \textsf{R}.
+	
+	\item The examples show how the loop exposes identifiability limits that no
+	increase in sample size can resolve, how precision can depend as much on
+	\emph{where} you sample as on how much you sample, and how design targets can
+	be set from the precision a scientific or management claim actually requires.
+	
+	\item Simulating before sampling does not guarantee correct inference; its
+	value is conditional on the assumptions explored. But making those assumptions
+	explicit and inspectable becomes increasingly important as ecological analyses
+	draw on larger datasets and AI-assisted pattern discovery, where deciding what
+	to believe depends on clearly stated assumptions and defensible uncertainty
+	quantification. We intend the loop as a teachable entry point for researchers
+	and students who have never written a generative model.
+	
+\end{enumerate}
 
-We argue that these benefits become increasingly important as ecological analyses draw on larger datasets and AI-assisted pattern discovery, where deciding what to believe depends on clearly stated assumptions and defensible uncertainty quantification.\\
+\vspace{1em}
+
+%A core skill in empirical science is to separate pattern from noise: judging whether an apparent signal in the data reflects a reproducible process or the combined effects of variability, measurement limitations, sampling design, and model assumptions. To make such judgements more reliable, researchers typically follow a workflow—from posing a question and formulating hypotheses and predictions, to designing a study, collecting data, fitting statistical models, and interpreting and communicating results. Yet repeated methodological critiques across disciplines have highlighted persistent weaknesses in this scientific workflow, including vague or weakly testable hypotheses, insufficient sample sizes, and an overreliance on null-hypothesis significance testing that promotes dichotomous “significant / non-significant” interpretations and selective reporting.\\
+%Here we propose a small but practical addition to the workflow: a “simulation loop” implemented before data collection (or early in analysis) to make assumptions explicit and to anticipate what the planned data can and cannot reveal. The loop has three steps: (1) translate a conceptual hypothesis into an explicit generative (mechanistic) model; (2) simulate and visualise data implied by that model to scrutinise assumptions about effect sizes, variability, and measurement limitations; and (3) iterate design choices (e.g. sample size, treatment levels, the range of predictor values, measurement error, model structure) using criteria focused on estimation quality—especially interval widths (precision), bias, and robustness to plausible misspecification—rather than binary detect/not-detect framing.\\ 
+%We provide worked examples with reproducible R code, including linear and non-linear cases, and show how the simulation loop can reveal identifiability limits, guide sampling toward decision-relevant precision, and increase transparency in modelling choices.
+
+%We argue that these benefits become increasingly important as ecological analyses draw on larger datasets and AI-assisted pattern discovery, where deciding what to believe depends on clearly stated assumptions and defensible uncertainty quantification.\\
 
 
 
@@ -102,23 +143,89 @@ We argue that these benefits become increasingly important as ecological analyse
 %Here, we propose the integration of data simulation into the scientific workflow to address these challenges by: 1) developing meaningful and testable hypotheses through the mathematical formulation of mechanistic models, 2) manipulating effect size, variance and sample size to generate synthetic/fake datasets, 3) exploring the potential and limitations of both the underlying model and the data obtained, and 4) drawing conclusions that can reliably build upon the existing `body of knowledge'.\\
 %We expect that in a future dominated by powerful AI and machine learning algorithms applied to ever-larger datasets, meaningful, theoretically grounded hypotheses will be more important than ever for revealing underlying causalities. Without the understanding of causality, we may excel at making predictions within known limits, yet fail to understand the driving variables behind them.\\
 
-\textbf{Keywords}: Bayesian statistics, statistcal methods, quantitative ecology, hypothesis testing, scientific reasoning, experimental design, power analysis
+\textbf{Keywords}: statistical methods, quantitative ecology, hypothesis testing, scientific reasoning, experimental design, power analysis, study design, simulation, statistical power, precision, effect size, reproducibility.
 \newpage
 
 \section*{1 Introduction}
 
-%\subsection*{The constant search for patterns}
-Many of us have seen the same scene in a conference talk, an in-house seminar, or even in papers. A speaker or author presents a compelling story, shows a clean figure with the mean response in a control and a treatment group (with error bars), and then points to the familiar stars of significance, concluding that the treatment “has an effect” ($p<0.05$)—or, more problematically, that it “has no effect” ($p>0.05$). The combination of a coherent narrative, an intuitive plot, and a thresholded summary can make the conclusion feel settled, even though the same data are often compatible with a wide range of effect sizes and uncertainties. For many listeners (and readers), this leaves a quieter set of questions: how much do we actually know from these data, what else are they compatible with, and would the interpretation change under a different but still reasonable analysis?\\
+Many of us have seen the same scene in a conference talk, an in-house seminar,
+or a paper. A speaker presents a compelling story, shows a clean figure with the
+mean response in a control and a treatment group, and points to the familiar
+stars of significance, concluding that the treatment ``has an effect''
+($p < 0.05$)---or, more problematically, that it ``has no effect''
+($p > 0.05$). The combination of a coherent narrative, an intuitive plot and a
+thresholded summary can make the conclusion feel settled, even though the same
+data are often compatible with a wide range of effect sizes. For many listeners
+and readers, this leaves a quieter set of questions: how much do we actually
+know from these data, what else are they compatible with, and would the
+interpretation change under a different but still reasonable analysis?
 
-By default, many of us still use—and are often still taught to use—a binary, threshold-based style of statistical reasoning that originated about a century ago  \citep{gigerenzerMindlessStatistics2004, neymanIXProblemMost1933} and has been criticised for much of that time, with especially clear calls in recent decades to move beyond “statistical significance” as a scientific standard (e.g. \citep{andersonNullHypothesisTesting2000, amrheinEarthFlat0052017, wassersteinMovingWorld052019, amrheinAbandoningStatisticalSignificance2019}). Yet in many fields, including ecology and evolutionary biology, practical alternatives that are widely taught, routinely applied, and consistently rewarded remain unevenly implemented. One reason is that compelling stories and crisp conclusions are cognitively and socially attractive, especially when results must be communicated quickly. Another reason is that human evolution has equipped us with a hypersensitive pattern detector and a suite of cognitive biases—such as confirmation bias and motivated reasoning—that can make us overinterpret noisy evidence (\citealt{tverskyJudgmentUncertaintyHeuristics1974, nickersonConfirmationBiasUbiquitous1998, kundaCaseMotivatedReasoning1990}; see also error management theory \citealt{haseltonErrorManagementTheory2000}). Finally, ecology often provides weaker corrective feedback than fields such as medical science: causal mechanisms are hard to isolate, replication is uncommon, and the consequences of overconfident conclusions are typically slower, more diffuse, and less directly penalised than in clinical contexts where decisions can have immediate, high-stakes outcomes (e.g. see \citealt{singalPrenatalAntidepressantUse2017a, gelmanORBITACoronaryStents2019}).\\
+These concerns are not new. The binary, threshold-based style of statistical
+reasoning that many of us still use---and are often still taught to
+use---originated about a century ago \citep{neymanIXProblemMost1933, gigerenzerMindlessStatistics2004} and has
+been criticised for much of that time, with especially clear calls in recent
+decades to move beyond ``statistical significance'' as a scientific standard
+\citep[e.g.][]{andersonNullHypothesisTesting2000, amrheinEarthFlat0052017, wassersteinMovingWorld052019, amrheinAbandoningStatisticalSignificance2019}. Yet the
+reform has been uneven in ecology and evolutionary biology. Surveys of the
+published literature find widespread under-powered designs, selective reporting
+and systematically exaggerated effect sizes \citep{kimmelEmpiricalEvidenceWidespread2023, yangPublicationBiasImpacts2023,
+	fraserQuestionableResearchPractices2018}, and quantitative training often still centres on the very tests
+being criticised \citep{touchonMismatchCurrentStatistical2016}.
 
+Most of this reform effort has been directed at how results are analysed and
+reported. We think an equally important part of the problem sits earlier. By the
+time data exist, much of what a study can reveal has already been fixed by
+choices made months before: how many replicates, which treatment levels, how
+wide a gradient of conditions to span, and how carefully to measure. No
+subsequent modelling choice can recover information that the sampling design
+never collected. Worse, a design with poor precision does not simply fail to
+detect an effect. Conditional on passing a significance filter, such a design
+reports effects that are systematically too large, and sometimes of the wrong
+sign \citep{gelmanPowerCalculationsAssessing2014}. This is a plausible mechanism behind the exaggeration
+documented in the ecological literature \citep{kimmelEmpiricalEvidenceWidespread2023}, and it is a property
+of the design rather than of the analyst.
 
-%\subsection*{Aim of this paper: An advocacy for data simulation}
-Here we propose a small but practical addition to the scientific workflow: a “simulation loop” that is implemented before data collection (or early in analysis) to make assumptions explicit and to explore what the planned data can and cannot reveal. The loop consists of three steps: (1) translate a conceptual hypothesis into an explicit generative (mechanistic) model; (2) simulate and visualise data implied by that model to examine assumptions about effect sizes, variability, and measurement limitations; and (3) iterate design choices (e.g. sample size, treatment levels, the range of predictor values, and model structure) using criteria focused on estimation quality—especially interval widths (precision), bias, and sensitivity to realistic departures from the assumed model—rather than binary detect/not-detect framing. Simulation itself is not new in ecology and evolutionary biology, but it is still used unevenly and is often treated as a specialised add-on rather than a routine step in study design and scientific reasoning. Our contribution is to formalise a simple, teachable workflow that integrates simulation early and makes it easier to apply in everyday ecological research. Throughout the paper we provide worked examples with reproducible R code, including linear and non-linear cases, to show how the simulation loop clarifies assumptions, exposes limits of what the data can support, and supports planning for useful precision. We hope this encourages researchers and students to adopt simulation more routinely as a practical tool for doing better science.\\
+The conventional tool for making these choices---power analysis---inherits the
+framing we are trying to escape. It asks whether a test will cross a threshold
+rather than how precisely a quantity will be known, and it is frequently
+misapplied after the data are in \citep{hoenigAbusePowerPervasive2001}. Planning instead for
+\emph{precision}, that is, for an uncertainty interval narrow enough to support
+the claim at stake, has been advocated for decades \citep{goodmanUsePredictedConfidence1994,
+	cummingUnderstandingNewStatistics2013, rothmanPlanningStudySize2018, maxwellSampleSizePlanning2008, lakensSampleSizeJustification2022a}. In ecology, however,
+precision-based planning meets a practical obstacle: closed-form expressions
+exist only for the simplest designs, while the settings ecologists actually work
+in---saturating responses, nested sampling, non-Gaussian data---have none. What
+is needed is a way to reach the same answers by simulation.
 
-To provide context, Figure \ref{fig:fig_1xxx} summarises common problems and pitfalls that can arise along the traditional scientific workflow. The main pitfalls are briefly explained in box 1, along with key references. None of these issues are new; they have been discussed extensively across statistics and many applied fields, and there is broad agreement that robust scientific conclusions require more than threshold-based summaries or default analysis routines. For brevity, we summarise the main pitfalls in Box~1, which provides brief definitions and key references.\\
+Here we propose a small but practical addition to the research workflow: a
+\emph{simulation loop}, carried out before any data are collected. The loop has
+three steps. First, translate a conceptual hypothesis into an explicit
+generative model, that is, a formula stating how the data would arise, including
+both the expected response and its stochastic component. Second, simulate and
+visualise the data that model implies, and ask whether they look like data the
+system could plausibly produce. Third, iterate the design---sample size,
+treatment levels, the range of predictor values, measurement effort---judging
+each version by the precision it delivers for the parameter that matters, rather
+than by whether a test would clear a threshold. The procedure is a loop because
+each step can send us back to the previous one: simulated data that look absurd
+send us back to the model, and a design that cannot deliver useful precision
+sends us back to the question.
 
-
+Simulation itself is not new in ecology and evolution, and our contribution is
+neither the idea nor the machinery but a deliberately narrow and teachable
+version of them. \citet{direnzoPracticalGuideUnderstanding2023} show how simulation can validate complex models once they have been specified, and \citet{wolkovichFourstepSimulationbasedWorkflow2026} set out a
+four-step workflow spanning model development, fitting to empirical data and
+post-fit checking, framed in a Bayesian setting; both belong to a broader move
+towards explicit statistical workflows \citep{gelmanBayesianWorkflow2020, schadPrincipledBayesianWorkflow2021}, and simulation has long been standard for evaluating statistical methods in general \citep{morris2019}. The loop we describe sits earlier and asks less: it stops before data exist, it takes estimation precision rather than
+model calibration as its criterion, and it requires no machinery beyond base
+\textsf{R}. We intend it as an entry point for researchers and students who have
+never written a generative model, and as a step towards those fuller workflows
+rather than a substitute for them. Throughout, we provide worked examples with
+reproducible code, covering a linear case, a non-linear case, a structurally
+misspecified model, a confounded observational design and a nested design.
+Figure~\ref{fig:workflow} places the loop within the conventional research
+workflow and marks the pitfalls it can help anticipate; Box~1 defines those
+pitfalls and gives key references.
 
 
 \section*{2 The simulation loop}
@@ -501,7 +608,7 @@ This non-linear example illustrates why simulation is especially valuable beyond
 
 This section summarises practical guidance to implement the simulation loop in everyday ecological research. The goal is not to add another layer of complexity, but to make assumptions explicit, align study design with the parameters we care about, and report simulation results transparently and reproducibly.
 
-\subsection*{5.1 Practical guidance (short)}
+\subsection*{5.1 Practical guidance}
 
 \textbf{Choose a generative model that matches the question.}
 Start from the verbal hypothesis and translate it into a simple generative model: define $y$, the predictors/design variables $x$, the expected response $f(x;\theta)$, and the stochastic component $\varepsilon$ (process variation and/or measurement error). Begin simple and add complexity only when it changes the inference you want to make (e.g.\ hierarchy, autocorrelation, heterogeneity, detection).
@@ -541,7 +648,7 @@ To make the workflow useful (and teachable), report the generative model, key as
 	\end{itemize}
 \end{tcolorbox}
 
-\subsection*{5.2 Common extensions (brief)}
+\subsection*{5.2 Common extensions}
 
 The simulation loop is not restricted to linear regression. Common extensions follow the same three steps but use a different generative model and analysis model:
 
