@@ -3,48 +3,53 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Simulation_manuscript.aux
 The style file: ecolett.bst
 Database file #1: Art_simulation.bib
-Warning--I didn't find a database entry for "mcelreath2020"
+Warning--I didn't find a database entry for "gelman2014"
+Warning--I didn't find a database entry for "rothman2018"
+Warning--I didn't find a database entry for "wolkovich2026"
+Warning--I didn't find a database entry for "gelman2020workflow"
+Warning--I didn't find a database entry for "schad2021"
+Warning--I didn't find a database entry for "direnzo2023"
 Warning--I didn't find a database entry for "morris2019"
 Warning--empty journal in romeijnPhilosophyStatistics2014
-You've used 50 entries,
+You've used 51 entries,
             2997 wiz_defined-function locations,
-            1000 strings with 16757 characters,
-and the built_in function-call counts, 29844 in all, are:
-= -- 2378
-> -- 1484
+            1012 strings with 17027 characters,
+and the built_in function-call counts, 30465 in all, are:
+= -- 2431
+> -- 1510
 < -- 30
-+ -- 597
-- -- 519
-* -- 2336
-:= -- 4950
-add.period$ -- 148
-call.type$ -- 50
-change.case$ -- 422
-chr.to.int$ -- 50
-cite$ -- 51
-duplicate$ -- 1998
-empty$ -- 1991
-format.name$ -- 659
-if$ -- 5615
++ -- 607
+- -- 528
+* -- 2388
+:= -- 5049
+add.period$ -- 151
+call.type$ -- 51
+change.case$ -- 430
+chr.to.int$ -- 51
+cite$ -- 52
+duplicate$ -- 2039
+empty$ -- 2035
+format.name$ -- 671
+if$ -- 5733
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 463
-newline$ -- 252
-num.names$ -- 200
-pop$ -- 774
+missing$ -- 472
+newline$ -- 257
+num.names$ -- 204
+pop$ -- 789
 preamble$ -- 1
-purify$ -- 373
+purify$ -- 380
 quote$ -- 0
-skip$ -- 568
+skip$ -- 579
 stack$ -- 0
-substring$ -- 1518
-swap$ -- 1097
+substring$ -- 1560
+swap$ -- 1120
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 447
+type$ -- 456
 warning$ -- 1
-while$ -- 224
+while$ -- 229
 width$ -- 0
-write$ -- 645
-(There were 3 warnings)
+write$ -- 658
+(There were 8 warnings)

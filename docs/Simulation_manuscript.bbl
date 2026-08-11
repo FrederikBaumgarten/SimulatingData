@@ -1,4 +1,4 @@
-\begin{thebibliography}{50}
+\begin{thebibliography}{51}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Amrhein \emph{et~al.}(2019)Amrhein, Gelman, Greenland \&
@@ -166,6 +166,12 @@ Maxwell, S.E., Kelley, K. \& Rausch, J.R. (2008).
 \newblock Sample {{Size Planning}} for {{Statistical Power}} and {{Accuracy}}
   in {{Parameter Estimation}}.
 \newblock \emph{Annual Review of Psychology}, 59, 537--563.
+
+\bibitem[{Morris \emph{et~al.}(2019)Morris, White \&
+  Crowther}]{morrisUsingSimulationStudies2019}
+Morris, T.P., White, I.R. \& Crowther, M.J. (2019).
+\newblock Using simulation studies to evaluate statistical methods.
+\newblock \emph{Statistics in Medicine}, 38, 2074--2102.
 
 \bibitem[{Muff \emph{et~al.}(2022)Muff, Nilsen, O'Hara \&
   Nater}]{muffRewritingResultsSections2022}

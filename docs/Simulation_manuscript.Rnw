@@ -27,6 +27,8 @@
 \usepackage{xr-hyper} %refer to Fig.s in another document
 \usepackage{hyperref}
 \usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{amsmath}
 
 %\textbf{}\setlength{\captionmargin}{30pt}
 \setlength{\abovecaptionskip}{0pt}
@@ -185,77 +187,213 @@ sign \citep{gelmanPowerCalculationsAssessing2014}. This is a plausible mechanism
 documented in the ecological literature \citep{kimmelEmpiricalEvidenceWidespread2023}, and it is a property
 of the design rather than of the analyst.
 
-The conventional tool for making these choices---power analysis---inherits the
-framing we are trying to escape. It asks whether a test will cross a threshold
-rather than how precisely a quantity will be known, and it is frequently
-misapplied after the data are in \citep{hoenigAbusePowerPervasive2001}. Planning instead for
-\emph{precision}, that is, for an uncertainty interval narrow enough to support
-the claim at stake, has been advocated for decades \citep{goodmanUsePredictedConfidence1994,
-	cummingUnderstandingNewStatistics2013, rothmanPlanningStudySize2018, maxwellSampleSizePlanning2008, lakensSampleSizeJustification2022a}. In ecology, however,
-precision-based planning meets a practical obstacle: closed-form expressions
-exist only for the simplest designs, while the settings ecologists actually work
-in---saturating responses, nested sampling, non-Gaussian data---have none. What
-is needed is a way to reach the same answers by simulation.
+The conventional tool for making these choices---power analysis---inherits the framing we are trying to escape. It asks whether a test will cross a threshold rather than how precisely a quantity will be known, and it is frequently misapplied after the data are in \citep{hoenigAbusePowerPervasive2001}. Planning instead for
+\emph{precision}, that is, for an uncertainty interval narrow enough to support the claim at stake, has been advocated for decades \citep{goodmanUsePredictedConfidence1994, cummingUnderstandingNewStatistics2013, rothmanPlanningStudySize2018, maxwellSampleSizePlanning2008, lakensSampleSizeJustification2022a}. In ecology, however, precision-based planning meets a practical obstacle: closed-form expressions exist only for the simplest designs, while the settings ecologists actually work in---saturating responses, nested sampling, non-Gaussian data---have none. What is needed is a way to reach the same answers by simulation.
 
-Here we propose a small but practical addition to the research workflow: a
-\emph{simulation loop}, carried out before any data are collected. The loop has
-three steps. First, translate a conceptual hypothesis into an explicit
-generative model, that is, a formula stating how the data would arise, including
-both the expected response and its stochastic component. Second, simulate and
-visualise the data that model implies, and ask whether they look like data the
-system could plausibly produce. Third, iterate the design---sample size,
-treatment levels, the range of predictor values, measurement effort---judging
-each version by the precision it delivers for the parameter that matters, rather
-than by whether a test would clear a threshold. The procedure is a loop because
-each step can send us back to the previous one: simulated data that look absurd
-send us back to the model, and a design that cannot deliver useful precision
-sends us back to the question.
+Here we propose a small but practical addition to the research workflow: a \emph{simulation loop}, carried out before any data are collected. The loop has three steps. First, translate a conceptual hypothesis into an explicit generative model, that is, a formula stating how the data would arise, including both the expected response and its stochastic component. Second, simulate and visualise the data that model implies, and ask whether they look like data the system could plausibly produce. Third, iterate the design---sample size,
+treatment levels, the range of predictor values, measurement effort---judging each version by the precision it delivers for the parameter that matters, rather than by whether a test would clear a threshold. The procedure is a loop because each step can send us back to the previous one: simulated data that look absurd
+send us back to the model, and a design that cannot deliver useful precision sends us back to the question.
 
-Simulation itself is not new in ecology and evolution, and our contribution is
-neither the idea nor the machinery but a deliberately narrow and teachable
-version of them. \citet{direnzoPracticalGuideUnderstanding2023} show how simulation can validate complex models once they have been specified, and \citet{wolkovichFourstepSimulationbasedWorkflow2026} set out a
-four-step workflow spanning model development, fitting to empirical data and
-post-fit checking, framed in a Bayesian setting; both belong to a broader move
-towards explicit statistical workflows \citep{gelmanBayesianWorkflow2020, schadPrincipledBayesianWorkflow2021}, and simulation has long been standard for evaluating statistical methods in general \citep{morris2019}. The loop we describe sits earlier and asks less: it stops before data exist, it takes estimation precision rather than
-model calibration as its criterion, and it requires no machinery beyond base
-\textsf{R}. We intend it as an entry point for researchers and students who have
-never written a generative model, and as a step towards those fuller workflows
-rather than a substitute for them. Throughout, we provide worked examples with
-reproducible code, covering a linear case, a non-linear case, a structurally
-misspecified model, a confounded observational design and a nested design.
-Figure~\ref{fig:workflow} places the loop within the conventional research
-workflow and marks the pitfalls it can help anticipate; Box~1 defines those
-pitfalls and gives key references.
+Simulation itself is not new in ecology and evolution, and our contribution is neither the idea nor the machinery but a deliberately narrow and teachable version of them. \citet{direnzoPracticalGuideUnderstanding2023} show how simulation can validate complex models once they have been specified, and \citet{wolkovichFourstepSimulationbasedWorkflow2026} set out a four-step workflow spanning model development, fitting to empirical data and post-fit checking, framed in a Bayesian setting; both belong to a broader move towards explicit statistical workflows \citep{gelmanBayesianWorkflow2020, schadPrincipledBayesianWorkflow2021}, and simulation has long been standard for evaluating statistical methods in general \citep{morrisUsingSimulationStudies2019}. The loop we describe sits earlier and asks less: it stops before data exist, it takes estimation precision rather than
+model calibration as its criterion, and it requires no machinery beyond base \textsf{R}. We intend it as an entry point for researchers and students who have never written a generative model, and as a step towards those fuller workflows rather than a substitute for them. Throughout, we provide worked examples with reproducible code, covering a linear case, a non-linear case, a structurally misspecified model, a confounded observational design and a nested design.
+Figure~\ref{fig:fig_1xxx} places the loop within the conventional research workflow and marks the pitfalls it can help anticipate; Box~1 defines those pitfalls and gives key references.
 
 
-\section*{2 The simulation loop}
+\section{The simulation loop}
+\label{sec:loop}
 
-Here we propose a small but practical addition to the traditional scientific workflow (Figure~\ref{fig:fig_1xxx}): a simulation loop that is implemented before data collection (or early in analysis). The aim is to make assumptions explicit, to translate verbal hypotheses into quantitative expectations, and to explore what the planned data and model can support under realistic variability and measurement limitations.\\
+This section sets out the loop in general terms; Sections~\ref{sec:linear} and
+\ref{sec:nonlinear} work through it on concrete examples. The aim throughout is
+to make assumptions explicit, to turn a verbal hypothesis into a quantitative
+expectation, and to find out what a planned design can and cannot support
+before it is carried out.
 
-\subsection*{2.1 Core idea: simulate from an explicit data-generating model}
+\subsection{Core idea: an explicit generative model}
 
-At the centre of the simulation loop is an explicit data-generating model. A useful starting point is to separate the systematic component (pattern) from the stochastic component (noise):
+At the centre of the loop is an explicit generative model---a statement of how
+the data would come about. A useful starting point separates the systematic
+component (pattern) from the stochastic component (noise):
+
 \begin{equation}
-	y_i = f(x_i;\theta) + \varepsilon_i
+	y_i = f(x_i; \theta) + \varepsilon_i
+	\label{eq:generative}
 \end{equation}
-\noindent where $f(x_i;\theta)$ is the expected value of $y_i$ given predictors $x_i$ and parameters $\theta$ (the signal implied by the hypothesis), and $\varepsilon_i$ is the remaining deviation around that expectation (variation not captured by the model). Depending on context, $\varepsilon_i$ may represent process variation, observation/measurement error, or both. Importantly, `noise' is not inherently meaningless; it is whatever remains after accounting for the structure we chose to model.\\
 
-In addition to specifying how $y$ is generated conditional on $x$, it is often useful to specify how $x$ arises under the planned design (e.g.\ treatment allocation, predictor range, spatial layout, measurement schedule). Making both parts explicit clarifies which features of the data are determined by design choices and which are left to chance. By simulating from the full data-generating process, we can explore what patterns we should expect to see if our hypothesis and assumptions were approximately correct---and what range of outcomes could plausibly arise from variability and measurement limitations alone.
+\noindent
+where $f(x_i; \theta)$ is the expected value of $y_i$ given predictors $x_i$ and
+parameters $\theta$---the signal implied by the hypothesis---and
+$\varepsilon_i$ is the remaining deviation around that expectation. Depending on
+context, $\varepsilon_i$ may represent process variation, observation or
+measurement error, or both. It is worth stating which, because the two have
+different design remedies: process variation is a property of the system and
+must be lived with, whereas measurement error can often be reduced by better
+instruments, repeated readings or a more careful protocol. Note also that
+`noise' is not inherently meaningless; it is whatever remains after accounting
+for the structure we chose to model.
 
-\subsection*{2.2 The three steps of the simulation loop}
+Equation~\ref{eq:generative} describes how $y$ arises \emph{given} $x$. For
+design purposes we must also specify how $x$ itself arises: the treatment
+allocation, the range of predictor values, the replication structure, the
+spatial or temporal layout, the measurement schedule. This second half is easy
+to overlook, and it is where most of the design leverage lives. It is also what
+distinguishes a design simulation from a model check. The parameters $\theta$
+are assumptions about nature, which we can only estimate or guess at; the
+process generating $x$ is a description of what we intend to do, and is entirely
+under our control. Simulating both makes visible which features of the data are
+determined by our choices and which are left to chance.
 
-\textbf{Step 1: From a verbal hypothesis to a mechanistic (mathematical) model.}\\
-Models are hypotheses. With each model we apply to our data, we examine---often without full awareness---an additional hypothesis. To constrain and justify this process to a reasonable set of hypotheses, we propose to build mechanistic models by incorporating existing knowledge about the influencing variables and their relationships in question. Which explanatory variables are influencing $y$? Is the relationship linear or non-linear? What do we know from the literature? This step nudges us to think carefully about our hypothesis in terms of model parameters, translating subjective and conceptual hypotheses into explicit mathematical formulations. In our experience, a conceptual hypothesis often intuitively makes sense until we try to translate it into a mechanistic model; then it can become clear that the original hypothesis lacks direction, concreteness, or foundation in basic knowledge. Beyond the classical descriptive hypothesis, a mechanistic model also forces us to think about what we actually want to estimate, and what values we expect for those parameters (e.g.\ effect sizes and their variance). This gives us the opportunity to state hypotheses with numbers and formulas. In ecology, this often includes anticipating common design features such as hierarchy and non-independence (e.g.\ repeated measurements, plots nested within sites), and representing them explicitly in the model.\\
+%\paragraph{A note on terminology.}
+%We use \emph{generative} rather than \emph{mechanistic} for the model in Equation~\ref{eq:generative}. Some generative models are mechanistic in a strong sense---their parameters correspond to identifiable processes, as with the half-saturation constant in Section~\ref{sec:nonlinear}---while others are frankly phenomenological, like the straight line in Section~\ref{sec:linear}. The loop works the same way for both, and asks only that the model be explicit enough to simulate from. Where a model does carry a mechanistic interpretation, so much the better: its parameters are then constrained by prior knowledge, which makes Step~1 easier and the resulting design more defensible.
 
-\textbf{Step 2: Simulate and visualise synthetic (`fake') data.}\\
-``The greatest value of a picture is when it forces us to notice what we never expected to see.'' This quote from \citet{tukeyExploratoryDataAnalysis1977} captures the motivation for the second step. With the mechanistic model sorted out, we generate a synthetic dataset from it. The key point is not to simulate only a marginal distribution for $y$, but to simulate $y$ through the model structure: we generate predictor values under the planned design, compute the expected response via $f(x;\theta)$, and then add stochasticity via $\varepsilon$ to represent variability and measurement limitations. By plotting the generated data, we see our hypothesis in a concrete, visualised form---not only the direction of an effect, but also its magnitude (e.g.\ effect size) and consistency (variance). We believe that many ecological papers would benefit from visualising mechanistic model predictions to validate and communicate hypotheses more effectively.\\
+\subsection{The three steps}
 
-\textbf{Step 3: Model exploration and design iteration.}\\
-The third step is to explore what the model and planned design typically produce when we repeat the study many times on the computer. This goes beyond a classical power analysis that targets a significance threshold. Instead, we repeatedly simulate data under plausible assumptions, fit the planned statistical model, and examine parameter estimates and uncertainty. Does the model behave as we think it does? Do the simulated data show realistic variation? How do estimates and uncertainty intervals change with sample size, predictor range, measurement error, or alternative model structures? We can also fit the model to the simulated data and check whether parameter estimates recover the values we used to generate the data. Going back and forth between assumptions, simulation, and fitting is a playful but powerful way to design a study, understand limitations, and avoid overconfident interpretation before analysing empirical data.\\
+\paragraph{Step 1: From a verbal hypothesis to a generative model.}
+Models are hypotheses. With every model we fit we are testing an additional set
+of claims, often without full awareness. Building the model deliberately, from
+what is already known about the variables and their relationships, constrains
+this to a defensible set. Which explanatory variables influence $y$? Is the
+relationship linear, saturating, or humped? What does the literature suggest
+about the magnitude of the effect, and about how variable it is between
+individuals, plots or sites? In our experience a conceptual hypothesis often
+makes intuitive sense right up to the moment one tries to write it as a formula,
+at which point it can become clear that it lacks direction, magnitude, or any
+foundation in prior knowledge. This is uncomfortable, and it is among the most
+valuable things the loop does. Beyond the classical descriptive hypothesis,
+writing the model down forces us to state what we actually want to
+estimate---the estimand---and what values we expect it to take. In ecology this
+step should also anticipate design features such as hierarchy and
+non-independence (repeated measurements, plots nested within sites) and
+represent them explicitly, because they change what the data can support.
 
-In the following sections we provide concrete examples and reproducible R code to illustrate how this procedure can be applied in practice.
+\paragraph{Step 2: Simulate and visualise synthetic data.}
+``The greatest value of a picture is when it forces us to notice what we never
+expected to see'' \citep{tukeyExploratoryDataAnalysis1977}. With the model specified, we generate a
+synthetic dataset from it. The key point is to simulate $y$ \emph{through} the
+model structure rather than drawing $y$ from some marginal distribution: we
+generate predictor values under the planned design, compute the expected
+response via $f(x; \theta)$, and then add stochasticity via $\varepsilon$.
+Plotting the result shows the hypothesis in the same visual form as a real
+results figure---direction, magnitude and consistency together. The question to
+ask at this point is biological rather than statistical: could this system
+plausibly produce these data? Implausible scatter, impossible values, or a
+relationship that looks nothing like what one would expect from the literature
+are all signs that the assumptions, rather than the simulation, need revisiting.
+We believe many ecological papers would benefit from showing simulated model
+predictions alongside their stated hypotheses.
 
+\paragraph{Step 3: Iterate the design against a precision target.}
+The third step plays the planned study through many times on the computer. This
+goes beyond a classical power analysis, which targets a significance threshold.
+We repeatedly simulate data under plausible assumptions, fit the analysis we
+intend to use, and examine the estimates and their uncertainty. Three questions
+follow, in order:
 
+\begin{enumerate}
+	\item \emph{Does the analysis recover the values we generated from?} This is a
+	check on the code and on the model implementation, not on the science. If a
+	correct analysis cannot recover parameters from data we generated ourselves
+	under ideal conditions, something is wrong---and we would never have learned it
+	from the empirical fit alone.
+	
+	\item \emph{How do estimates and uncertainty respond to design choices?} Sample
+	size, the range of predictor values, the number of groups versus replicates per
+	group, and measurement effort are all levers. They differ enormously in cost,
+	and their relative value is rarely obvious in advance.
+	
+	\item \emph{What would this design do to our conclusions if we interpreted it
+		conventionally?} Simulation makes it straightforward to compute quantities that
+	are otherwise invisible: how often the estimate would carry the wrong sign, and
+	by what factor it would be exaggerated, conditional on passing a significance
+	filter \citep{gelmanPowerCalculationsAssessing2014}. For imprecise designs these numbers are sobering, and
+	they are available before a single observation is collected.
+\end{enumerate}
+
+Going back and forth between assumptions, simulation and fitting is a playful
+but powerful way to design a study. The procedure is a \emph{loop} because each
+step can send us back to the previous one: simulated data that look absurd send
+us back to the model, and a design that cannot deliver useful precision sends us
+back to the question.
+
+\subsection{Choosing a design target}
+\label{sec:target}
+
+An estimation-focused workflow only helps if it ends in a number. The
+translation is direct: if a scientific or management claim requires an effect to
+be known to within $\pm k$ on the chosen scale, then the corresponding design
+target is an uncertainty interval of width about $2k$ for the relevant
+parameter \citep{rothmanPlanningStudySize2018}. Simulation then supplies the sample size,
+predictor range and measurement effort that meet this target under stated
+assumptions.
+
+Two cautions apply. First, a design does not produce a single interval width; it
+produces a \emph{distribution} of widths across the studies one might run.
+Designing to the mean of that distribution implies that roughly half of realised
+studies will fall short of the target. It is safer to design against a high
+quantile of the distribution---the 80th percentile, say---so that most studies
+one could run would meet or beat the target. This idea is known as
+\emph{assurance} in the clinical trials literature, and it costs nothing but a
+change of summary statistic.
+
+Second, precision is not correctness. A narrow interval around a parameter of a
+badly specified model is a confident answer to the wrong question, and
+collecting more data makes it narrower rather than better. We demonstrate this
+directly in Sections~\ref{sec:misspec} and \ref{sec:confounding}, and return to
+its implications in the Discussion.
+
+\subsection{What the loop is, and what it is not}
+
+Simulation is used in several distinct ways in ecology and evolution, and the differences matter because they answer different questions at different points in a project. Table~\ref{tab:positioning} places the simulation loop among them.
+Our scope is deliberately the narrowest of the five: everything in this paper happens before any data exist, and the criterion throughout is the precision of the estimate we care about.
+
+\begin{table}[htbp]
+	\centering
+	\small
+	\caption{Five uses of simulation in statistical practice. The simulation loop
+		occupies the earliest and narrowest of these roles. It complements rather than
+		replaces the others; in particular, a study designed with the loop would
+		naturally be analysed with a workflow of the kind described by
+		\citet{wolkovichFourstepSimulationbasedWorkflow2026} or \citet{gelmanBayesianWorkflow2020}.}
+	\label{tab:positioning}
+	\begin{tabular}{@{}p{0.20\textwidth}p{0.30\textwidth}p{0.20\textwidth}p{0.22\textwidth}@{}}
+		\toprule
+		\textbf{Approach} & \textbf{Question it answers} & \textbf{When applied} &
+		\textbf{Criterion} \\
+		\midrule
+		Classical power analysis &
+		Will my test reject the null hypothesis? &
+		Before data &
+		Power at a threshold \\[0.5em]
+		
+		\textbf{Simulation loop} \newline (this paper) &
+		How precisely will I know the quantity I care about, and is that precise enough
+		to be useful? &
+		Before data &
+		Interval width for the estimand \\[0.5em]
+		
+		Bayesian and other statistical workflows \newline \citep{gelmanBayesianWorkflow2020,
+			schadPrincipledBayesianWorkflow2021, wolkovichFourstepSimulationbasedWorkflow2026} &
+		Is my model, and my inference from it, trustworthy? &
+		Before and during analysis &
+		Calibration, parameter recovery \\[0.5em]
+		
+		Validating complex models \newline \citep{direnzoPracticalGuideUnderstanding2023} &
+		Does this model behave as I think it does on data like mine? &
+		After model specification &
+		Recovery, identifiability \\[0.5em]
+		
+		Simulation studies \newline \citep{morrisUsingSimulationStudies2019} &
+		Does this statistical method perform well in general? &
+		Method development &
+		Bias, coverage, RMSE \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+In the sections that follow we work through the loop on concrete examples, with
+reproducible code for each. Section~\ref{sec:linear} treats a linear case,
+Section~\ref{sec:nonlinear} a non-linear one where the design question becomes
+sharper, and Sections~\ref{sec:misspec} and \ref{sec:confounding} two ways in
+which a well-powered design can still mislead.
 
 
 
