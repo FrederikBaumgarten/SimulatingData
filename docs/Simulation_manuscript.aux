@@ -22,23 +22,19 @@
 \citation{kimmelEmpiricalEvidenceWidespread2023}
 \citation{hoenigAbusePowerPervasive2001}
 \citation{goodmanUsePredictedConfidence1994,cummingUnderstandingNewStatistics2013,rothmanPlanningStudySize2018,maxwellSampleSizePlanning2008,lakensSampleSizeJustification2022a}
-\citation{direnzoPracticalGuideUnderstanding2023}
-\citation{wolkovichFourstepSimulationbasedWorkflow2026}
-\citation{gelmanBayesianWorkflow2020,schadPrincipledBayesianWorkflow2021}
-\citation{morrisUsingSimulationStudies2019}
-\@writefile{toc}{\contentsline {section}{\numberline {1}The simulation loop}{4}{section.1}\protected@file@percent }
-\newlabel{sec:loop}{{1}{4}{The simulation loop}{section.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Core idea: an explicit generative model}{4}{subsection.1.1}\protected@file@percent }
-\newlabel{eq:generative}{{1}{4}{Core idea: an explicit generative model}{equation.1.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}The three steps}{4}{subsection.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Step 1: From a verbal hypothesis to a generative model.}{4}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{3}{section.1}\protected@file@percent }
+\citation{direnzoPracticalGuideUnderstanding2023,wolkovichFourstepSimulationbasedWorkflow2026,gelmanBayesianWorkflow2020,schadPrincipledBayesianWorkflow2021,morrisUsingSimulationStudies2019}
+\@writefile{toc}{\contentsline {section}{\numberline {2}The simulation loop}{4}{section.2}\protected@file@percent }
+\newlabel{sec:loop}{{2}{4}{The simulation loop}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Core idea: an explicit generative model}{5}{subsection.2.1}\protected@file@percent }
+\newlabel{eq:generative}{{1}{5}{Core idea: an explicit generative model}{equation.2.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}The three steps}{5}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Step 1: From a verbal hypothesis to a generative model.}{5}{section*.2}\protected@file@percent }
 \citation{tukeyExploratoryDataAnalysis1977}
 \citation{gelmanPowerCalculationsAssessing2014}
+\@writefile{toc}{\contentsline {paragraph}{Step 2: Simulate and visualise synthetic data.}{6}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Step 3: Iterate the design against a precision target.}{6}{section*.4}\protected@file@percent }
 \citation{rothmanPlanningStudySize2018}
-\@writefile{toc}{\contentsline {paragraph}{Step 2: Simulate and visualise synthetic data.}{5}{section*.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Step 3: Iterate the design against a precision target.}{5}{section*.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Choosing a design target}{5}{subsection.1.3}\protected@file@percent }
-\newlabel{sec:target}{{1.3}{5}{Choosing a design target}{subsection.1.3}{}}
 \citation{wolkovichFourstepSimulationbasedWorkflow2026}
 \citation{gelmanBayesianWorkflow2020}
 \citation{wolkovichFourstepSimulationbasedWorkflow2026}
@@ -46,85 +42,123 @@
 \citation{gelmanBayesianWorkflow2020,schadPrincipledBayesianWorkflow2021,wolkovichFourstepSimulationbasedWorkflow2026}
 \citation{direnzoPracticalGuideUnderstanding2023}
 \citation{morrisUsingSimulationStudies2019}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}What the loop is, and what it is not}{6}{subsection.1.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Five uses of simulation in statistical practice. The simulation loop occupies the earliest and narrowest of these roles. It complements rather than replaces the others; in particular, a study designed with the loop would naturally be analysed with a workflow of the kind described by \citet  {wolkovichFourstepSimulationbasedWorkflow2026} or \citet  {gelmanBayesianWorkflow2020}.\relax }}{6}{table.caption.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}What the loop is, and what it is not}{7}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}A linear example: plant growth and nitrogen}{7}{section.3}\protected@file@percent }
+\newlabel{sec:linear}{{3}{7}{A linear example: plant growth and nitrogen}{section.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Five uses of simulation in statistical practice. The simulation loop occupies the earliest and narrowest of these roles. It complements rather than replaces the others; a study designed with the loop would naturally be analysed with a workflow of the kind described by \citet  {wolkovichFourstepSimulationbasedWorkflow2026} or \citet  {gelmanBayesianWorkflow2020}.\relax }}{8}{table.caption.5}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:positioning}{{1}{6}{Five uses of simulation in statistical practice. The simulation loop occupies the earliest and narrowest of these roles. It complements rather than replaces the others; in particular, a study designed with the loop would naturally be analysed with a workflow of the kind described by \citet {wolkovichFourstepSimulationbasedWorkflow2026} or \citet {gelmanBayesianWorkflow2020}.\relax }{table.caption.6}{}}
-\citation{direnzoPracticalGuideUnderstanding2023}
+\newlabel{tab:positioning}{{1}{8}{Five uses of simulation in statistical practice. The simulation loop occupies the earliest and narrowest of these roles. It complements rather than replaces the others; a study designed with the loop would naturally be analysed with a workflow of the kind described by \citet {wolkovichFourstepSimulationbasedWorkflow2026} or \citet {gelmanBayesianWorkflow2020}.\relax }{table.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Step 1: from a verbal hypothesis to a generative model}{8}{subsection.3.1}\protected@file@percent }
+\newlabel{eq:linear}{{2}{8}{Step 1: from a verbal hypothesis to a generative model}{equation.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Step 2: simulate the data the model implies}{9}{subsection.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Step 2 of the loop for the linear example. (a) Data simulated from Equation\nobreakspace  {}\ref {eq:linear} with $a = 30$, $b = 7$, $\sigma = 5$ and $n = 50$: the hypothesis in visual form, showing effect size and scatter together. (b) The fitted model (solid) against the generating model (dashed). (c) The estimated slope and its 95\% interval. The length of this bar is the quantity the rest of the section is about.\relax }}{9}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:fakedata}{{1}{9}{Step 2 of the loop for the linear example. (a) Data simulated from Equation~\ref {eq:linear} with $a = 30$, $b = 7$, $\sigma = 5$ and $n = 50$: the hypothesis in visual form, showing effect size and scatter together. (b) The fitted model (solid) against the generating model (dashed). (c) The estimated slope and its 95\% interval. The length of this bar is the quantity the rest of the section is about.\relax }{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Step 3: how precision responds to design}{10}{subsection.3.3}\protected@file@percent }
+\citation{gelmanPowerCalculationsAssessing2014}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Step 3: how the precision of the nitrogen effect responds to design choices. (a) Design-precision curve: mean and 80th percentile of the 95\% interval width against sample size. (b) At a single design ($n = 50$) the width is itself a random variable; the mean is a poor target because about half of realised studies fall beyond it. (c) The simulated curve reproduces the closed-form result, validating the machinery before it is used where no formula exists. (d) At fixed $n = 50$, spreading the predictor more widely improves precision markedly. (e) Doubling the residual SD costs roughly a fourfold increase in sample size.\relax }}{11}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:precision}{{2}{11}{Step 3: how the precision of the nitrogen effect responds to design choices. (a) Design-precision curve: mean and 80th percentile of the 95\% interval width against sample size. (b) At a single design ($n = 50$) the width is itself a random variable; the mean is a poor target because about half of realised studies fall beyond it. (c) The simulated curve reproduces the closed-form result, validating the machinery before it is used where no formula exists. (d) At fixed $n = 50$, spreading the predictor more widely improves precision markedly. (e) Doubling the residual SD costs roughly a fourfold increase in sample size.\relax }{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}From a scientific requirement to a sample size}{11}{subsection.3.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Choosing a sample size from a precision requirement. The curve shows the 80th percentile of the 95\% interval width for $b$; the horizontal line is the target width of $0.5$ implied by a requirement of $\pm 0.25$. The two meet at $n \approx 120$.\relax }}{11}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:target}{{3}{11}{Choosing a sample size from a precision requirement. The curve shows the 80th percentile of the 95\% interval width for $b$; the horizontal line is the target width of $0.5$ implied by a requirement of $\pm 0.25$. The two meet at $n \approx 120$.\relax }{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}What an imprecise design would do to our conclusions}{11}{subsection.3.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The distribution of slope estimates from 4000 simulated studies with $b = 0.5$, $\sigma = 15$ and $n = 20$ (grey), and the subset that would reach $p < 0.05$ and so be most likely to be reported (dark). Conditional on significance, the design exaggerates the effect roughly fourfold and returns the wrong sign about 7\% of the time. The dashed line is the true value.\relax }}{12}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:typesm}{{4}{12}{The distribution of slope estimates from 4000 simulated studies with $b = 0.5$, $\sigma = 15$ and $n = 20$ (grey), and the subset that would reach $p < 0.05$ and so be most likely to be reported (dark). Conditional on significance, the design exaggerates the effect roughly fourfold and returns the wrong sign about 7\% of the time. The dashed line is the true value.\relax }{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}A non-linear example: a saturating response to nitrogen}{12}{section.4}\protected@file@percent }
+\newlabel{sec:nonlinear}{{4}{12}{A non-linear example: a saturating response to nitrogen}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Step 1: a saturating model}{12}{subsection.4.1}\protected@file@percent }
+\newlabel{eq:mm}{{3}{12}{Step 1: a saturating model}{equation.4.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Step 2: two candidate designs, same sample size}{13}{subsection.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Two designs with the same sample size ($n = 50$) under Equation\nobreakspace  {}\ref {eq:mm} with $V_{\max } = 120$, $K = 8$ and $\sigma = 10$. (a) A narrow nitrogen range gives data that look almost linear and carry little information about the asymptote. (b) A wider range reveals the curvature and the onset of saturation. The solid line is the generating model in both panels.\relax }}{13}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:mmdesigns}{{5}{13}{Two designs with the same sample size ($n = 50$) under Equation~\ref {eq:mm} with $V_{\max } = 120$, $K = 8$ and $\sigma = 10$. (a) A narrow nitrogen range gives data that look almost linear and carry little information about the asymptote. (b) A wider range reveals the curvature and the onset of saturation. The solid line is the generating model in both panels.\relax }{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Step 3: fitting, convergence, and the cloud of estimates}{13}{subsection.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Estimates of $K$ and $V_{\max }$ from 500 simulated studies under each design, with the true values marked. (a) Under the narrow design the two parameters trade off against one another and neither is well determined. (b) Under the wide design both are recovered. Non-converged fits are excluded; their frequency is reported in the text.\relax }}{14}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:mmcloud}{{6}{14}{Estimates of $K$ and $V_{\max }$ from 500 simulated studies under each design, with the true values marked. (a) Under the narrow design the two parameters trade off against one another and neither is well determined. (b) Under the wide design both are recovered. Non-converged fits are excluded; their frequency is reported in the text.\relax }{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}More data, or better placed data?}{14}{subsection.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Interquartile range of estimates of $K$ against sample size, under the narrow and wide nitrogen ranges. Extending the range at $n = 50$ achieves more than quadrupling the sample size within the narrow range.\relax }}{15}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:mmtradeoff}{{7}{15}{Interquartile range of estimates of $K$ against sample size, under the narrow and wide nitrogen ranges. Extending the range at $n = 50$ achieves more than quadrupling the sample size within the narrow range.\relax }{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}When precision is not enough}{15}{section.5}\protected@file@percent }
+\newlabel{sec:limits}{{5}{15}{When precision is not enough}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}A model with the wrong shape}{15}{subsection.5.1}\protected@file@percent }
+\citation{pearlSevenToolsCausal2019,graceScientistsGuideDeveloping2020,arifApplyingStructuralCausal2023}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}A parameter that is not the one we mean}{16}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}What follows for the loop}{16}{subsection.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Two ways a precise design can mislead. (a) A straight line fitted to data generated by the saturating model over a narrow nitrogen range (shaded): the fit is good by conventional criteria, yet extrapolating to $x = 40$ overpredicts biomass by more than a factor of two. (b) Estimates of the nitrogen effect at $n = 500$ from an analysis omitting soil moisture (naive) and one including it (adjusted); the dashed line is the true causal effect of 7. (c) The naive estimate as sample size increases from 100 to 10\,000: the interval contracts steadily around a value roughly 65\% too large.\relax }}{17}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:limits}{{8}{17}{Two ways a precise design can mislead. (a) A straight line fitted to data generated by the saturating model over a narrow nitrogen range (shaded): the fit is good by conventional criteria, yet extrapolating to $x = 40$ overpredicts biomass by more than a factor of two. (b) Estimates of the nitrogen effect at $n = 500$ from an analysis omitting soil moisture (naive) and one including it (adjusted); the dashed line is the true causal effect of 7. (c) The naive estimate as sample size increases from 100 to 10\,000: the interval contracts steadily around a value roughly 65\% too large.\relax }{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Reporting a simulation loop}{17}{section.6}\protected@file@percent }
+\newlabel{sec:reporting}{{6}{17}{Reporting a simulation loop}{section.6}{}}
+\citation{douglasInductiveRiskValues2000,steelEpistemicValuesArgument2010}
 \citation{romeijnPhilosophyStatistics2014,gelmanPhilosophyPracticeBayesian2013}
 \citation{boxScienceStatistics1976}
-\citation{douglasInductiveRiskValues2000,steelEpistemicValuesArgument2010}
-\citation{simmondsRecommendationsQuantitativeUncertainty2024,leleHowShouldWe2020}
-\citation{pearlSevenToolsCausal2019}
 \citation{pichlerMachineLearningDeep2023,lucasTranslucentBoxInterpretable2020}
+\citation{pearlSevenToolsCausal2019}
+\citation{simmondsRecommendationsQuantitativeUncertainty2024,leleHowShouldWe2020}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Outlook}{18}{section.7}\protected@file@percent }
+\newlabel{sec:outlook}{{7}{18}{Outlook}{section.7}{}}
 \bibdata{Art_simulation}
 \bibcite{amrheinAbandoningStatisticalSignificance2019}{{1}{2019}{{Amrhein \emph  {et~al.}}}{{Amrhein, Gelman, Greenland \& McShane}}}
 \bibcite{amrheinEarthFlat0052017}{{2}{2017}{{Amrhein \emph  {et~al.}}}{{Amrhein, {Korner-Nievergelt} \& Roth}}}
 \bibcite{andersonNullHypothesisTesting2000}{{3}{2000}{{Anderson \emph  {et~al.}}}{{Anderson, Burnham \& Thompson}}}
-\bibcite{baker500ScientistsLift2016}{{4}{2016}{{Baker}}{{}}}
-\bibcite{barnettRegressionMeanWhat2005}{{5}{2005}{{Barnett \emph  {et~al.}}}{{Barnett, {van der Pols} \& Dobson}}}
-\bibcite{boxScienceStatistics1976}{{6}{1976}{{Box}}{{}}}
-\bibcite{camererEvaluatingReplicabilitySocial2018}{{7}{2018}{{Camerer \emph  {et~al.}}}{{Camerer, Dreber, Holzmeister, Ho, Huber, Johannesson, Kirchler, Nave, Nosek, Pfeiffer, Altmejd, Buttrick, Chan, Chen, Forsell, Gampa, Heikensten, Hummer, Imai, Isaksson, Manfredi, Rose, Wagenmakers \& Wu}}}
-\bibcite{cummingUnderstandingNewStatistics2013}{{8}{2013}{{Cumming}}{{}}}
-\bibcite{direnzoPracticalGuideUnderstanding2023}{{9}{2023}{{DiRenzo \emph  {et~al.}}}{{DiRenzo, Hanks \& Miller}}}
-\bibcite{douglasInductiveRiskValues2000}{{10}{2000}{{Douglas}}{{}}}
-\bibcite{fraserQuestionableResearchPractices2018}{{11}{2018}{{Fraser \emph  {et~al.}}}{{Fraser, Parker, Nakagawa, Barnett \& Fidler}}}
-\bibcite{gelmanPowerCalculationsAssessing2014}{{12}{2014}{{Gelman \& Carlin}}{{}}}
-\bibcite{gelmanGardenForkingPaths2013}{{13}{2013}{{Gelman \& Loken}}{{}}}
-\bibcite{gelmanPhilosophyPracticeBayesian2013}{{14}{2013}{{Gelman \& Shalizi}}{{}}}
-\bibcite{gelmanBayesianWorkflow2020}{{15}{2020}{{Gelman \emph  {et~al.}}}{{Gelman, Vehtari, Simpson, Margossian, Carpenter, Yao, Kennedy, Gabry, B{\"u}rkner \& Modr{\'a}k}}}
-\bibcite{gigerenzerMindlessStatistics2004}{{16}{2004}{{Gigerenzer}}{{}}}
-\bibcite{goodmanUsePredictedConfidence1994}{{17}{1994}{{Goodman \& Berlin}}{{}}}
-\bibcite{halseyFickleValueGenerates2015}{{18}{2015}{{Halsey \emph  {et~al.}}}{{Halsey, {Curran-Everett}, Vowler \& Drummond}}}
-\bibcite{hoenigAbusePowerPervasive2001}{{19}{2001}{{Hoenig \& Heisey}}{{}}}
-\bibcite{ioannidisWhyMostPublished2005a}{{20}{2005}{{Ioannidis}}{{}}}
-\@writefile{toc}{\contentsline {section}{References}{16}{section*.23}\protected@file@percent }
-\bibcite{kerrHARKingHypothesizingResults1998}{{21}{1998}{{Kerr}}{{}}}
-\bibcite{kimmelEmpiricalEvidenceWidespread2023}{{22}{2023}{{Kimmel \emph  {et~al.}}}{{Kimmel, Avolio \& Ferraro}}}
-\bibcite{kundaCaseMotivatedReasoning1990}{{23}{1990}{{Kunda}}{{}}}
-\bibcite{lakensSampleSizeJustification2022a}{{24}{2022}{{Lakens}}{{}}}
-\bibcite{leleHowShouldWe2020}{{25}{2020}{{Lele}}{{}}}
-\bibcite{lucasTranslucentBoxInterpretable2020}{{26}{2020}{{Lucas}}{{}}}
-\bibcite{maxwellSampleSizePlanning2008}{{27}{2008}{{Maxwell \emph  {et~al.}}}{{Maxwell, Kelley \& Rausch}}}
-\bibcite{morrisUsingSimulationStudies2019}{{28}{2019}{{Morris \emph  {et~al.}}}{{Morris, White \& Crowther}}}
-\bibcite{muffRewritingResultsSections2022}{{29}{2022}{{Muff \emph  {et~al.}}}{{Muff, Nilsen, O'Hara \& Nater}}}
-\bibcite{neymanIXProblemMost1933}{{30}{1933}{{Neyman \& Pearson}}{{}}}
-\bibcite{nickersonConfirmationBiasUbiquitous1998}{{31}{1998}{{Nickerson}}{{}}}
-\bibcite{pearlSevenToolsCausal2019}{{32}{2019}{{Pearl}}{{}}}
-\bibcite{perezgonzalezFisherNeymanPearsonNHST2015}{{33}{2015}{{Perezgonzalez}}{{}}}
-\bibcite{pichlerMachineLearningDeep2023}{{34}{2023}{{Pichler \& Hartig}}{{}}}
-\bibcite{popovicFourPrinciplesImproved2024}{{35}{2024}{{Popovic \emph  {et~al.}}}{{Popovic, Mason, Drobniak, Marques, Potts, Joo, Altwegg, Burns, McCarthy, Johnston, Nakagawa, McMillan, Devarajan, Taggart, Wunderlich, Mair, {Mart{\'i}nez-Lanfranco}, Lagisz \& Pottier}}}
-\bibcite{rajtmajerHowFailureFalsify2022}{{36}{2022}{{Rajtmajer \emph  {et~al.}}}{{Rajtmajer, Errington \& Hillary}}}
-\bibcite{romeijnPhilosophyStatistics2014}{{37}{2014}{{Romeijn}}{{}}}
-\bibcite{rothmanPlanningStudySize2018}{{38}{2018}{{Rothman \& Greenland}}{{}}}
-\bibcite{schadPrincipledBayesianWorkflow2021}{{39}{2021}{{Schad \emph  {et~al.}}}{{Schad, Betancourt \& Vasishth}}}
-\bibcite{simmondsRecommendationsQuantitativeUncertainty2024}{{40}{2024}{{Simmonds \emph  {et~al.}}}{{Simmonds, Adjei, Cretois, Dickel, {Gonz{\'a}lez-Gil}, Laverick, Mandeville, Mandeville, Ovaskainen, {Sicacha-Parada}, Skarstein \& O'Hara}}}
-\bibcite{singalPrenatalAntidepressantUse2017a}{{41}{2017}{{Singal \emph  {et~al.}}}{{Singal, Chateau \& Brownell}}}
-\bibcite{steelEpistemicValuesArgument2010}{{42}{2010}{{Steel}}{{}}}
-\bibcite{stefanBigLittleLies2023}{{43}{2023}{{Stefan \& Sch{\"o}nbrodt}}{{}}}
-\bibcite{touchonMismatchCurrentStatistical2016}{{44}{2016}{{Touchon \& McCoy}}{{}}}
-\bibcite{tukeyExploratoryDataAnalysis1977}{{45}{1977}{{Tukey}}{{}}}
-\bibcite{tverskyJudgmentUncertaintyHeuristics1974}{{46}{1974}{{Tversky \& Kahneman}}{{}}}
-\bibcite{vanzwetSignificanceFilterWinners2021}{{47}{2021}{{{van Zwet} \& Cator}}{{}}}
-\bibcite{wassersteinMovingWorld052019}{{48}{2019}{{Wasserstein \emph  {et~al.}}}{{Wasserstein, Schirm \& Lazar}}}
-\bibcite{wolkovichSimpleExplanationDeclining2021a}{{49}{2021}{{Wolkovich \emph  {et~al.}}}{{Wolkovich, Auerbach, Chamberlain, Buonaiuto, Ettinger, {Morales-Castilla} \& Gelman}}}
-\bibcite{wolkovichFourstepSimulationbasedWorkflow2026}{{50}{2026}{{Wolkovich \emph  {et~al.}}}{{Wolkovich, Davies, Pearse \& Betancourt}}}
-\bibcite{yangPublicationBiasImpacts2023}{{51}{2023}{{Yang \emph  {et~al.}}}{{Yang, {S{\'a}nchez-T{\'o}jar}, O'Dea, Noble, Koricheva, Jennions, Parker, Lagisz \& Nakagawa}}}
+\bibcite{arifApplyingStructuralCausal2023}{{4}{2023}{{Arif \& MacNeil}}{{}}}
+\bibcite{baker500ScientistsLift2016}{{5}{2016}{{Baker}}{{}}}
+\bibcite{barnettRegressionMeanWhat2005}{{6}{2005}{{Barnett \emph  {et~al.}}}{{Barnett, {van der Pols} \& Dobson}}}
+\bibcite{boxScienceStatistics1976}{{7}{1976}{{Box}}{{}}}
+\bibcite{camererEvaluatingReplicabilitySocial2018}{{8}{2018}{{Camerer \emph  {et~al.}}}{{Camerer, Dreber, Holzmeister, Ho, Huber, Johannesson, Kirchler, Nave, Nosek, Pfeiffer, Altmejd, Buttrick, Chan, Chen, Forsell, Gampa, Heikensten, Hummer, Imai, Isaksson, Manfredi, Rose, Wagenmakers \& Wu}}}
+\bibcite{cummingUnderstandingNewStatistics2013}{{9}{2013}{{Cumming}}{{}}}
+\bibcite{direnzoPracticalGuideUnderstanding2023}{{10}{2023}{{DiRenzo \emph  {et~al.}}}{{DiRenzo, Hanks \& Miller}}}
+\bibcite{douglasInductiveRiskValues2000}{{11}{2000}{{Douglas}}{{}}}
+\bibcite{fraserQuestionableResearchPractices2018}{{12}{2018}{{Fraser \emph  {et~al.}}}{{Fraser, Parker, Nakagawa, Barnett \& Fidler}}}
+\bibcite{gelmanPowerCalculationsAssessing2014}{{13}{2014}{{Gelman \& Carlin}}{{}}}
+\@writefile{toc}{\contentsline {section}{References}{19}{section*.14}\protected@file@percent }
+\bibcite{gelmanGardenForkingPaths2013}{{14}{2013}{{Gelman \& Loken}}{{}}}
+\bibcite{gelmanPhilosophyPracticeBayesian2013}{{15}{2013}{{Gelman \& Shalizi}}{{}}}
+\bibcite{gelmanBayesianWorkflow2020}{{16}{2020}{{Gelman \emph  {et~al.}}}{{Gelman, Vehtari, Simpson, Margossian, Carpenter, Yao, Kennedy, Gabry, B{\"u}rkner \& Modr{\'a}k}}}
+\bibcite{gigerenzerMindlessStatistics2004}{{17}{2004}{{Gigerenzer}}{{}}}
+\bibcite{goodmanUsePredictedConfidence1994}{{18}{1994}{{Goodman \& Berlin}}{{}}}
+\bibcite{graceScientistsGuideDeveloping2020}{{19}{2020}{{Grace \& Irvine}}{{}}}
+\bibcite{halseyFickleValueGenerates2015}{{20}{2015}{{Halsey \emph  {et~al.}}}{{Halsey, {Curran-Everett}, Vowler \& Drummond}}}
+\bibcite{hoenigAbusePowerPervasive2001}{{21}{2001}{{Hoenig \& Heisey}}{{}}}
+\bibcite{ioannidisWhyMostPublished2005a}{{22}{2005}{{Ioannidis}}{{}}}
+\bibcite{kerrHARKingHypothesizingResults1998}{{23}{1998}{{Kerr}}{{}}}
+\bibcite{kimmelEmpiricalEvidenceWidespread2023}{{24}{2023}{{Kimmel \emph  {et~al.}}}{{Kimmel, Avolio \& Ferraro}}}
+\bibcite{kundaCaseMotivatedReasoning1990}{{25}{1990}{{Kunda}}{{}}}
+\bibcite{lakensSampleSizeJustification2022a}{{26}{2022}{{Lakens}}{{}}}
+\bibcite{leleHowShouldWe2020}{{27}{2020}{{Lele}}{{}}}
+\bibcite{lucasTranslucentBoxInterpretable2020}{{28}{2020}{{Lucas}}{{}}}
+\bibcite{maxwellSampleSizePlanning2008}{{29}{2008}{{Maxwell \emph  {et~al.}}}{{Maxwell, Kelley \& Rausch}}}
+\bibcite{morrisUsingSimulationStudies2019}{{30}{2019}{{Morris \emph  {et~al.}}}{{Morris, White \& Crowther}}}
+\bibcite{muffRewritingResultsSections2022}{{31}{2022}{{Muff \emph  {et~al.}}}{{Muff, Nilsen, O'Hara \& Nater}}}
+\bibcite{neymanIXProblemMost1933}{{32}{1933}{{Neyman \& Pearson}}{{}}}
+\bibcite{nickersonConfirmationBiasUbiquitous1998}{{33}{1998}{{Nickerson}}{{}}}
+\bibcite{pearlSevenToolsCausal2019}{{34}{2019}{{Pearl}}{{}}}
+\bibcite{perezgonzalezFisherNeymanPearsonNHST2015}{{35}{2015}{{Perezgonzalez}}{{}}}
+\bibcite{pichlerMachineLearningDeep2023}{{36}{2023}{{Pichler \& Hartig}}{{}}}
+\bibcite{popovicFourPrinciplesImproved2024}{{37}{2024}{{Popovic \emph  {et~al.}}}{{Popovic, Mason, Drobniak, Marques, Potts, Joo, Altwegg, Burns, McCarthy, Johnston, Nakagawa, McMillan, Devarajan, Taggart, Wunderlich, Mair, {Mart{\'i}nez-Lanfranco}, Lagisz \& Pottier}}}
+\bibcite{rajtmajerHowFailureFalsify2022}{{38}{2022}{{Rajtmajer \emph  {et~al.}}}{{Rajtmajer, Errington \& Hillary}}}
+\bibcite{romeijnPhilosophyStatistics2014}{{39}{2014}{{Romeijn}}{{}}}
+\bibcite{rothmanPlanningStudySize2018}{{40}{2018}{{Rothman \& Greenland}}{{}}}
+\bibcite{schadPrincipledBayesianWorkflow2021}{{41}{2021}{{Schad \emph  {et~al.}}}{{Schad, Betancourt \& Vasishth}}}
+\bibcite{simmondsRecommendationsQuantitativeUncertainty2024}{{42}{2024}{{Simmonds \emph  {et~al.}}}{{Simmonds, Adjei, Cretois, Dickel, {Gonz{\'a}lez-Gil}, Laverick, Mandeville, Mandeville, Ovaskainen, {Sicacha-Parada}, Skarstein \& O'Hara}}}
+\bibcite{singalPrenatalAntidepressantUse2017a}{{43}{2017}{{Singal \emph  {et~al.}}}{{Singal, Chateau \& Brownell}}}
+\bibcite{steelEpistemicValuesArgument2010}{{44}{2010}{{Steel}}{{}}}
+\bibcite{stefanBigLittleLies2023}{{45}{2023}{{Stefan \& Sch{\"o}nbrodt}}{{}}}
+\bibcite{touchonMismatchCurrentStatistical2016}{{46}{2016}{{Touchon \& McCoy}}{{}}}
+\bibcite{tukeyExploratoryDataAnalysis1977}{{47}{1977}{{Tukey}}{{}}}
+\bibcite{tverskyJudgmentUncertaintyHeuristics1974}{{48}{1974}{{Tversky \& Kahneman}}{{}}}
+\bibcite{vanzwetSignificanceFilterWinners2021}{{49}{2021}{{{van Zwet} \& Cator}}{{}}}
+\bibcite{wassersteinMovingWorld052019}{{50}{2019}{{Wasserstein \emph  {et~al.}}}{{Wasserstein, Schirm \& Lazar}}}
+\bibcite{wolkovichSimpleExplanationDeclining2021a}{{51}{2021}{{Wolkovich \emph  {et~al.}}}{{Wolkovich, Auerbach, Chamberlain, Buonaiuto, Ettinger, {Morales-Castilla} \& Gelman}}}
+\bibcite{wolkovichFourstepSimulationbasedWorkflow2026}{{52}{2026}{{Wolkovich \emph  {et~al.}}}{{Wolkovich, Davies, Pearse \& Betancourt}}}
+\bibcite{yangPublicationBiasImpacts2023}{{53}{2023}{{Yang \emph  {et~al.}}}{{Yang, {S{\'a}nchez-T{\'o}jar}, O'Dea, Noble, Koricheva, Jennions, Parker, Lagisz \& Nakagawa}}}
 \bibstyle{ecolett}
-\citation{nickersonConfirmationBiasUbiquitous1998,kundaCaseMotivatedReasoning1990,tverskyJudgmentUncertaintyHeuristics1974}
+\citation{pearlSevenToolsCausal2019,graceScientistsGuideDeveloping2020,arifApplyingStructuralCausal2023}
+\citation{gelmanGardenForkingPaths2013,kerrHARKingHypothesizingResults1998,stefanBigLittleLies2023,nickersonConfirmationBiasUbiquitous1998}
 \citation{rajtmajerHowFailureFalsify2022,gigerenzerMindlessStatistics2004,perezgonzalezFisherNeymanPearsonNHST2015}
-\citation{pearlSevenToolsCausal2019,rajtmajerHowFailureFalsify2022}
-\citation{halseyFickleValueGenerates2015,ioannidisWhyMostPublished2005a,baker500ScientistsLift2016,camererEvaluatingReplicabilitySocial2018}
-\citation{goodmanUsePredictedConfidence1994,rothmanPlanningStudySize2018,cummingUnderstandingNewStatistics2013}
+\citation{goodmanUsePredictedConfidence1994,rothmanPlanningStudySize2018,hoenigAbusePowerPervasive2001,halseyFickleValueGenerates2015}
+\citation{bolkerEcologicalModelsData2008,direnzoPracticalGuideUnderstanding2023}
 \citation{direnzoPracticalGuideUnderstanding2023,popovicFourPrinciplesImproved2024}
-\citation{direnzoPracticalGuideUnderstanding2023,popovicFourPrinciplesImproved2024}
-\citation{amrheinEarthFlat0052017,amrheinAbandoningStatisticalSignificance2019,wassersteinMovingWorld052019}
-\citation{gelmanGardenForkingPaths2013,stefanBigLittleLies2023,kerrHARKingHypothesizingResults1998}
-\citation{direnzoPracticalGuideUnderstanding2023,popovicFourPrinciplesImproved2024}
-\citation{barnettRegressionMeanWhat2005,wolkovichSimpleExplanationDeclining2021a}
-\citation{muffRewritingResultsSections2022,amrheinAbandoningStatisticalSignificance2019}
-\citation{goodmanUsePredictedConfidence1994,rothmanPlanningStudySize2018,singalPrenatalAntidepressantUse2017a}
-\citation{yangPublicationBiasImpacts2023,vanzwetSignificanceFilterWinners2021}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Schematic overview of the current scientific workflow (blue circle) with its related problems (red text) and how some of them can be anticipated with the help of data simulation (three-step-loop in yellow). The critical step is the translation of a verbal hypothesis into a mechanistic model expressed in mathematical terms. We believe that this 'simulation loop' fosters a better understanding of underlying processes founded in theory, clear predictions that can be evaluated and overall better science. The questions summarized in the green box should be addressed in the simulation loop before continuing on the blue circle, e.g. prior to the start of real data gathering/exploration.\relax }}{20}{figure.caption.24}\protected@file@percent }
-\newlabel{fig:fig_1xxx}{{1}{20}{Schematic overview of the current scientific workflow (blue circle) with its related problems (red text) and how some of them can be anticipated with the help of data simulation (three-step-loop in yellow). The critical step is the translation of a verbal hypothesis into a mechanistic model expressed in mathematical terms. We believe that this 'simulation loop' fosters a better understanding of underlying processes founded in theory, clear predictions that can be evaluated and overall better science. The questions summarized in the green box should be addressed in the simulation loop before continuing on the blue circle, e.g. prior to the start of real data gathering/exploration.\relax }{figure.caption.24}{}}
-\gdef \@abspage@last{20}
+\citation{direnzoPracticalGuideUnderstanding2023,popovicFourPrinciplesImproved2024,barnettRegressionMeanWhat2005,wolkovichSimpleExplanationDeclining2021a}
+\citation{amrheinEarthFlat0052017,amrheinAbandoningStatisticalSignificance2019,wassersteinMovingWorld052019,muffRewritingResultsSections2022,singalPrenatalAntidepressantUse2017a}
+\citation{gelmanPowerCalculationsAssessing2014,vanzwetSignificanceFilterWinners2021,kimmelEmpiricalEvidenceWidespread2023,yangPublicationBiasImpacts2023,ioannidisWhyMostPublished2005a}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces The simulation loop within the conventional research workflow. The lower row shows the familiar sequence from research question to conclusion, with a dashed return path indicating that conclusions raise new questions. The simulation loop (upper panel) is inserted between forming a hypothesis and collecting data, and runs entirely before any observation is made. Its three steps are to translate the hypothesis into an explicit generative model, to simulate and plot the data that model implies, and to iterate the design against a target precision for the parameter of interest. Arrows within the loop run in both directions: simulated data that look implausible send one back to the model, and a design that cannot deliver useful precision sends one back to the question. Numbered markers show the stage at which each pitfall of Box\nobreakspace  {}1 arises. Filled markers ($\bullet $) are pitfalls a design choice can fix, and which the loop therefore addresses directly; open markers ($\circ $) are those it can expose or quantify but not resolve. The loop is placed where it is because sample size, treatment levels, predictor range and measurement effort together fix what a study can reveal, and no later choice of analysis recovers information the design did not collect.\relax }}{26}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:workflow}{{9}{26}{The simulation loop within the conventional research workflow. The lower row shows the familiar sequence from research question to conclusion, with a dashed return path indicating that conclusions raise new questions. The simulation loop (upper panel) is inserted between forming a hypothesis and collecting data, and runs entirely before any observation is made. Its three steps are to translate the hypothesis into an explicit generative model, to simulate and plot the data that model implies, and to iterate the design against a target precision for the parameter of interest. Arrows within the loop run in both directions: simulated data that look implausible send one back to the model, and a design that cannot deliver useful precision sends one back to the question. Numbered markers show the stage at which each pitfall of Box~1 arises. Filled markers ($\bullet $) are pitfalls a design choice can fix, and which the loop therefore addresses directly; open markers ($\circ $) are those it can expose or quantify but not resolve. The loop is placed where it is because sample size, treatment levels, predictor range and measurement effort together fix what a study can reveal, and no later choice of analysis recovers information the design did not collect.\relax }{figure.caption.15}{}}
+\gdef \@abspage@last{26}

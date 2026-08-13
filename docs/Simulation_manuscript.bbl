@@ -1,4 +1,4 @@
-\begin{thebibliography}{51}
+\begin{thebibliography}{53}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Amrhein \emph{et~al.}(2019)Amrhein, Gelman, Greenland \&
@@ -20,6 +20,12 @@ Anderson, D.R., Burnham, K.P. \& Thompson, W.L. (2000).
 \newblock Null {{Hypothesis Testing}}: {{Problems}}, {{Prevalence}}, and an
   {{Alternative}}.
 \newblock \emph{The Journal of Wildlife Management}, 64, 912--923.
+
+\bibitem[{Arif \& MacNeil(2023)}]{arifApplyingStructuralCausal2023}
+Arif, S. \& MacNeil, M.A. (2023).
+\newblock Applying the structural causal model framework for observational
+  causal inference in ecology.
+\newblock \emph{Ecological Monographs}, 93, e1554.
 
 \bibitem[{Baker(2016)}]{baker500ScientistsLift2016}
 Baker, M. (2016).
@@ -110,6 +116,12 @@ Goodman, S.N. \& Berlin, J.A. (1994).
 \newblock The {{Use}} of {{Predicted Confidence Intervals When Planning
   Experiments}} and the {{Misuse}} of {{Power When Interpreting Results}}.
 \newblock \emph{Annals of Internal Medicine}, 121, 200--206.
+
+\bibitem[{Grace \& Irvine(2020)}]{graceScientistsGuideDeveloping2020}
+Grace, J.B. \& Irvine, K.M. (2020).
+\newblock Scientist's guide to developing explanatory statistical models using
+  causal analysis principles.
+\newblock \emph{Ecology}, 101, e02962.
 
 \bibitem[{Halsey \emph{et~al.}(2015)Halsey, {Curran-Everett}, Vowler \&
   Drummond}]{halseyFickleValueGenerates2015}

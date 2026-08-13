@@ -1,65 +1,150 @@
 \documentclass{article}
 
-% required 
-\usepackage[hyphens]{url} % this wraps my URL versus letting it spill across the page, a bad habit LaTeX has
-\usepackage{Sweave}
+% ---------------------------------------------------------------------------
+%  ENCODING AND FONTS  -- must come first
+% ---------------------------------------------------------------------------
+\usepackage[T1]{fontenc}      % [NEW] see note (1) at the foot of this file.
+% This alone fixes most of the "weird arrows".
+\usepackage[utf8]{inputenc}   % [CHANGED] uncommented: needed for accented
+% names in the bibliography (Schonbrodt, Martinez)
+\usepackage{inconsolata}      % [NEW] clean monospace font; renders # and <-
+% properly, unlike Computer Modern Typewriter.
+% Alternative: \usepackage[scaled=0.85]{beramono}
+\usepackage{upquote}          % [NEW] straight quotes in code, not curly ones,
+% so that copy-pasted R code actually runs
+
+% ---------------------------------------------------------------------------
+%  CORE PACKAGES
+% ---------------------------------------------------------------------------
+\usepackage[hyphens]{url}     % wraps URLs instead of letting them overflow
 \usepackage{graphicx}
-\usepackage{natbib}
-\usepackage{amsmath}
-\usepackage{textcomp}%among other things, it allows degrees C to be added
+\usepackage{amsmath}          % [CHANGED] you had this three times; once is enough
+\usepackage{textcomp}         % degree symbols etc.
 \usepackage{float}
-%\usepackage[utf8]{inputenc} % allow funny letters in citations 
-\usepackage[nottoc]{tocbibind} %should add Re fences to the table of contents?
-\usepackage{amsmath} % making nice equations 
-\usepackage{listings} % add in stan code
+\usepackage[nottoc]{tocbibind}
 \usepackage{xcolor}
-\usepackage{capt-of}%allows me to set a caption for code in appendix 
-\usepackage[export]{adjustbox} % adding a box around a map
-\usepackage{lineno}
-\linenumbers
-% recommended! Uncomment the below line and change the path for your computer!
-% \SweaveOpts{prefix.string=/Users/Lizzie/Documents/git/teaching/demoSweave/Fig.s/demoFig, eps=FALSE} 
-%put your Fig.s in one place! Also, note that here 'Fig.s' is the folder and 'demoFig' is what each 
-% Fig. produced will be titled plus its number or label (e.g., demoFig-nqpbetter.pdf')
-% make your captioning look better
+\usepackage{capt-of}
+\usepackage[export]{adjustbox}
 \usepackage[small]{caption}
-
-\usepackage{xr-hyper} %refer to Fig.s in another document
-\usepackage{hyperref}
-\usepackage{enumitem}
-\usepackage{booktabs}
-\usepackage{amsmath}
-
-%\textbf{}\setlength{\captionmargin}{30pt}
-\setlength{\abovecaptionskip}{0pt}
-\setlength{\belowcaptionskip}{10pt}
-
-% optional: muck with spacing
-\topmargin -1.5cm        
-\oddsidemargin 0.5cm   
-\evensidemargin 0.5cm  % same as odd side margin but for left-hand pages
-\textwidth 15.59cm
-\textheight 21.94cm 
-% \renewcommand{\baselinestretch}{1.5} % 1.5 lines between lines
-\parindent 0pt		  % sets leading space for paragraphs
-% optional: cute, fancy headers
+\usepackage{enumitem}         % numbered abstract, custom lists
+\usepackage{booktabs}         % Table 1 in Section 2
+\usepackage{lineno}
+\linenumbers                  % MEE requires line numbers
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-%\fancyhead[LO]{Frederik Baumgarten}
-%\fancyhead[RO]{Research Proposal}
-% more optionals! %
+\fancyhf{}                            % clear all header and footer fields
+\fancyfoot[C]{\thepage}               % page number, centred at the bottom
+\renewcommand{\headrulewidth}{0pt}
+% ---------------------------------------------------------------------------
+%  LINE SPACING  -- [NEW] MEE requires double-spaced initial submissions
+% ---------------------------------------------------------------------------
+\usepackage{setspace}
+\doublespacing
+% \onehalfspacing   % swap in for a more readable working draft
+% Note: \doublespacing also stretches code blocks. The \lstset and Sweave
+% definitions below reset them to single spacing so listings stay compact.
 
-\graphicspath{ {/Users/frederik/github/SimulatingData/analyses/figures/} }% tell latex where to find figures 
+% ---------------------------------------------------------------------------
+%  BIBLIOGRAPHY
+% ---------------------------------------------------------------------------
+\usepackage{natbib}
+\bibpunct{(}{)}{;}{a}{}{,}    % [NEW] gives (Amrhein et al., 2019) style,
+% and makes \citep[e.g.][]{...} behave
+% In the body, before \end{document}:
+%     \bibliographystyle{besjournals}   % MEE's own style; or use apalike
+%     \bibliography{yourbibfile}
 
+% ---------------------------------------------------------------------------
+%  CODE DISPLAY, PART 1: Sweave chunks  -- 
+% ---------------------------------------------------------------------------
+\usepackage{Sweave}
+% \SweaveOpts{prefix.string=/Users/frederik/github/SimulatingData/analyses/figures/fig, eps=FALSE}
+
+% Sweave.sty sets Sinput to a SLANTED typewriter font (fontshape=sl). That is
+% what makes your code look italic-ish and makes "#" and "<-" look wrong.
+% Reset both input and output to upright, and keep them single-spaced:
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{Sinput}{Verbatim}%
+{fontshape=n, fontsize=\small, xleftmargin=1em, formatcom=\singlespacing}
+\DefineVerbatimEnvironment{Soutput}{Verbatim}%
+{fontshape=n, fontsize=\small, xleftmargin=1em, formatcom=\singlespacing}
+\DefineVerbatimEnvironment{Scode}{Verbatim}%
+{fontshape=n, fontsize=\small, xleftmargin=1em, formatcom=\singlespacing}
+
+% ---------------------------------------------------------------------------
+%  CODE DISPLAY, PART 2: listings 
+% ---------------------------------------------------------------------------
+\usepackage{listings}
+\definecolor{codecomment}{gray}{0.40}
+
+\lstset{
+	language=R,
+	basicstyle=\ttfamily\small\singlespacing,
+	keywordstyle=\ttfamily,          % no bold, no colour on R keywords
+	identifierstyle=\ttfamily,
+	stringstyle=\ttfamily,
+	commentstyle=\ttfamily\color{codecomment},
+	columns=fullflexible,            % stops letters being spread out
+	keepspaces=true,                 % stops spurious spaces inside names
+	showstringspaces=false,
+	breaklines=true,
+	breakatwhitespace=true,
+	frame=single,
+	rulecolor=\color{codecomment},
+	framesep=4pt,
+	xleftmargin=12pt,
+	aboveskip=1em,
+	belowskip=1em,
+	upquote=true                     % straight quotes inside listings
+}
+% Deliberately NOT using listings' "literate" option to swap <- for an arrow
+% glyph: keep the two characters R actually uses, so code can be copied.
+
+% ---------------------------------------------------------------------------
+%  BOXES (Box 1)  -- yours, with one change
+% ---------------------------------------------------------------------------
 \usepackage[most]{tcolorbox}
 \tcbuselibrary{theorems}
-\newtcolorbox{mytextbox}[1][]{% specify textbox
+\newtcolorbox{mytextbox}[1][]{%
 	sharp corners,
 	enhanced,
 	colback=white,
-	height=15cm,
+	breakable,          % [CHANGED] was height=15cm, which silently clips
+	% content that overflows. "breakable" lets Box 1 run
+	% onto a second page instead of losing text.
 	attach title to upper,
 	#1
+}
+
+% ---------------------------------------------------------------------------
+%  FIGURE PATH
+% ---------------------------------------------------------------------------
+\graphicspath{ {/Users/frederik/github/SimulatingData/analyses/figures/} }
+% With this set, use bare filenames: \includegraphics{fig_precision}
+
+% ---------------------------------------------------------------------------
+%  PAGE GEOMETRY  (yours, unchanged)
+% ---------------------------------------------------------------------------
+\topmargin -1.5cm
+\oddsidemargin 0.5cm
+\evensidemargin 0.5cm
+\textwidth 15.59cm
+\textheight 21.94cm
+\parindent 0pt
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+
+% ---------------------------------------------------------------------------
+%  CROSS-REFERENCING AND LINKS  -- [CHANGED] these must load LAST
+% ---------------------------------------------------------------------------
+\usepackage{xr-hyper}   % must precede hyperref
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,      % internal refs black so the PDF prints cleanly
+	citecolor=black,
+	urlcolor=blue,
+	breaklinks=true
 }
 
 
@@ -148,221 +233,79 @@ Target journal: Methods in Ecology and Evolution (Methods) \\
 \textbf{Keywords}: statistical methods, quantitative ecology, hypothesis testing, scientific reasoning, experimental design, power analysis, study design, simulation, statistical power, precision, effect size, reproducibility.
 \newpage
 
-\section*{1 Introduction}
+\section{Introduction}
 
-Many of us have seen the same scene in a conference talk, an in-house seminar,
-or a paper. A speaker presents a compelling story, shows a clean figure with the
-mean response in a control and a treatment group, and points to the familiar
-stars of significance, concluding that the treatment ``has an effect''
-($p < 0.05$)---or, more problematically, that it ``has no effect''
-($p > 0.05$). The combination of a coherent narrative, an intuitive plot and a
-thresholded summary can make the conclusion feel settled, even though the same
-data are often compatible with a wide range of effect sizes. For many listeners
-and readers, this leaves a quieter set of questions: how much do we actually
-know from these data, what else are they compatible with, and would the
-interpretation change under a different but still reasonable analysis?
+Many of us have seen the same scene in a conference talk, an in-house seminar, or a paper. A speaker presents a compelling story, shows a clean figure with the mean response in a control and a treatment group, and points to the familiar stars of significance, concluding that the treatment ``has an effect'' ($p < 0.05$)---or, more problematically, that it ``has no effect'' ($p > 0.05$). The combination of a coherent narrative, an intuitive plot and a thresholded summary can make the conclusion feel settled, even though the same data are often compatible with a wide range of effect sizes. For many listeners and readers, this leaves a quieter set of questions: how much do we actually know from these data, what else are they compatible with, and would the interpretation change under a different but still reasonable analysis?
 
-These concerns are not new. The binary, threshold-based style of statistical
-reasoning that many of us still use---and are often still taught to
-use---originated about a century ago \citep{neymanIXProblemMost1933, gigerenzerMindlessStatistics2004} and has
-been criticised for much of that time, with especially clear calls in recent
-decades to move beyond ``statistical significance'' as a scientific standard
-\citep[e.g.][]{andersonNullHypothesisTesting2000, amrheinEarthFlat0052017, wassersteinMovingWorld052019, amrheinAbandoningStatisticalSignificance2019}. Yet the
-reform has been uneven in ecology and evolutionary biology. Surveys of the
-published literature find widespread under-powered designs, selective reporting
-and systematically exaggerated effect sizes \citep{kimmelEmpiricalEvidenceWidespread2023, yangPublicationBiasImpacts2023,
-	fraserQuestionableResearchPractices2018}, and quantitative training often still centres on the very tests
-being criticised \citep{touchonMismatchCurrentStatistical2016}.
+These concerns are not new. The binary, threshold-based style of statistical reasoning that many of us still use---and are often still taught to use---originated about a century ago \citep{neymanIXProblemMost1933, gigerenzerMindlessStatistics2004} and has been criticised for much of that time, with especially clear calls in recent decades to move beyond ``statistical significance'' as a scientific standard \citep[e.g.][]{andersonNullHypothesisTesting2000, amrheinEarthFlat0052017, wassersteinMovingWorld052019, amrheinAbandoningStatisticalSignificance2019}. Yet the reform has been uneven in ecology and evolutionary biology. Surveys of the published literature find widespread under-powered designs, selective reporting and systematically exaggerated effect sizes \citep{kimmelEmpiricalEvidenceWidespread2023, yangPublicationBiasImpacts2023, fraserQuestionableResearchPractices2018}, and quantitative training often still centres on the very tests being criticised \citep{touchonMismatchCurrentStatistical2016}.
 
-Most of this reform effort has been directed at how results are analysed and
-reported. We think an equally important part of the problem sits earlier. By the
-time data exist, much of what a study can reveal has already been fixed by
-choices made months before: how many replicates, which treatment levels, how
-wide a gradient of conditions to span, and how carefully to measure. No
-subsequent modelling choice can recover information that the sampling design
-never collected. Worse, a design with poor precision does not simply fail to
-detect an effect. Conditional on passing a significance filter, such a design
-reports effects that are systematically too large, and sometimes of the wrong
-sign \citep{gelmanPowerCalculationsAssessing2014}. This is a plausible mechanism behind the exaggeration
-documented in the ecological literature \citep{kimmelEmpiricalEvidenceWidespread2023}, and it is a property
-of the design rather than of the analyst.
+Most of this reform effort has been directed at how results are analysed and reported. We think an equally important part of the problem sits earlier. By the time data exist, much of what a study can reveal has already been fixed by choices made months before: how many replicates, which treatment levels, how wide a gradient of conditions to span, and how carefully to measure. No subsequent modelling choice can recover information that the sampling design never collected. Worse, a design with poor precision does not simply fail to detect an effect. Conditional on passing a significance filter, such a design reports effects that are systematically too large, and sometimes of the wrong sign \citep{gelmanPowerCalculationsAssessing2014}. This is a plausible mechanism behind the exaggeration documented in the ecological literature \citep{kimmelEmpiricalEvidenceWidespread2023}, and it is a property of the design rather than of the analyst.
 
-The conventional tool for making these choices---power analysis---inherits the framing we are trying to escape. It asks whether a test will cross a threshold rather than how precisely a quantity will be known, and it is frequently misapplied after the data are in \citep{hoenigAbusePowerPervasive2001}. Planning instead for
-\emph{precision}, that is, for an uncertainty interval narrow enough to support the claim at stake, has been advocated for decades \citep{goodmanUsePredictedConfidence1994, cummingUnderstandingNewStatistics2013, rothmanPlanningStudySize2018, maxwellSampleSizePlanning2008, lakensSampleSizeJustification2022a}. In ecology, however, precision-based planning meets a practical obstacle: closed-form expressions exist only for the simplest designs, while the settings ecologists actually work in---saturating responses, nested sampling, non-Gaussian data---have none. What is needed is a way to reach the same answers by simulation.
+The conventional tool for making these choices, power analysis, inherits the framing we are trying to escape. It asks whether a test will cross a threshold rather than how precisely a quantity will be known, and it is frequently misapplied after the data are in \citep{hoenigAbusePowerPervasive2001}. Planning instead for \emph{precision}, that is, for an uncertainty interval narrow enough to support the claim at stake, has been advocated for decades \citep{goodmanUsePredictedConfidence1994, cummingUnderstandingNewStatistics2013, rothmanPlanningStudySize2018, maxwellSampleSizePlanning2008, lakensSampleSizeJustification2022a}. In ecology, however, precision-based planning meets a practical obstacle: closed-form expressions exist only for the simplest designs, while the settings ecologists actually work in, such as saturating responses, nested sampling and non-Gaussian data, have none. What is needed is a way to reach the same answers by simulation.
 
-Here we propose a small but practical addition to the research workflow: a \emph{simulation loop}, carried out before any data are collected. The loop has three steps. First, translate a conceptual hypothesis into an explicit generative model, that is, a formula stating how the data would arise, including both the expected response and its stochastic component. Second, simulate and visualise the data that model implies, and ask whether they look like data the system could plausibly produce. Third, iterate the design---sample size,
-treatment levels, the range of predictor values, measurement effort---judging each version by the precision it delivers for the parameter that matters, rather than by whether a test would clear a threshold. The procedure is a loop because each step can send us back to the previous one: simulated data that look absurd
-send us back to the model, and a design that cannot deliver useful precision sends us back to the question.
+Here we propose a small but practical addition to the research workflow: a \emph{simulation loop}, carried out before any data are collected. The loop has three steps. First, translate a conceptual hypothesis into an explicit generative model, that is, a formula stating how the data would arise, including both the expected response and its stochastic component. Second, simulate and visualise the data that model implies, and ask whether they look like data the system could plausibly produce. Third, iterate the design, that is, sample size, treatment levels, the range of predictor values and measurement effort, judging each version by the precision it delivers for the parameter that matters rather than by whether a test would clear a threshold. The procedure is a loop because each step can send us back to the previous one: simulated data that look absurd send us back to the model, and a design that cannot deliver useful precision sends us back to the question.
 
-Simulation itself is not new in ecology and evolution, and our contribution is neither the idea nor the machinery but a deliberately narrow and teachable version of them. \citet{direnzoPracticalGuideUnderstanding2023} show how simulation can validate complex models once they have been specified, and \citet{wolkovichFourstepSimulationbasedWorkflow2026} set out a four-step workflow spanning model development, fitting to empirical data and post-fit checking, framed in a Bayesian setting; both belong to a broader move towards explicit statistical workflows \citep{gelmanBayesianWorkflow2020, schadPrincipledBayesianWorkflow2021}, and simulation has long been standard for evaluating statistical methods in general \citep{morrisUsingSimulationStudies2019}. The loop we describe sits earlier and asks less: it stops before data exist, it takes estimation precision rather than
-model calibration as its criterion, and it requires no machinery beyond base \textsf{R}. We intend it as an entry point for researchers and students who have never written a generative model, and as a step towards those fuller workflows rather than a substitute for them. Throughout, we provide worked examples with reproducible code, covering a linear case, a non-linear case, a structurally misspecified model, a confounded observational design and a nested design.
-Figure~\ref{fig:fig_1xxx} places the loop within the conventional research workflow and marks the pitfalls it can help anticipate; Box~1 defines those pitfalls and gives key references.
+Simulation itself is not new in ecology and evolution, and our contribution is neither the idea nor the machinery but a deliberately narrow and teachable version of them \citep[see][and Table~\ref{tab:positioning} for how the loop relates to other simulation-based approaches]{direnzoPracticalGuideUnderstanding2023, wolkovichFourstepSimulationbasedWorkflow2026, gelmanBayesianWorkflow2020, schadPrincipledBayesianWorkflow2021, morrisUsingSimulationStudies2019}. We intend it as an entry point for researchers and students who have never written a generative model. Throughout, we provide worked examples with reproducible code: a linear case (Section~\ref{sec:linear}), a non-linear case in which the design question sharpens considerably (Section~\ref{sec:nonlinear}), and two ways in which a precise design can nonetheless mislead (Section~\ref{sec:limits}). Figure~\ref{fig:workflow} places the loop within the conventional research workflow and marks the pitfalls it can help anticipate; Box~1 defines those pitfalls and gives key references.
 
 
 \section{The simulation loop}
 \label{sec:loop}
 
-This section sets out the loop in general terms; Sections~\ref{sec:linear} and
-\ref{sec:nonlinear} work through it on concrete examples. The aim throughout is
-to make assumptions explicit, to turn a verbal hypothesis into a quantitative
-expectation, and to find out what a planned design can and cannot support
-before it is carried out.
+This section sets out the loop in general terms; Sections~\ref{sec:linear} and \ref{sec:nonlinear} work through it on concrete examples. The aim throughout is to make assumptions explicit, to turn a verbal hypothesis into a quantitative expectation, and to find out what a planned design can and cannot support before it is carried out.
 
 \subsection{Core idea: an explicit generative model}
 
-At the centre of the loop is an explicit generative model---a statement of how
-the data would come about. A useful starting point separates the systematic
-component (pattern) from the stochastic component (noise):
+At the centre of the loop is an explicit generative model, a statement of how the data would come about. A useful starting point separates the systematic component (pattern) from the stochastic component (noise):
 
 \begin{equation}
 	y_i = f(x_i; \theta) + \varepsilon_i
 	\label{eq:generative}
 \end{equation}
 
-\noindent
-where $f(x_i; \theta)$ is the expected value of $y_i$ given predictors $x_i$ and
-parameters $\theta$---the signal implied by the hypothesis---and
-$\varepsilon_i$ is the remaining deviation around that expectation. Depending on
-context, $\varepsilon_i$ may represent process variation, observation or
-measurement error, or both. It is worth stating which, because the two have
-different design remedies: process variation is a property of the system and
-must be lived with, whereas measurement error can often be reduced by better
-instruments, repeated readings or a more careful protocol. Note also that
-`noise' is not inherently meaningless; it is whatever remains after accounting
-for the structure we chose to model.
+\noindent where $f(x_i; \theta)$ is the expected value of $y_i$ given predictors $x_i$ and parameters $\theta$, the signal implied by the hypothesis, and $\varepsilon_i$ is the remaining deviation around that expectation. Depending on context, $\varepsilon_i$ may represent process variation, observation or measurement error, or both. It is worth stating which, because the two have different design remedies: process variation is a property of the system and must be lived with, whereas measurement error can often be reduced by better instruments, repeated readings or a more careful protocol.
 
-Equation~\ref{eq:generative} describes how $y$ arises \emph{given} $x$. For
-design purposes we must also specify how $x$ itself arises: the treatment
-allocation, the range of predictor values, the replication structure, the
-spatial or temporal layout, the measurement schedule. This second half is easy
-to overlook, and it is where most of the design leverage lives. It is also what
-distinguishes a design simulation from a model check. The parameters $\theta$
-are assumptions about nature, which we can only estimate or guess at; the
-process generating $x$ is a description of what we intend to do, and is entirely
-under our control. Simulating both makes visible which features of the data are
-determined by our choices and which are left to chance.
+Equation~\ref{eq:generative} describes how $y$ arises \emph{given} $x$. For design purposes we must also specify how $x$ itself arises: the treatment allocation, the range of predictor values, the replication structure, the spatial or temporal layout, the measurement schedule. This second half is easy to overlook, and it is where most of the design leverage lives. It is also what distinguishes a design simulation from a model check. The parameters $\theta$ are assumptions about nature, which we can only estimate or guess at; the process generating $x$ is a description of what we intend to do, and is entirely under our control. Simulating both makes visible which features of the data are determined by our choices and which are left to chance.
 
-%\paragraph{A note on terminology.}
-%We use \emph{generative} rather than \emph{mechanistic} for the model in Equation~\ref{eq:generative}. Some generative models are mechanistic in a strong sense---their parameters correspond to identifiable processes, as with the half-saturation constant in Section~\ref{sec:nonlinear}---while others are frankly phenomenological, like the straight line in Section~\ref{sec:linear}. The loop works the same way for both, and asks only that the model be explicit enough to simulate from. Where a model does carry a mechanistic interpretation, so much the better: its parameters are then constrained by prior knowledge, which makes Step~1 easier and the resulting design more defensible.
+We ask only that the model be explicit enough to simulate from. The more of it that rests on known mechanism, the better: mechanism is what constrains plausible parameter values, so Step~1 is easier and the resulting design more defensible when the model has one.
 
 \subsection{The three steps}
 
-\paragraph{Step 1: From a verbal hypothesis to a generative model.}
-Models are hypotheses. With every model we fit we are testing an additional set
-of claims, often without full awareness. Building the model deliberately, from
-what is already known about the variables and their relationships, constrains
-this to a defensible set. Which explanatory variables influence $y$? Is the
-relationship linear, saturating, or humped? What does the literature suggest
-about the magnitude of the effect, and about how variable it is between
-individuals, plots or sites? In our experience a conceptual hypothesis often
-makes intuitive sense right up to the moment one tries to write it as a formula,
-at which point it can become clear that it lacks direction, magnitude, or any
-foundation in prior knowledge. This is uncomfortable, and it is among the most
-valuable things the loop does. Beyond the classical descriptive hypothesis,
-writing the model down forces us to state what we actually want to
-estimate---the estimand---and what values we expect it to take. In ecology this
-step should also anticipate design features such as hierarchy and
-non-independence (repeated measurements, plots nested within sites) and
-represent them explicitly, because they change what the data can support.
+\paragraph{Step 1: From a verbal hypothesis to a generative model.} Models are hypotheses. With every model we fit we are testing an additional set of claims, often without full awareness. Building the model deliberately, from what is already known about the variables and their relationships, constrains this to a defensible set. Which explanatory variables influence $y$? Is the relationship linear, saturating, or humped? What does the literature suggest about the magnitude of the effect, and about how variable it is between individuals, plots or sites? In our experience a conceptual hypothesis often makes intuitive sense right up to the moment one tries to write it as a formula, at which point it can become clear that it lacks direction, magnitude, or any foundation in prior knowledge. This is uncomfortable, and it is among the most valuable things the loop does. Writing the model down also forces us to state what we actually want to estimate---the estimand---and what values we expect it to take. In ecology this step should anticipate design features such as hierarchy and non-independence, since they change what the data can support.
 
-\paragraph{Step 2: Simulate and visualise synthetic data.}
-``The greatest value of a picture is when it forces us to notice what we never
-expected to see'' \citep{tukeyExploratoryDataAnalysis1977}. With the model specified, we generate a
-synthetic dataset from it. The key point is to simulate $y$ \emph{through} the
-model structure rather than drawing $y$ from some marginal distribution: we
-generate predictor values under the planned design, compute the expected
-response via $f(x; \theta)$, and then add stochasticity via $\varepsilon$.
-Plotting the result shows the hypothesis in the same visual form as a real
-results figure---direction, magnitude and consistency together. The question to
-ask at this point is biological rather than statistical: could this system
-plausibly produce these data? Implausible scatter, impossible values, or a
-relationship that looks nothing like what one would expect from the literature
-are all signs that the assumptions, rather than the simulation, need revisiting.
-We believe many ecological papers would benefit from showing simulated model
-predictions alongside their stated hypotheses.
+\paragraph{Step 2: Simulate and visualise synthetic data.} ``The greatest value of a picture is when it forces us to notice what we never expected to see'' \citep{tukeyExploratoryDataAnalysis1977}. With the model specified, we generate a synthetic dataset from it. The key point is to simulate $y$ \emph{through} the model structure rather than drawing $y$ from some marginal distribution: we generate predictor values under the planned design, compute the expected response via $f(x; \theta)$, and then add stochasticity via $\varepsilon$. Plotting the result shows the hypothesis in the same visual form as a real results figure, with direction, magnitude and consistency together. The question to ask at this point is biological rather than statistical: could this system plausibly produce these data? Implausible scatter, impossible values, or a relationship that looks nothing like what one would expect from the literature are all signs that the assumptions, rather than the simulation, need revisiting.
 
-\paragraph{Step 3: Iterate the design against a precision target.}
-The third step plays the planned study through many times on the computer. This
-goes beyond a classical power analysis, which targets a significance threshold.
-We repeatedly simulate data under plausible assumptions, fit the analysis we
-intend to use, and examine the estimates and their uncertainty. Three questions
-follow, in order:
+\paragraph{Step 3: Iterate the design against a precision target.} The third step plays the planned study through many times on the computer. This goes beyond a classical power analysis, which targets a significance threshold. We repeatedly simulate data under plausible assumptions, fit the analysis we intend to use, and examine the estimates and their uncertainty. Three questions follow, in order:
 
 \begin{enumerate}
-	\item \emph{Does the analysis recover the values we generated from?} This is a
-	check on the code and on the model implementation, not on the science. If a
-	correct analysis cannot recover parameters from data we generated ourselves
-	under ideal conditions, something is wrong---and we would never have learned it
-	from the empirical fit alone.
+	\item \emph{Does the analysis recover the values we generated from?} This is a check on the code and on the model implementation, not on the science. If a correct analysis cannot recover parameters from data we generated ourselves under ideal conditions, something is wrong---and we would never have learned it from the empirical fit alone.
 	
-	\item \emph{How do estimates and uncertainty respond to design choices?} Sample
-	size, the range of predictor values, the number of groups versus replicates per
-	group, and measurement effort are all levers. They differ enormously in cost,
-	and their relative value is rarely obvious in advance.
+	\item \emph{How do estimates and uncertainty respond to design choices?} Sample size, the range of predictor values, the number of groups versus replicates per group, and measurement effort are all levers. They differ enormously in cost, and their relative value is rarely obvious in advance.
 	
-	\item \emph{What would this design do to our conclusions if we interpreted it
-		conventionally?} Simulation makes it straightforward to compute quantities that
-	are otherwise invisible: how often the estimate would carry the wrong sign, and
-	by what factor it would be exaggerated, conditional on passing a significance
-	filter \citep{gelmanPowerCalculationsAssessing2014}. For imprecise designs these numbers are sobering, and
-	they are available before a single observation is collected.
+	\item \emph{What would this design do to our conclusions if we interpreted it conventionally?} Simulation makes it straightforward to compute quantities that are otherwise invisible: how often the estimate would carry the wrong sign, and by what factor it would be exaggerated, conditional on passing a significance filter \citep{gelmanPowerCalculationsAssessing2014}.
 \end{enumerate}
 
-Going back and forth between assumptions, simulation and fitting is a playful
-but powerful way to design a study. The procedure is a \emph{loop} because each
-step can send us back to the previous one: simulated data that look absurd send
-us back to the model, and a design that cannot deliver useful precision sends us
-back to the question.
+For this to end in a decision it needs a target. The translation is direct: if a claim requires an effect to be known to within $\pm k$, the design target is an uncertainty interval of width about $2k$ \citep{rothmanPlanningStudySize2018}. One refinement matters. A design does not produce a single interval width but a distribution of widths across the studies one might run, so designing to the mean of that distribution leaves roughly half of realised studies short of the target. Designing against a high quantile instead---conventionally the 80th percentile---is known as \emph{assurance} in the clinical trials literature and costs nothing but a change of summary statistic. Section~\ref{sec:linear} works this through.
 
-\subsection{Choosing a design target}
-\label{sec:target}
-
-An estimation-focused workflow only helps if it ends in a number. The
-translation is direct: if a scientific or management claim requires an effect to
-be known to within $\pm k$ on the chosen scale, then the corresponding design
-target is an uncertainty interval of width about $2k$ for the relevant
-parameter \citep{rothmanPlanningStudySize2018}. Simulation then supplies the sample size,
-predictor range and measurement effort that meet this target under stated
-assumptions.
-
-Two cautions apply. First, a design does not produce a single interval width; it
-produces a \emph{distribution} of widths across the studies one might run.
-Designing to the mean of that distribution implies that roughly half of realised
-studies will fall short of the target. It is safer to design against a high
-quantile of the distribution---the 80th percentile, say---so that most studies
-one could run would meet or beat the target. This idea is known as
-\emph{assurance} in the clinical trials literature, and it costs nothing but a
-change of summary statistic.
-
-Second, precision is not correctness. A narrow interval around a parameter of a
-badly specified model is a confident answer to the wrong question, and
-collecting more data makes it narrower rather than better. We demonstrate this
-directly in Sections~\ref{sec:misspec} and \ref{sec:confounding}, and return to
-its implications in the Discussion.
+Going back and forth between assumptions, simulation and fitting is a playful but powerful way to design a study. The procedure is a \emph{loop} because each step can send us back to the previous one: simulated data that look absurd send us back to the model, and a design that cannot deliver useful precision sends us back to the question.
 
 \subsection{What the loop is, and what it is not}
 
-Simulation is used in several distinct ways in ecology and evolution, and the differences matter because they answer different questions at different points in a project. Table~\ref{tab:positioning} places the simulation loop among them.
-Our scope is deliberately the narrowest of the five: everything in this paper happens before any data exist, and the criterion throughout is the precision of the estimate we care about.
+Simulation is used in several distinct ways in ecology and evolution, and the differences matter because they answer different questions at different points in a project. Table~\ref{tab:positioning} places the simulation loop among them. Our scope is deliberately the narrowest of the five: everything in this paper happens before any data exist, and the criterion throughout is the precision of the estimate we care about. That narrowness has a cost, which Section~\ref{sec:limits} makes explicit: precision is a statement about sampling variability alone, and says nothing about whether the model is right or whether the parameter is the one the question was about.
 
 \begin{table}[htbp]
 	\centering
 	\small
-	\caption{Five uses of simulation in statistical practice. The simulation loop
-		occupies the earliest and narrowest of these roles. It complements rather than
-		replaces the others; in particular, a study designed with the loop would
-		naturally be analysed with a workflow of the kind described by
-		\citet{wolkovichFourstepSimulationbasedWorkflow2026} or \citet{gelmanBayesianWorkflow2020}.}
+	\caption{Five uses of simulation in statistical practice. The simulation loop occupies the earliest and narrowest of these roles. It complements rather than replaces the others; a study designed with the loop would naturally be analysed with a workflow of the kind described by \citet{wolkovichFourstepSimulationbasedWorkflow2026} or \citet{gelmanBayesianWorkflow2020}.}
 	\label{tab:positioning}
-	\begin{tabular}{@{}p{0.20\textwidth}p{0.30\textwidth}p{0.20\textwidth}p{0.22\textwidth}@{}}
+	\begin{tabular}{@{}p{0.33\textwidth}p{0.30\textwidth}p{0.15\textwidth}p{0.17\textwidth}@{}}
 		\toprule
 		\textbf{Approach} & \textbf{Question it answers} & \textbf{When applied} &
 		\textbf{Criterion} \\
 		\midrule
-		Classical power analysis &
+		\textbf{Classical power analysis} &
 		Will my test reject the null hypothesis? &
 		Before data &
-		Power at a threshold \\[0.5em]
+		Power at a \newline threshold \\[0.5em]
 		
 		\textbf{Simulation loop} \newline (this paper) &
 		How precisely will I know the quantity I care about, and is that precise enough
@@ -370,30 +313,24 @@ Our scope is deliberately the narrowest of the five: everything in this paper ha
 		Before data &
 		Interval width for the estimand \\[0.5em]
 		
-		Bayesian and other statistical workflows \newline \citep{gelmanBayesianWorkflow2020,
+		\textbf{(Bayesian) statistical workflows} \newline \citep{gelmanBayesianWorkflow2020,
 			schadPrincipledBayesianWorkflow2021, wolkovichFourstepSimulationbasedWorkflow2026} &
 		Is my model, and my inference from it, trustworthy? &
-		Before and during analysis &
-		Calibration, parameter recovery \\[0.5em]
+		Before and \newline during analysis &
+		Calibration, para-meter recovery \\[0.5em]
 		
-		Validating complex models \newline \citep{direnzoPracticalGuideUnderstanding2023} &
+		\textbf{Validating complex models} \newline \citep{direnzoPracticalGuideUnderstanding2023} &
 		Does this model behave as I think it does on data like mine? &
-		After model specification &
+		After model \newline specification &
 		Recovery, identifiability \\[0.5em]
 		
-		Simulation studies \newline \citep{morrisUsingSimulationStudies2019} &
+		\textbf{Simulation studies} \newline \citep{morrisUsingSimulationStudies2019} &
 		Does this statistical method perform well in general? &
-		Method development &
-		Bias, coverage, RMSE \\
+		Method \newline development &
+		Bias, coverage, \newline RMSE \\
 		\bottomrule
 	\end{tabular}
 \end{table}
-
-In the sections that follow we work through the loop on concrete examples, with
-reproducible code for each. Section~\ref{sec:linear} treats a linear case,
-Section~\ref{sec:nonlinear} a non-linear one where the design question becomes
-sharper, and Sections~\ref{sec:misspec} and \ref{sec:confounding} two ways in
-which a well-powered design can still mislead.
 
 
 
@@ -409,414 +346,346 @@ which a well-powered design can still mislead.
 %still waiting for the bus...outlayer?\\
 %update the model - assumptions\\
 %add variable traffic jam\\
-\section*{3 Practical example (linear): Plant growth and nitrogen}
 
-Data simulation is best shown in practice. The example presented here is deliberately simple and can be reproduced directly. A fully commented R script containing all code shown below (including the simulation loops and figures) can be downloaded from the Supplement.
+\section{A linear example: plant growth and nitrogen}
+\label{sec:linear}
 
-\lstset{
-	language=R,
-	basicstyle=\ttfamily\small,
-	commentstyle=\ttfamily\small,
-	keywordstyle=\ttfamily\small,
-	stringstyle=\ttfamily\small,
-	showstringspaces=false,
-	breaklines=true,
-	frame=single,
-	framerule=0.4pt
-}
+The loop is best shown in practice. This first example is deliberately simple and can be reproduced directly; a fully commented \textsf{R} script containing all the code and figures below is available in the Supplement.
 
-\subsection*{What influences $y$ in what way?}
+\subsection{Step 1: from a verbal hypothesis to a generative model}
 
-Every study starts with a research question. Here: What is the influence of nitrogen fertilization on plant growth? We might perform an experiment on sunflowers and fertilize some with nitrogen to assess biomass after one season. Our response variable $y$ is biomass, and a verbal hypothesis could be that plants grow more when nitrogen increases.
+Every study starts with a question. Here: what is the effect of nitrogen fertilisation on plant growth? We plan to grow sunflowers across a gradient of nitrogen concentrations and harvest biomass after one season. The response $y$ is biomass, and the verbal hypothesis is that plants grow more when nitrogen increases.
 
-To translate this hypothesis into a mechanistic (mathematical) model, we assume a positive linear relationship between biomass and nitrogen concentration $x$. Here, the ``mechanistic'' component is intentionally simple and phenomenological; later examples extend the same workflow to explicitly non-linear response functions. A simple model is:
+That sentence is not yet something we can simulate from. To simulate, we must commit to three things it leaves open: the \emph{shape} of the relationship, the \emph{size} of the effect, and its \emph{consistency}. Assuming a positive linear relationship between biomass and nitrogen concentration $x$ gives
+
 \begin{equation}
-	y_i = a + b x_i + \varepsilon_i, \qquad \varepsilon_i \sim \mathcal{N}(0,\sigma)
+	y_i = a + b\,x_i + \varepsilon_i, \qquad \varepsilon_i \sim \mathrm{N}(0, \sigma)
+	\label{eq:linear}
 \end{equation}
-where $a$ is the intercept (expected biomass at $x=0$ on the chosen scale), $b$ is the slope (expected biomass increase per unit nitrogen; an effect size), and $\sigma$ captures variability around the mean relationship (process variation and/or measurement error).
 
-\subsection*{Setting model parameters}
+\noindent where $a$ is the intercept, $b$ is the slope---the expected biomass increase per unit nitrogen, and our estimand---and $\sigma$ captures variability around the mean relationship. We now have to say what we think these parameters are:
 
-This is where things get interesting and concrete: What do we think these model parameters should look like? In other words, what biomass do we expect at low nitrogen, how strong is the nitrogen effect, and how variable is the relationship?
-
-For illustration, we choose:
-\begin{lstlisting}
-	# Specify model parameters
-	a <- 30     # intercept
-	b <- 7      # slope (effect size)
-	sigma <- 5  # SD of residual variation
+\begin{lstlisting}[language=R]
+	# Our assumptions about the system, stated as numbers
+	a     <- 30   # intercept: expected biomass (g) at zero nitrogen
+	b     <-  7   # slope: biomass gain (g) per unit nitrogen; the estimand
+	sigma <-  5   # residual SD (g): process variation plus measurement error
 \end{lstlisting}
 
-These values are not ``truth''; they make our assumptions explicit. Later, we can explore how conclusions change when we vary them.
+These values are not truth. They are assumptions, made explicit so that they can be argued with, and everything that follows is conditional on them. That is the point rather than a limitation: it moves the debate from the sample size to the reasoning behind it.
 
-\subsection*{Simulate!}
+\subsection{Step 2: simulate the data the model implies}
 
-To simulate, we specify a sample size and generate a plausible range of nitrogen concentrations. Here we treat nitrogen as a continuous gradient:
-\begin{lstlisting}
-	# Choose a design and simulate data
-	n <- 50
-	x <- rnorm(n, mean = 10, sd = 4)         # nitrogen concentrations
-	y <- a + b*x + rnorm(n, mean = 0, sd = sigma)
-	
+We choose a design and generate data through the model structure: draw predictor values as the design specifies, compute the expected response, then add noise.
+
+\begin{lstlisting}[language=R]
+	# Choose a design and simulate one study from the model above
+	n <- 50                                          # number of plants
+	x <- rnorm(n, mean = 10, sd = 4)                 # planned nitrogen gradient
+	y <- a + b * x + rnorm(n, mean = 0, sd = sigma)  # expected response, plus noise
 	fake <- data.frame(x = x, y = y)
 \end{lstlisting}
 
-In experiments with fixed treatment levels (rather than a gradient), $x$ would be set to those levels with replication per level, rather than drawn from a distribution. The same simulation logic applies; only the design for generating $x$ changes.
+In an experiment with fixed treatment levels rather than a gradient, only the line generating \texttt{x} changes, for example \texttt{x <- rep(c(0, 5, 10, 15, 20), each = 10)}. The rest of the loop is identical.
 
-\subsection*{Visualize and assess your fake data}
+Plotting the result (Fig.~\ref{fig:fakedata}a) shows the hypothesis in the same visual form as a real results figure. The question to ask is biological rather than statistical: could sunflowers in this system plausibly produce these data? If the scatter looks far too tight, or the biomass values are impossible, then the assumptions are wrong, and it is very much cheaper to discover that now than after a field season.
 
-Now we plot the generated data and check whether it matches what we had in mind. This is the hypothesis in visual form, including both effect size and variability.
-\begin{lstlisting}
-	plot(fake$x, fake$y,
-	xlab = "Nitrogen concentration (x)",
-	ylab = "Biomass (y)",
-	main = "Simulated (fake) data")
-\end{lstlisting}
+We can also fit the model we intend to use and check that it recovers what we put in (Fig.~\ref{fig:fakedata}b):
 
-We can also fit the planned model and check whether the estimated parameters are in the range we assumed. This is a quick sanity check that the analysis can recover the generating values under these assumptions.
-\begin{lstlisting}
+\begin{lstlisting}[language=R]
+	# Fit the planned analysis and look at the interval, not the p-value
 	fit_lm <- lm(y ~ x, data = fake)
-	summary(fit_lm)
-	confint(fit_lm)  # 95% confidence intervals
-	
-	plot(fake$x, fake$y,
-	xlab = "Nitrogen concentration (x)",
-	ylab = "Biomass (y)",
-	main = "Simulated data with fitted regression line")
-	abline(fit_lm)
+	confint(fit_lm)["x", ]      # 95% interval for the slope b
 \end{lstlisting}
 
-At this point, it is tempting to focus on a p-value. In the simulation loop, we instead look at the estimates and their uncertainty---for example, the width of the 95\% confidence interval for $b$.
+At this point it is tempting to look at the $p$-value. We deliberately do not. The quantity we carry forward is the \emph{width} of the interval for $b$ (Fig.~\ref{fig:fakedata}c). A narrow interval means the study pinned the nitrogen effect down; a wide one means the data are compatible with many different effect sizes, whatever the $p$-value says. Note also that this is a single study. Run it again and the interval shifts and changes length.
 
-\subsection*{How to use this --- Play!}
+\begin{figure}[htbp]
+	\centering
+	% \includegraphics[width=\textwidth]{fig_linear_step2}
+	\caption{Step 2 of the loop for the linear example. (a) Data simulated from Equation~\ref{eq:linear} with $a = 30$, $b = 7$, $\sigma = 5$ and $n = 50$: the hypothesis in visual form, showing effect size and scatter together. (b) The fitted model (solid) against the generating model (dashed). (c) The estimated slope and its 95\% interval. The length of this bar is the quantity the rest of the section is about.}
+	\label{fig:fakedata}
+\end{figure}
 
-Now we go back and forth and explore what changes when we manipulate assumptions and design choices. A simple and practical target is precision: how wide are uncertainty intervals for the parameter we care about (here the nitrogen effect $b$), and how does that depend on sample size, the range of nitrogen values, or the amount of variability and measurement error?
+\subsection{Step 3: how precision responds to design}
 
-The code below repeats the simulated study many times and summarises the width of the 95\% confidence interval for $b$ across repetitions. These design--precision curves are conditional on the assumed model (linearity, error distribution, and constant variance); later examples show how to relax these assumptions and test sensitivity.
-\begin{lstlisting}
-	# One simulation run: generate data, fit model, return CI width for slope b
+We now play the planned study through many times. One run generates a dataset, fits the intended model, and records the interval width for $b$:
+
+\begin{lstlisting}[language=R]
+	# One simulated study: generate data, fit the model, return the interval width
 	one_run <- function(n, a, b, sigma, mean_x = 10, sd_x = 4) {
-		x <- rnorm(n, mean = mean_x, sd = sd_x)
-		y <- a + b*x + rnorm(n, 0, sigma)
-		fit <- lm(y ~ x)
-		ci <- confint(fit)["x", ]
-		return(ci[2] - ci[1])
+		x  <- rnorm(n, mean = mean_x, sd = sd_x)
+		y  <- a + b * x + rnorm(n, 0, sigma)
+		ci <- confint(lm(y ~ x))["x", ]
+		unname(ci[2] - ci[1])
 	}
 	
-	set.seed(1)
-	
-	# Precision vs sample size
-	ns <- c(10, 20, 30, 50, 80, 120)
-	R <- 500
-	
-	out_n <- data.frame(n = ns, mean_width = NA, sd_width = NA)
-	for (j in seq_along(ns)) {
-		widths <- replicate(R, one_run(ns[j], a, b, sigma))
-		out_n$mean_width[j] <- mean(widths)
-		out_n$sd_width[j] <- sd(widths)
-	}
-	
-	plot(out_n$n, out_n$mean_width, type = "b",
-	xlab = "Sample size (n)",
-	ylab = "Mean 95% CI width for slope (b)",
-	main = "Precision of the nitrogen effect vs sample size")
+	# Repeat the same study many times to see what this design typically delivers
+	widths <- replicate(500, one_run(50, a, b, sigma))
 \end{lstlisting}
 
-If a study requires the nitrogen effect to be estimated within $\pm k$ biomass units per nitrogen unit, then a rough design target is a 95\% confidence interval width of about $2k$ for $b$. The simulation loop provides a direct way to choose $n$ (and other design choices) to meet such a target under stated assumptions.
+Repeating this across sample sizes traces a design-precision curve (Fig.~\ref{fig:precision}a). Precision improves with $n$, but with sharply diminishing returns: interval width falls roughly as $1/\sqrt{n}$, so halving the interval costs four times the sample size. The figure carries two lines because a design does not have a precision but a distribution of precisions (Fig.~\ref{fig:precision}b), and the 80th percentile is the honest summary of what a single realised study is likely to achieve.
 
-A second lever in regression is the range of the predictor: even with the same $n$, a narrow nitrogen range makes the slope harder to estimate. We can explore that directly:
-\begin{lstlisting}
-	# Precision vs predictor range (sd of x), at fixed n
-	sd_x_values <- c(1, 2, 4, 6)
-	n_fixed <- 50
-	
-	out_x <- data.frame(sd_x = sd_x_values, mean_width = NA)
-	for (k in seq_along(sd_x_values)) {
-		widths <- replicate(R, one_run(n_fixed, a, b, sigma,
-		mean_x = 10, sd_x = sd_x_values[k]))
-		out_x$mean_width[k] <- mean(widths)
-	}
-	
-	plot(out_x$sd_x, out_x$mean_width, type = "b",
-	xlab = "SD of nitrogen values (predictor range)",
-	ylab = "Mean 95% CI width for slope (b)",
-	main = "Precision depends on predictor range")
+This particular case has a closed-form answer, $\mathrm{se}(b) = \sigma / (s_x\sqrt{n-1})$, and the simulation reproduces it exactly (Fig.~\ref{fig:precision}c). We show this deliberately: simulation was not necessary here, and a formula would have done. Building the machinery where it can be checked is what licenses using it in Sections~\ref{sec:nonlinear} and \ref{sec:limits}, where no formula exists.
+
+Sample size is not the only lever, and often not the best one. Holding $n = 50$ fixed and varying only the spread of nitrogen values shrinks the interval substantially (Fig.~\ref{fig:precision}d):
+
+\begin{lstlisting}[language=R]
+	# Same n, wider nitrogen gradient: how much does spreading x out buy us?
+	sd_x_values <- c(1, 2, 4, 6, 8)
+	sapply(sd_x_values, function(s)
+	mean(replicate(500, one_run(50, a, b, sigma, sd_x = s))))
 \end{lstlisting}
 
-Finally, we can explore how increased variability and measurement error affect precision. For example, if the residual standard deviation doubles, uncertainty intervals widen substantially under the same design:
-\begin{lstlisting}
-	# Sensitivity to variability / measurement error: larger sigma
-	sigma2 <- 10
-	
-	out_n2 <- data.frame(n = ns, mean_width = NA)
-	for (j in seq_along(ns)) {
-		widths <- replicate(R, one_run(ns[j], a, b, sigma2))
-		out_n2$mean_width[j] <- mean(widths)
-	}
-	
-	plot(out_n$n, out_n$mean_width, type = "b",
-	xlab = "Sample size (n)",
-	ylab = "Mean 95% CI width for slope (b)",
-	main = "Precision vs sample size under different variability")
-	lines(out_n2$n, out_n2$mean_width, type = "b", lty = 2)
-	legend("topright", legend = c(paste0("sigma = ", sigma),
-	paste0("sigma = ", sigma2)),
-	lty = c(1, 2), bty = "n")
+This lever is essentially free, since it costs no more to fertilise across a wider range, and it is invisible to a power calculation that treats $n$ as the only design variable. Measurement quality is a third lever (Fig.~\ref{fig:precision}e): doubling $\sigma$ costs roughly a fourfold increase in $n$ to recover the same precision, so a better instrument or a repeated reading may be far cheaper than more plants.
+
+\begin{figure}[htbp]
+	\centering
+	% \includegraphics[width=\textwidth]{fig_precision}
+	\caption{Step 3: how the precision of the nitrogen effect responds to design choices. (a) Design-precision curve: mean and 80th percentile of the 95\% interval width against sample size. (b) At a single design ($n = 50$) the width is itself a random variable; the mean is a poor target because about half of realised studies fall beyond it. (c) The simulated curve reproduces the closed-form result, validating the machinery before it is used where no formula exists. (d) At fixed $n = 50$, spreading the predictor more widely improves precision markedly. (e) Doubling the residual SD costs roughly a fourfold increase in sample size.}
+	\label{fig:precision}
+\end{figure}
+
+\subsection{From a scientific requirement to a sample size}
+
+Applying the rule from Section~\ref{sec:loop}: suppose a fertiliser recommendation requires the nitrogen effect to within $\pm 0.25$\,g biomass per unit nitrogen. The design target is then an interval of width $0.5$, read off the curve at the 80th percentile (Fig.~\ref{fig:target}).
+
+\begin{lstlisting}[language=R]
+	# What sample size meets a target width of 0.5 in 80% of studies?
+	n_grid <- seq(20, 300, by = 20)
+	q80    <- sapply(n_grid, function(nn)
+	quantile(replicate(500, one_run(nn, a, b, sigma)), 0.8))
+	n_grid[which(q80 <= 0.5)[1]]
 \end{lstlisting}
 
-This back-and-forth is the core of the simulation loop in practice: we make assumptions explicit, generate the data those assumptions imply, and then explore how design choices translate into the uncertainty of our key estimates. Improving precision, however, does not by itself make an association causal; the loop complements, but does not replace, careful causal reasoning and design. In the next section, we extend the same workflow to non-linear relationships, where model structure and identifiability become even more central.
+Under the assumptions above this gives $n \approx 120$. The number is conditional on the assumed $\sigma$ and predictor range, which is a feature rather than a limitation: it makes the basis of the design auditable. A reviewer who disagrees can argue with $\sigma$, a statement about the system, rather than with the sample size, which is merely its consequence.
+
+\begin{figure}[htbp]
+	\centering
+	% \includegraphics[width=0.6\textwidth]{fig_design_target}
+	\caption{Choosing a sample size from a precision requirement. The curve shows the 80th percentile of the 95\% interval width for $b$; the horizontal line is the target width of $0.5$ implied by a requirement of $\pm 0.25$. The two meet at $n \approx 120$.}
+	\label{fig:target}
+\end{figure}
+
+\subsection{What an imprecise design would do to our conclusions}
+
+Everything so far concerns precision. The same machinery also reveals what poor precision does to \emph{interpretation}, which is where the consequences for the published literature lie.
+
+Consider a more typical ecological situation than our flagship example: a small true effect ($b = 0.5$), noisy measurement ($\sigma = 15$) and a modest sample ($n = 20$). Simulating this design and applying a conventional significance filter gives a power of about 9\%. That much a power analysis would have told us. What it would not have told us is the rest. Conditional on reaching $p < 0.05$, this design reports an effect roughly four times too large, and carries the wrong sign about 7\% of the time \citep{gelmanPowerCalculationsAssessing2014}. The distribution of estimates that would be published barely overlaps the truth (Fig.~\ref{fig:typesm}).
+
+The design therefore does not merely fail to detect the effect; it manufactures misleading results. This cannot be diagnosed after the fact from a single dataset, because the exaggeration is invisible from inside the study that produced it. It is, however, entirely visible beforehand, from the design alone.
+
+\begin{figure}[htbp]
+	\centering
+	% \includegraphics[width=0.6\textwidth]{fig_type_sm}
+	\caption{The distribution of slope estimates from 4000 simulated studies with $b = 0.5$, $\sigma = 15$ and $n = 20$ (grey), and the subset that would reach $p < 0.05$ and so be most likely to be reported (dark). Conditional on significance, the design exaggerates the effect roughly fourfold and returns the wrong sign about 7\% of the time. The dashed line is the true value.}
+	\label{fig:typesm}
+\end{figure}
 
 
-\section*{4 Practical example (non-linear): Saturating growth response to nitrogen}
 
-Many ecological relationships are non-linear: responses can saturate, show thresholds, or peak at intermediate conditions. In such cases, simulation is especially useful because the same data can often be explained by different parameter combinations, and identifiability can depend strongly on the predictor range and the design. Below we extend the same workflow to a simple saturating response of biomass to nitrogen, using a Michaelis--Menten (rectangular hyperbola) function.
+\section{A non-linear example: a saturating response to nitrogen}
+\label{sec:nonlinear}
 
-\subsection*{What influences $y$ in what way?}
+Many ecological relationships are non-linear: responses saturate, show thresholds, or peak at intermediate conditions. Simulation earns its place here, for two reasons. There is no closed-form expression for the precision of a non-linear parameter, so the analytic shortcut used in Section~\ref{sec:linear} is unavailable. And the same data can often be explained by quite different parameter combinations, which makes what you can learn depend heavily on where you sample rather than simply on how much.
 
-We keep the same research question---how nitrogen influences plant growth---but now assume that growth increases with nitrogen and then levels off as other resources become limiting. A simple non-linear model is:
+\subsection{Step 1: a saturating model}
+
+We keep the same question, but now assume that growth increases with nitrogen and then levels off as other resources become limiting. A standard choice is the Michaelis--Menten function:
+
 \begin{equation}
-	y_i = \frac{V_{\max} x_i}{K + x_i} + \varepsilon_i, \qquad \varepsilon_i \sim \mathcal{N}(0,\sigma)
+	y_i = \frac{V_{\max}\, x_i}{K + x_i} + \varepsilon_i,
+	\qquad \varepsilon_i \sim \mathrm{N}(0, \sigma)
+	\label{eq:mm}
 \end{equation}
-where $V_{\max}$ is the asymptotic biomass (maximum expected response as $x \to \infty$), $K$ is the half-saturation constant (the nitrogen value at which expected biomass is $V_{\max}/2$), and $\sigma$ captures variability and measurement error around the mean response.
 
-\subsection*{Setting model parameters}
+\noindent where $V_{\max}$ is the asymptotic biomass, the value approached as nitrogen becomes unlimiting, and $K$ is the half-saturation constant, the nitrogen value at which expected biomass is $V_{\max}/2$.
 
-As before, we must state plausible parameter values. For illustration, we choose:
-\begin{lstlisting}
-	# Non-linear model parameters (Michaelis-Menten)
-	Vmax <- 120   # asymptotic biomass
-	K <- 8        # half-saturation constant
-	sigma <- 10   # residual SD
-\end{lstlisting}
+Unlike the slope in Section~\ref{sec:linear}, these two parameters answer different biological questions. $V_{\max}$ describes the ceiling; $K$ describes how quickly that ceiling is approached. A study can pin down one without the other, or neither, and which of those happens is largely a matter of design.
 
-\subsection*{Simulate!}
-
-A key design choice in non-linear models is the range of $x$. To show why this matters, we simulate two designs with the same sample size: one that samples nitrogen only in a low-to-moderate range (where saturation is not well observed), and one that samples a wider range that includes values high enough to approach the asymptote.
-
-\begin{lstlisting}
-	# Helper: Michaelis-Menten mean function
+\begin{lstlisting}[language=R]
+	# Assumed parameter values for the saturating model
+	Vmax  <- 120  # asymptotic biomass (g)
+	K     <-   8  # half-saturation constant: nitrogen at which y = Vmax / 2
+	sigma <-  10  # residual SD (g)
+	
+	# The mean function
 	mu_mm <- function(x, Vmax, K) Vmax * x / (K + x)
-	
-	set.seed(2)
+\end{lstlisting}
+
+Equation~\ref{eq:mm} forces $y = 0$ at $x = 0$, which is unrealistic if the soil already contains nitrogen. Adding a baseline term is straightforward and makes the identifiability problem below somewhat worse rather than better; we keep the simpler form for clarity.
+
+\subsection{Step 2: two candidate designs, same sample size}
+
+The key design choice in a non-linear model is the range of $x$. We simulate two designs with identical sample sizes: one sampling nitrogen only in a low to moderate range, and one extending far enough to approach the asymptote.
+
+\begin{lstlisting}[language=R]
+	# Two designs, same n, differing only in how far the nitrogen gradient extends
 	n <- 50
+	x_narrow <- runif(n, 0, 12)   # Design A: stops well short of saturation
+	x_wide   <- runif(n, 0, 40)   # Design B: extends past the bend
 	
-	# Design A: narrow nitrogen range (poor leverage on asymptote)
-	x_narrow <- runif(n, min = 0, max = 12)
-	
-	# Design B: wide nitrogen range (better leverage on asymptote)
-	x_wide <- runif(n, min = 0, max = 40)
-	
-	# Simulate data
-	y_narrow <- mu_mm(x_narrow, Vmax, K) + rnorm(n, 0, sigma)
-	y_wide   <- mu_mm(x_wide,   Vmax, K) + rnorm(n, 0, sigma)
-	
-	fake_narrow <- data.frame(x = x_narrow, y = y_narrow)
-	fake_wide   <- data.frame(x = x_wide,   y = y_wide)
+	fake_narrow <- data.frame(x = x_narrow,
+	y = mu_mm(x_narrow, Vmax, K) + rnorm(n, 0, sigma))
+	fake_wide   <- data.frame(x = x_wide,
+	y = mu_mm(x_wide,   Vmax, K) + rnorm(n, 0, sigma))
 \end{lstlisting}
 
-\subsection*{Visualize and assess your fake data}
+Plotting the two datasets shows the problem immediately (Fig.~\ref{fig:mmdesigns}). Over the narrow range the saturating curve is nearly a straight line. The data contain almost no information about the asymptote, because the design never went anywhere near it. Same $n$, same model, same noise, but Design~A cannot see the thing the model is about.
 
-Plotting the two simulated datasets immediately shows why the design matters: in the narrow range, the relationship can look almost linear, whereas the wide range reveals curvature and the onset of saturation.
+\begin{figure}[htbp]
+	\centering
+	% \includegraphics[width=\textwidth]{fig_mm_designs}
+	\caption{Two designs with the same sample size ($n = 50$) under Equation~\ref{eq:mm} with $V_{\max} = 120$, $K = 8$ and $\sigma = 10$. (a) A narrow nitrogen range gives data that look almost linear and carry little information about the asymptote. (b) A wider range reveals the curvature and the onset of saturation. The solid line is the generating model in both panels.}
+	\label{fig:mmdesigns}
+\end{figure}
 
-\begin{lstlisting}
-	plot(fake_narrow$x, fake_narrow$y,
-	xlab = "Nitrogen (x)", ylab = "Biomass (y)",
-	main = "Non-linear model: narrow nitrogen range")
-	curve(mu_mm(x, Vmax, K), add = TRUE)
-	
-	plot(fake_wide$x, fake_wide$y,
-	xlab = "Nitrogen (x)", ylab = "Biomass (y)",
-	main = "Non-linear model: wide nitrogen range")
-	curve(mu_mm(x, Vmax, K), add = TRUE)
-\end{lstlisting}
+\subsection{Step 3: fitting, convergence, and the cloud of estimates}
 
-\subsection*{How to use this --- Play!}
+We fit the planned model with non-linear least squares. Because \texttt{nls} can fail to converge, it is tempting to set \texttt{warnOnly = TRUE} and move on. We recommend against it: that option returns non-converged fits as though they were estimates, and quietly contaminates everything computed downstream. Recording convergence status instead turns a nuisance into a design diagnostic.
 
-We now fit the planned non-linear model and examine what it typically produces under each design. In base R, a simple option is \texttt{nls} (non-linear least squares). Non-linear fitting can be sensitive to starting values, so we provide reasonable starts.
-
-\begin{lstlisting}
-	# Fit non-linear model with nls
+\begin{lstlisting}[language=R]
+	# Fit the saturating model; return NULL rather than a non-converged fit
 	fit_mm <- function(dat) {
-		nls(y ~ Vmax * x / (K + x),
-		data = dat,
+		fit <- try(nls(y ~ Vmax * x / (K + x), data = dat,
 		start = list(Vmax = max(dat$y), K = median(dat$x)),
-		control = nls.control(maxiter = 200, warnOnly = TRUE))
+		control = nls.control(maxiter = 200)), silent = TRUE)
+		if (inherits(fit, "try-error")) NULL else fit
 	}
-	
-	fitA <- fit_mm(fake_narrow)
-	fitB <- fit_mm(fake_wide)
-	
-	summary(fitA)
-	summary(fitB)
 \end{lstlisting}
 
-Even when \texttt{nls} converges, the key question is not whether parameters exist, but how uncertain they are and how much they depend on design choices. A simple, comparable metric is again interval width. For \texttt{nls}, we can approximate confidence intervals for parameters. (In some datasets, \texttt{confint} may fail or be slow; in that case, repeating the simulation and examining the spread of estimates provides the same message.)
+Under Design~A the fit fails to converge in XX\% of simulated studies, against YY\% under Design~B. That difference is a result in its own right: it says the narrow design is asking the data for something they cannot supply. A caution follows immediately. Discarding failed runs before summarising the rest is itself a selection step, of the kind this paper warns against elsewhere, since the surviving estimates are the subset that happened to be informative. How many runs were dropped should be reported alongside the estimates that remain.
 
-\begin{lstlisting}
-	# Approximate 95% confidence intervals for parameters (may be slow for some fits)
-	confint(fitA)
-	confint(fitB)
+Repeating the whole study many times under each design and plotting the resulting parameter estimates against one another makes the underlying problem visible (Fig.~\ref{fig:mmcloud}). Under Design~A the estimates smear along a ridge: many combinations of $K$ and $V_{\max}$ produce almost identical curves over $x \in [0, 12]$, so the data cannot tell them apart. A large $V_{\max}$ paired with a large $K$ looks much the same, over that range, as a smaller $V_{\max}$ paired with a smaller $K$. Under Design~B the cloud collapses around the true values. This is a design problem rather than an analysis problem: no cleverer statistical method recovers information that the sampling design never collected.
+
+\begin{figure}[htbp]
+	\centering
+	% \includegraphics[width=\textwidth]{fig_mm_cloud}
+	\caption{Estimates of $K$ and $V_{\max}$ from 500 simulated studies under each design, with the true values marked. (a) Under the narrow design the two parameters trade off against one another and neither is well determined. (b) Under the wide design both are recovered. Non-converged fits are excluded; their frequency is reported in the text.}
+	\label{fig:mmcloud}
+\end{figure}
+
+\subsection{More data, or better placed data?}
+
+The design question can now be put directly. Given a fixed budget, is it better to collect more observations or to spread them over a wider range of nitrogen?
+
+\begin{lstlisting}[language=R]
+	# Compare the spread of K estimates across sample sizes and nitrogen ranges
+	ns <- c(20, 50, 100, 200)
+	sapply(ns, function(nn) IQR(replicate_K(nn, x_max = 12)))  # narrow
+	sapply(ns, function(nn) IQR(replicate_K(nn, x_max = 40)))  # wide
 \end{lstlisting}
 
-To make the comparison more robust and aligned with the simulation loop, we repeat the whole study many times under each design and summarise the distribution of parameter estimates. This makes identifiability issues visible: if many different (Vmax, K) combinations fit the data similarly, the estimates will vary widely across repetitions, especially under the narrow-range design.
+Quadrupling the sample size under the narrow design buys less than simply extending the nitrogen gradient at the original sample size (Fig.~\ref{fig:mmtradeoff}). If a project can afford one change, the simulation says which one to make, and it says so before the money is spent. This is the central practical claim of the paper in its sharpest form: identifiability and precision can depend as much on where you sample as on how many observations you collect.
 
-\begin{lstlisting}
-	one_run_mm <- function(n, x_max, Vmax, K, sigma) {
-		x <- runif(n, 0, x_max)
-		y <- mu_mm(x, Vmax, K) + rnorm(n, 0, sigma)
-		dat <- data.frame(x = x, y = y)
+\begin{figure}[htbp]
+	\centering
+	% \includegraphics[width=0.6\textwidth]{fig_mm_n_vs_range}
+	\caption{Interquartile range of estimates of $K$ against sample size, under the narrow and wide nitrogen ranges. Extending the range at $n = 50$ achieves more than quadrupling the sample size within the narrow range.}
+	\label{fig:mmtradeoff}
+\end{figure}
+
+\bigskip
+
+\noindent So far the analysis model has always matched the model that generated the data, and the design has always been experimental. Section~\ref{sec:limits} relaxes each assumption in turn, and shows that neither failure is visible in the precision of the result.
+
+\section{When precision is not enough}
+\label{sec:limits}
+
+Sections~\ref{sec:linear} and \ref{sec:nonlinear} treated precision as the design criterion. That is deliberate, but it is not sufficient, and this section sets the bound. A 95\% interval is a statement about sampling variability under an assumed model. It says nothing about whether that model has the right structure, and nothing about whether the parameter it surrounds is the one the scientific question was about. We demonstrate each failure in turn. In both, the interval is narrow, the diagnostics are clean, and the answer is wrong.
+
+\subsection{A model with the wrong shape}
+
+We fit an ordinary straight line to data generated by the saturating process of Section~\ref{sec:nonlinear}, using the narrow design in which the curve looks almost linear anyway.
+
+\begin{lstlisting}[language=R]
+	# Fit a straight line to data generated by the saturating model
+	fit_wrong <- lm(y ~ x, data = fake_narrow)
+	summary(fit_wrong)$r.squared                       # looks like a good fit
+	confint(fit_wrong)["x", ]                          # a tight interval
+	predict(fit_wrong, newdata = data.frame(x = 40))   # extrapolate to x = 40
+	mu_mm(40, Vmax, K)                                 # what the truth would be
+\end{lstlisting}
+
+Every conventional diagnostic looks reassuring. The model explains about three-quarters of the variance, the slope is estimated to within a couple of per cent, and nothing in the output flags a problem. The predicted biomass at $x = 40$ is about 234\,g. The true value is 100\,g (Fig.~\ref{fig:limits}a). Collecting more data would tighten that interval without moving it, because the interval tightens around a value that was never the target.
+
+There is a constructive reading. The same simulation that exposes the problem points to the remedy: a design extending past the bend both identifies the parameters (Section~\ref{sec:nonlinear}) and makes the inadequacy of a linear model obvious in the data. Designing for precision and designing to be able to detect one's own mistakes turn out, here, to be the same activity.
+
+\subsection{A parameter that is not the one we mean}
+
+Now suppose the model has the right shape but we cannot randomise. We survey plots across a landscape, measuring nitrogen where it happens to occur. Soil moisture varies across that landscape and affects both: wetter plots mineralise more nitrogen, and wetter plots also grow more biomass for reasons unrelated to nitrogen.
+
+The step that matters is Step~1, and it is easy to skip. The generative model must describe how we believe the data actually arise, including processes we do not intend to measure. Writing moisture into the simulation is not a claim that we will have moisture data; it is a claim about the world.
+
+\begin{lstlisting}[language=R]
+	# An observational design in which moisture drives both nitrogen and biomass
+	n_obs    <- 500
+	moisture <- rnorm(n_obs, 0, 1)                              # the confounder
+	x_obs    <- 10 + 3 * moisture + rnorm(n_obs, 0, 1)          # N tracks moisture
+	y_obs    <- 30 + 7 * x_obs + 15 * moisture + rnorm(n_obs, 0, 5)
+	
+	naive <- lm(y_obs ~ x_obs)                       # moisture unmeasured
+	adj   <- lm(y_obs ~ x_obs + moisture)            # moisture measured
+\end{lstlisting}
+
+The causal effect of nitrogen is 7. The naive analysis returns about 11.5, with a 95\% interval of roughly $[11.3, 11.7]$ that excludes the truth entirely; the adjusted analysis recovers 6.9 (Fig.~\ref{fig:limits}b). Nothing in the naive output signals a problem: the residuals are well behaved, the model is correctly specified as a straight line, and the estimate is very precise.
+
+Precision is again the difficulty. The bias does not depend on $n$, so a larger sample narrows the interval without correcting the estimate. At $n = 10\,000$ the naive interval spans 11.44 to 11.53 (Fig.~\ref{fig:limits}c). A large dataset, analysed with a correctly specified model, yields an extremely confident answer to a question nobody asked.
+
+\begin{figure}[htbp]
+	\centering
+	% \includegraphics[width=\textwidth]{fig_limits}
+	\caption{Two ways a precise design can mislead. (a) A straight line fitted to data generated by the saturating model over a narrow nitrogen range (shaded): the fit is good by conventional criteria, yet extrapolating to $x = 40$ overpredicts biomass by more than a factor of two. (b) Estimates of the nitrogen effect at $n = 500$ from an analysis omitting soil moisture (naive) and one including it (adjusted); the dashed line is the true causal effect of 7. (c) The naive estimate as sample size increases from 100 to 10\,000: the interval contracts steadily around a value roughly 65\% too large.}
+	\label{fig:limits}
+\end{figure}
+
+\subsection{What follows for the loop}
+
+The simulation loop does not solve either problem. It cannot tell you that your functional form is wrong, and no amount of simulation licenses a causal claim from an observational design; that requires randomisation or an explicit argument about which variables must be measured and adjusted for \citep{pearlSevenToolsCausal2019, graceScientistsGuideDeveloping2020, arifApplyingStructuralCausal2023}.
+
+What it offers is earlier warning, and three things follow. It quantifies the damage while it can still be acted on: simulating a confounder one suspects exists takes a few lines and answers a concrete question, and here the answer is 65\%, large enough to change what one would do. It disciplines the estimand, because the naive analysis above is a perfectly good estimate of an association and wrong only as an answer to a causal question, a distinction that writing the generative model forces into the open. And it corrects a natural intuition about sample size: it is tempting to treat a large dataset as insurance against error, whereas for this class of problem the larger study is the more confidently wrong one, and the less likely to be questioned.
+
+This is why we treat Step~1 as the step that repays most attention, and the one most often skipped. The precision machinery of Sections~\ref{sec:linear} and \ref{sec:nonlinear} is only as good as the generative model it is conditioned on.
+
+\section{Reporting a simulation loop}
+\label{sec:reporting}
+
+The loop is only useful to a reader if they can disagree with it productively. That requires reporting the assumptions, not just the resulting design. The checklist below lists what we think a paper or proposal should state; all of it fits comfortably in a short methods paragraph plus a supplement.
+
+The same three steps extend without modification to two-group comparisons, generalised responses such as counts and proportions, and hierarchical or repeated-measures designs; only the generative model and the analysis model change. The Supplement works through a nested design in which a fixed budget of plots is allocated across sites in five different ways, a case where no closed-form guidance exists and the differences in precision are substantial.
+
+\begin{mytextbox}[title=\textbf{Checklist: what to report from a simulation loop}]
+	\begin{enumerate}[leftmargin=*, itemsep=0.4em, topsep=0.4em]
 		
-		fit <- try(fit_mm(dat), silent = TRUE)
-		if (inherits(fit, "try-error")) return(c(Vmax_hat = NA, K_hat = NA))
+		\item \textbf{The generative model.} Equations for the mean function $f(x; \theta)$ and for the stochastic component $\varepsilon$, on the response scale.
 		
-		co <- coef(fit)
-		c(Vmax_hat = unname(co["Vmax"]), K_hat = unname(co["K"]))
-	}
-	
-	set.seed(3)
-	R <- 300
-	n <- 50
-	
-	# Design A: x_max = 12 (narrow); Design B: x_max = 40 (wide)
-	estA <- replicate(R, one_run_mm(n, x_max = 12, Vmax, K, sigma))
-	estB <- replicate(R, one_run_mm(n, x_max = 40, Vmax, K, sigma))
-	
-	estA <- t(estA); estB <- t(estB)
-	estA <- as.data.frame(estA); estB <- as.data.frame(estB)
-	
-	# Remove failed fits
-	estA <- estA[complete.cases(estA), ]
-	estB <- estB[complete.cases(estB), ]
-	
-	# Compare distributions of estimates
-	summary(estA)
-	summary(estB)
-	
-	plot(estA$K_hat, estA$Vmax_hat,
-	xlab = "K estimate", ylab = "Vmax estimate",
-	main = "Narrow range: strong parameter trade-off")
-	abline(v = K, h = Vmax, lty = 2)
-	
-	plot(estB$K_hat, estB$Vmax_hat,
-	xlab = "K estimate", ylab = "Vmax estimate",
-	main = "Wide range: improved identifiability")
-	abline(v = K, h = Vmax, lty = 2)
-\end{lstlisting}
+		\item \textbf{The assumed parameter values,} with their justification: literature, pilot data, or expert judgement labelled as such. State the range explored where a single value could not be defended.
+		
+		\item \textbf{What the error term represents:} process variation, measurement error, or both, and whether hierarchy or autocorrelation is included.
+		
+		\item \textbf{The design variables explored:} sample size, treatment levels, predictor range, replication structure, measurement effort. Say which were varied and which were held fixed.
+		
+		\item \textbf{The performance criterion,} and the target. We recommend the width of the uncertainty interval for the focal parameter, summarised at a stated quantile rather than as a mean, together with the scientific or management requirement the target derives from.
+		
+		\item \textbf{Failures as well as successes:} the proportion of simulated fits that did not converge, and how they were handled. This is a design diagnostic, not a nuisance.
+		
+		\item \textbf{Reproducibility:} the code, the random seed, and software versions, archived with a persistent identifier.
+		
+	\end{enumerate}
+\end{mytextbox}
 
-This ``cloud of estimates'' is a simple diagnostic: in the narrow-range design, $V_{\max}$ and $K$ often trade off against each other (many combinations produce similar curves over $x \in [0,12]$), so parameter uncertainty can remain large even with the same sample size. In contrast, including higher nitrogen values provides leverage to distinguish curvature and the asymptote, improving identifiability and reducing uncertainty.
+\section{Outlook}
+\label{sec:outlook}
 
-Finally, we can connect this directly back to design planning by comparing a precision proxy (e.g.\ the interquartile range of estimates or the spread of fitted parameters) across choices of $n$ and $x$-range. For example:
+The proposal of this paper is narrow. Turn a verbal hypothesis into an explicit generative model, simulate what it implies, and choose a design by the precision it delivers for the parameter that matters. Everything else follows from taking that seriously, including the uncomfortable findings of Section~\ref{sec:limits}.
 
-\begin{lstlisting}
-	# Quick design exploration: how does n affect the spread of K estimates?
-	ns <- c(20, 50, 100)
-	R <- 200
-	
-	spread <- function(n, x_max) {
-		est <- replicate(R, one_run_mm(n, x_max, Vmax, K, sigma))
-		est <- t(est)
-		est <- est[complete.cases(est), , drop = FALSE]
-		# use IQR as a robust spread measure
-		c(IQR_Vmax = IQR(est[, "Vmax_hat"]), IQR_K = IQR(est[, "K_hat"]))
-	}
-	
-	out <- expand.grid(n = ns, x_max = c(12, 40))
-	out$IQR_Vmax <- NA
-	out$IQR_K <- NA
-	
-	for (i in seq_len(nrow(out))) {
-		s <- spread(out$n[i], out$x_max[i])
-		out$IQR_Vmax[i] <- s["IQR_Vmax"]
-		out$IQR_K[i] <- s["IQR_K"]
-	}
-	
-	out
-	
-	plot(out$n[out$x_max == 12], out$IQR_K[out$x_max == 12], type = "b",
-	xlab = "Sample size (n)", ylab = "IQR of K estimates",
-	main = "Precision depends on n and x-range")
-	lines(out$n[out$x_max == 40], out$IQR_K[out$x_max == 40], type = "b", lty = 2)
-	legend("topright", legend = c("x in [0,12]", "x in [0,40]"),
-	lty = c(1,2), bty = "n")
-\end{lstlisting}
+Advice of this kind is not new, and it is worth asking why it has not been taken up more widely. We think the honest answer is that it was expensive. Writing a generative model for anything beyond a straight line has required a level of comfort with code that ecological training has mostly reserved for theoreticians, and an empiricist facing a field season has had good reason to skip it. That barrier is now falling quickly. Code assistants make a first simulation of a nested, non-Gaussian or saturating design something that can be drafted in minutes rather than an afternoon, and revised as easily. The practical case for the loop is therefore stronger today than when much of the same advice was offered a decade ago, not because the argument has improved but because the cost of acting on it has dropped.
 
-This non-linear example illustrates why simulation is especially valuable beyond linear settings: identifiability and precision can depend as much on \emph{where} you sample (predictor range and design) as on how many observations you collect. In the next section, we generalise these ideas and briefly discuss how simulation-based thinking becomes even more important when models grow more complex (e.g.\ multiple predictors, interactions, hierarchical designs) and when inference relies on additional modelling assumptions.
+What remains expensive is the part that matters most. A model that can be simulated from still has to be defended: which processes generate the data, what magnitudes are plausible, what varies and by how much, and what the study is actually trying to estimate. Those judgements are ecological rather than computational, and nothing about cheaper code supplies them. If anything the balance shifts further towards Step~1, because the steps that used to consume the effort no longer do. The same is true of the design target itself. Choosing an interval width of $2k$ is a statement about how much error is tolerable for the claim at stake, which is a scientific and sometimes a policy judgement rather than a statistical one \citep{douglasInductiveRiskValues2000, steelEpistemicValuesArgument2010}. Making the generative model explicit does not settle such questions, but it turns them from hidden defaults into inspectable choices \citep{romeijnPhilosophyStatistics2014, gelmanPhilosophyPracticeBayesian2013}, which is the most that can be asked of any method \citep{boxScienceStatistics1976}.
 
-\section*{5 Practical guidance: implementing the simulation loop}
+These considerations become more pressing, not less, as ecological analyses draw on larger datasets and on AI-assisted pattern discovery. Modern methods are very good at finding regularities in high-dimensional data and comparatively poor at telling us which of them to believe \citep{pichlerMachineLearningDeep2023, lucasTranslucentBoxInterpretable2020}. Simulation offers one concrete form of discipline here: a generative model specifies what the data would look like if a proposed mechanism were absent, and a pattern that a method also recovers from such data has not been established by finding it. The confounded example of Section~\ref{sec:limits} is the more sobering case, because it scales in the wrong direction. Larger samples narrowed the interval without moving the estimate, so the studies that command most confidence are the ones whose bias is hardest to notice. Volume of data is not a substitute for having asked what generated it \citep{pearlSevenToolsCausal2019}, and reporting standards for uncertainty in ecology remain uneven enough that the difference is easy to miss \citep{simmondsRecommendationsQuantitativeUncertainty2024, leleHowShouldWe2020}.
 
-This section summarises practical guidance to implement the simulation loop in everyday ecological research. The goal is not to add another layer of complexity, but to make assumptions explicit, align study design with the parameters we care about, and report simulation results transparently and reproducibly.
-
-\subsection*{5.1 Practical guidance}
-
-\textbf{Choose a generative model that matches the question.}
-Start from the verbal hypothesis and translate it into a simple generative model: define $y$, the predictors/design variables $x$, the expected response $f(x;\theta)$, and the stochastic component $\varepsilon$ (process variation and/or measurement error). Begin simple and add complexity only when it changes the inference you want to make (e.g.\ hierarchy, autocorrelation, heterogeneity, detection).
-
-\textbf{State plausible parameter values (and ranges).}
-Simulation is only as informative as the assumptions it explores. Use prior knowledge, the literature, pilot data, or clearly stated expert judgement to propose plausible values for effect sizes, variance components, and measurement limitations. When unsure, explore a range of values and report how conclusions depend on them.
-
-\textbf{Simulate from the design you actually plan to run.}
-Explicitly represent the sampling design (treatment levels, replication structure, predictor range, blocking, repeated measures). In non-linear settings, pay special attention to the predictor range: identifiability can depend as much on \emph{where} you sample as on how many observations you collect.
-
-\textbf{Focus Step 3 on estimation, not thresholds.}
-Treat Step 3 as ``playing through'' the planned study many times on the computer. Fit the planned analysis model and summarise what you typically get in terms of parameter estimates and uncertainty---especially uncertainty-interval widths (precision). Use bias and sensitivity to realistic departures from assumptions (e.g.\ increased noise, mild misspecification, measurement error) as additional diagnostics. This does not guarantee correct inference; it makes explicit what follows from the assumptions you are willing to make, and how sensitive results are to them.
-
-\textbf{Decide design targets in terms of precision and relevance.}
-If the scientific or management claim requires an effect to be estimated within $\pm k$ units on the chosen scale, plan for an interval width of about $2k$ for the relevant parameter. Use simulation outputs (design--precision curves) to choose $n$, predictor range, and measurement effort that meet this target under plausible assumptions.
-
-\textbf{Report what you simulated and why.}
-To make the workflow useful (and teachable), report the generative model, key assumptions, the range of parameters explored, the performance criterion (e.g.\ interval width), and the code required to reproduce results.
-
-\begin{tcolorbox}[
-	title=Checklist: reportable outputs of the simulation loop,
-	colback=black!2,
-	colframe=black!35,
-	fonttitle=\bfseries,
-	boxrule=0.6pt,
-	arc=2mm,
-	left=2mm,right=2mm,top=1mm,bottom=1mm
-	]
-	\begin{itemize}
-		\item \textbf{Verbal hypothesis $\rightarrow$ model:} equations for $f(x;\theta)$ and the stochastic component ($\varepsilon$), including the response scale.
-		\item \textbf{Assumptions:} plausible parameter values (and ranges) with justification (literature, pilot data, expert judgement).
-		\item \textbf{Stochastic structure:} what $\varepsilon$ represents (process variation, measurement error, both), and whether hierarchy/autocorrelation is included.
-		\item \textbf{Design explored:} $n$, treatment levels, predictor range, replication structure, measurement effort; what was varied and why.
-		\item \textbf{Performance target:} interval width (precision) for key parameters; optionally bias and sensitivity to departures from assumptions.
-		\item \textbf{Summary outputs:} design--precision curve(s) (e.g.\ interval width vs $n$, vs predictor range, vs noise).
-		\item \textbf{Reproducibility:} code (and seed) to reproduce simulations and figures (e.g.\ in Supplement), plus software versions if relevant.
-	\end{itemize}
-\end{tcolorbox}
-
-\subsection*{5.2 Common extensions}
-
-The simulation loop is not restricted to linear regression. Common extensions follow the same three steps but use a different generative model and analysis model:
-
-\textbf{Two-group designs.} A two-level treatment factor is a special case: simulate group means and variability, then examine the precision of the treatment contrast (difference in means) as a function of sample size and measurement error.
-
-\textbf{Generalised responses.} For counts, proportions, presence/absence, and rates, specify an appropriate observation model (e.g.\ Poisson/negative binomial, binomial) and simulate on the natural scale. Precision targets may be set on the link scale or transformed back to the response scale.
-
-\textbf{Hierarchical and repeated-measures designs.} Simulate nested structure (e.g.\ plots within sites, repeated measurements through time) and fit models with matching random effects or correlation structure. Examine how effective sample size and precision depend on the number of groups and replicates per group.
-
-\textbf{Non-linear and mechanistic models.} When responses saturate, show thresholds, or depend on interacting processes, simulate under plausible parameter ranges and ensure the design includes predictor values that make key parameters identifiable (as illustrated in the non-linear example above).
-
-\textbf{Model checking after fitting.} Simulation can also be used after model fitting (e.g.\ posterior predictive checks). In this paper we emphasise simulation earlier, when it can still inform study design and the formulation of quantitative hypotheses.
-
-
-\section*{6 Outlook: why the simulation loop matters (especially with AI)}
-
-This paper offers a compact way to make simulation part of routine ecological inference: turn a verbal hypothesis into an explicit generative model, simulate what it implies, and iterate design and modelling choices based on the estimates you would obtain and their uncertainty, rather than on whether a test crosses an arbitrary threshold.
-
-A practical motivation is that different analysis choices sometimes lead to similar conclusions, but sometimes they do not. When results are fragile to reasonable alternatives (e.g.\ link functions, distributional assumptions, treatment of non-independence, or measurement error), it becomes hard to know what to believe. The simulation loop provides a constructive way to examine this: simulate under plausible data-generating processes, fit candidate analyses, and quantify how estimates and uncertainty change across modelling choices. In that sense, simulation is not only a design tool but also a diagnostic for robustness and identifiability (see also simulation-based approaches to understanding and validating complex models in ecology; \citealt{direnzoPracticalGuideUnderstanding2023}).
-
-More broadly, choosing an analysis and deciding what counts as evidence is unavoidably epistemic: it depends on background assumptions about how data are generated, what uncertainty means, and what kinds of claims are warranted in the face of error and limited information. These questions are actively studied in philosophy of science and the foundations of statistics, but they often remain implicit in everyday practice \citep{romeijnPhilosophyStatistics2014, gelmanPhilosophyPracticeBayesian2013}. Making the generative model explicit turns many hidden choices into inspectable assumptions. It also clarifies that (i) precise estimates can still be wrong when key mechanisms or error processes are misspecified \citep{boxScienceStatistics1976}, and (ii) methodological choices can legitimately reflect ``inductive risk''---the consequences of different kinds of error---which motivates being explicit about what uncertainty is acceptable for a given claim \citep{douglasInductiveRiskValues2000, steelEpistemicValuesArgument2010}. In ecology and evolution, this perspective aligns with growing calls to improve uncertainty consideration and propagation beyond narrow reliance on single metrics, and to adopt clearer standards for reporting uncertainty and the consequences of model structure \citep{simmondsRecommendationsQuantitativeUncertainty2024, leleHowShouldWe2020}.
-
-These benefits become increasingly important as ecology and evolution incorporate larger datasets, more complex models, and AI-assisted pattern discovery. Modern tools can detect subtle regularities in high-dimensional data, but they do not remove the need to decide what to believe and what uncertainty is defensible. Simulation-based thinking provides a practical way to expose and communicate assumptions, to quantify the consequences of modelling choices, and to distinguish predictive success from mechanistic understanding. In this sense, the simulation loop is both a design tool and a reasoning tool: it helps researchers and students move from compelling stories toward quantitative expectations, transparent uncertainty, and conclusions that are proportional to what the data can support.
-
-At the same time, simulation does not guarantee correct inference: its value is conditional on the assumptions explored. It cannot by itself resolve confounding in observational studies or substitute for careful causal design \citep{pearlSevenToolsCausal2019}. But it can make these limitations explicit---for example, by showing that even very large datasets can yield narrow uncertainty intervals for the \emph{wrong} quantity if key mechanisms or measurement processes are misspecified. This matters especially in AI-enabled workflows, where model complexity and opacity can make it difficult to understand how conclusions were produced, and where standards for uncertainty quantification and error propagation remain uneven across tools and subfields \citep{pichlerMachineLearningDeep2023, lucasTranslucentBoxInterpretable2020}. By encouraging explicit generative assumptions and transparent reporting of their consequences, the simulation loop offers a practical step toward more defensible inference in a future where pattern discovery will be easy, but deciding what to believe may be harder than ever.
-
-
-
-%\section*{stuff I did't find place yet}
-
+None of this requires a new methodology. It requires doing something ordinary at an unusual time, namely writing down what one expects before finding out, and it costs an afternoon at the point in a project where an afternoon is cheapest. We have found the exercise most valuable when it went badly: when the simulated data looked nothing like the system, when the estimates would not settle however much data we imagined collecting, or when the design we had planned turned out to answer a question adjacent to the one we cared about. Those are useful things to learn in front of a computer, and expensive things to learn in a field.
 
 	\newpage
 
@@ -825,99 +694,59 @@ At the same time, simulation does not guarantee correct inference: its value is 
 \bibliographystyle{ecolett}
 
 
+	\newpage
+\nolinenumbers
+
 \begin{tcolorbox}[
-	title=Box 1: Common pitfalls along the traditional scientific workflow,
+	title=Box 1: Nine pitfalls along the research workflow,
 	colback=black!2,
 	colframe=black!35,
 	fonttitle=\bfseries,
 	boxrule=0.6pt,
 	arc=2mm,
+	breakable,
 	left=2mm,right=2mm,top=1mm,bottom=1mm
 	]
 	
-	\textit{This box summarises common pitfalls in roughly the order they can arise along the traditional workflow shown in Figure~1. The proposed simulation loop provides a tool to anticipate and prevent many of these pitfalls.}
+	\textit{Numbered as in Figure~\ref{fig:workflow}, in the order they arise along the workflow.} $\bullet$~\textit{marks pitfalls a design choice can fix, and which the simulation loop therefore addresses directly;} $\circ$~\textit{those it can expose or quantify but not resolve.}
 	
-	\vspace{4pt}
-	\textbf{Identifying research question}
+	\vspace{5pt}
+	\textbf{Framing the question and hypothesis}
 	
-	\textbf{(1) Confirmation bias and motivated reasoning.}
-	Interpreting evidence in ways that align with prior beliefs or preferred narratives.
-	Refs: \citealt{nickersonConfirmationBiasUbiquitous1998, kundaCaseMotivatedReasoning1990, tverskyJudgmentUncertaintyHeuristics1974}.
+	$\circ$~\textbf{(1) Estimating something other than the quantity of interest.} An association is reported as though it were a causal effect, because a driver of both the predictor and the response was unmeasured, or because sampling was selective. The estimate may be perfectly good as a description and still answer a different question from the one asked. Refs: \citealt{pearlSevenToolsCausal2019, graceScientistsGuideDeveloping2020, arifApplyingStructuralCausal2023}.
 	
-	\textbf{(2) Weakly specified hypotheses and undefined alternatives.}
-	Hypotheses may be vague, lack a clear direction or quantitative prediction, and the implied alternative to the null is often left undefined (e.g.\ “there is a difference”), which makes interpretation and design targets ambiguous.
-	Refs: \citealt{rajtmajerHowFailureFalsify2022, gigerenzerMindlessStatistics2004, perezgonzalezFisherNeymanPearsonNHST2015}.
-		
-\textbf{(3) Confounding and causal overinterpretation of associations.}
-A statistical association does not, by itself, identify a causal effect. Apparent treatment effects can arise because groups differ in other drivers (confounding), because sampling is selective, or because key variables were not measured. As a result, strong narratives can be attached to patterns that would also be expected under plausible alternative explanations.
-Refs: \citealt{pearlSevenToolsCausal2019, rajtmajerHowFailureFalsify2022}.
-
-	\vspace{4pt}
-	\textbf{Study design}
+	$\circ$~\textbf{(2) Decisions made after seeing the data.} Hypotheses adjusted to fit results, outcomes or subsets chosen once their behaviour is known, and analyses continued until they look right. This rarely feels like misconduct, because each individual choice is defensible; what is not defensible is that the choices were available. Refs: \citealt{gelmanGardenForkingPaths2013, kerrHARKingHypothesizingResults1998, stefanBigLittleLies2023, nickersonConfirmationBiasUbiquitous1998}.
 	
-	\textbf{(4) Insufficient sample sizes.}
-	Small samples frequently yield imprecise estimates and unstable results, and can exaggerate effect sizes by chance.
-	Refs: \citealt{halseyFickleValueGenerates2015, ioannidisWhyMostPublished2005a, baker500ScientistsLift2016, camererEvaluatingReplicabilitySocial2018}.
+	$\bullet$~\textbf{(3) A hypothesis that cannot be wrong.} The claim has no stated direction, no expected magnitude, and no defined alternative, so almost any result can be read as support. Vagueness survives argument but not arithmetic: a hypothesis that cannot be written as a formula with numbers in it was never specific enough to test. Refs: \citealt{rajtmajerHowFailureFalsify2022, gigerenzerMindlessStatistics2004, perezgonzalezFisherNeymanPearsonNHST2015}.
 	
-	\textbf{(5) Planning for “power to detect” rather than precision/relevance.}
-	Sample size decisions that target a significance threshold rather than a decision-relevant interval width or estimation goal.
-	Refs: \citealt{goodmanUsePredictedConfidence1994, rothmanPlanningStudySize2018, cummingUnderstandingNewStatistics2013}.
+	\vspace{5pt}
+	\textbf{Designing the study}
 	
-	\textbf{(6) Measurement error, imperfect detection, and misclassification.}
-	Noise and bias introduced by measurement instruments, proxies, observer effects, or detection limits can attenuate effects, inflate uncertainty, or create spurious patterns if not anticipated and modeled.
-	Refs: \citealt{direnzoPracticalGuideUnderstanding2023, popovicFourPrinciplesImproved2024}.
+	$\bullet$~\textbf{(4) Designing to detect rather than to estimate.} Sample size chosen so that a test is likely to cross a significance threshold, rather than so that the quantity of interest will be known precisely enough to support the claim at stake. The two questions have different answers, and the second is the one a reader needs. Refs: \citealt{goodmanUsePredictedConfidence1994, rothmanPlanningStudySize2018, hoenigAbusePowerPervasive2001, halseyFickleValueGenerates2015}.
 	
-	\textbf{(7) Non-independence and pseudoreplication.}
-	Spatial/temporal autocorrelation, clustering, and repeated measures can reduce the effective sample size and bias uncertainty if treated as independent.
-	Refs: \citealt{direnzoPracticalGuideUnderstanding2023, popovicFourPrinciplesImproved2024}.
+	$\bullet$~\textbf{(5) Sampling that cannot identify the target.} Predictor values spanning too narrow a range, treatment levels placed where the response is flat, or too few groups to estimate a group-varying effect. Where the observations are taken can matter more than how many there are, and no increase in sample size compensates for a design that never visits the conditions the parameter describes. Refs: \citealt{bolkerEcologicalModelsData2008, direnzoPracticalGuideUnderstanding2023}; this paper, Section~\ref{sec:nonlinear}.
 	
-	\vspace{4pt}
-	\textbf{Analysis}
+	$\bullet$~\textbf{(6) Ignoring how the data actually arise.} Measurement error, imperfect detection, misclassification, and observations that are not independent because they share a plot, a site, or a time. Unlike variation in the system itself, much of this is a design choice: better instruments, repeated readings, or a different allocation of effort. Refs: \citealt{direnzoPracticalGuideUnderstanding2023, popovicFourPrinciplesImproved2024}.
 	
-	\textbf{(8) Overreliance on p-values and “statistical significance”.}
-	Dichotomous interpretations substitute for effect sizes, uncertainty, and scientific relevance.
-	Refs: \citealt{amrheinEarthFlat0052017, amrheinAbandoningStatisticalSignificance2019, wassersteinMovingWorld052019}.
+	\vspace{5pt}
+	\textbf{Analysing and reporting}
 	
-	\textbf{(9) Multiple analysis choices: multiple testing, HARKing, and p-hacking.}
-	Many defensible analysis choices and multiple comparisons can yield different outcomes; hypotheses may be adjusted after seeing results (HARKing), and selective exploration can create apparently strong results without deliberate misconduct.
-	Refs: \citealt{gelmanGardenForkingPaths2013, stefanBigLittleLies2023, kerrHARKingHypothesizingResults1998}.
+	$\circ$~\textbf{(7) A model that does not match the process.} A saturating response fitted as a straight line, the wrong distribution or link, omitted grouping structure, a transformation that changes what the parameters mean, or extrapolation beyond the range sampled. Such a model can fit well, report a narrow interval, and still be badly wrong about the quantity that matters; regression to the mean is a familiar special case. Refs: \citealt{direnzoPracticalGuideUnderstanding2023, popovicFourPrinciplesImproved2024, barnettRegressionMeanWhat2005, wolkovichSimpleExplanationDeclining2021a}.
 	
-	\textbf{(10) Mismatch between model and data-generating process.}
-	Inference can be distorted when key features of the data are ignored or misrepresented (e.g.\ non-linear relationships fit as linear, wrong distribution or link, omitted random effects, ignored autocorrelation, inappropriate pooling, or unmodelled measurement error).
-	Refs: \citealt{direnzoPracticalGuideUnderstanding2023, popovicFourPrinciplesImproved2024}.
+	$\bullet$~\textbf{(8) Conclusions that turn on a threshold.} Results summarised as present or absent rather than as a magnitude with uncertainty, and non-significant findings read as evidence of no effect when they are usually compatible with effects large enough to matter. Reporting the interval instead removes the problem at source. Refs: \citealt{amrheinEarthFlat0052017, amrheinAbandoningStatisticalSignificance2019, wassersteinMovingWorld052019, muffRewritingResultsSections2022, singalPrenatalAntidepressantUse2017a}.
 	
-	\textbf{(11) Mathematical artefacts and scale/transform issues.}
-	Patterns can arise from statistical artefacts (e.g.\ regression to the mean) or inappropriate transformations; these can mimic biological effects.
-	Refs: \citealt{barnettRegressionMeanWhat2005, wolkovichSimpleExplanationDeclining2021a}.
-	
-	\vspace{4pt}
-	\textbf{Interpretation \& Communication}
-	
-	\textbf{(12) Overconfident “yes/no” summaries.}
-	Binary conclusions can sound decisive even when intervals are wide or model-dependent.
-	Refs: \citealt{muffRewritingResultsSections2022, amrheinAbandoningStatisticalSignificance2019}.
-	
-	\textbf{(13) Misreading “non-significant” as “no effect”.}
-	Non-significant results are often compatible with effects that are biologically meaningful but imprecisely estimated.
-	Refs: \citealt{goodmanUsePredictedConfidence1994, rothmanPlanningStudySize2018, singalPrenatalAntidepressantUse2017a}.
-	
-	\textbf{(14) Selective reporting and publication bias (significance filtering).}
-	Significant/tidy results are more likely to be emphasized and published, distorting the evidence base.
-	Refs: \citealt{yangPublicationBiasImpacts2023, vanzwetSignificanceFilterWinners2021}.
+	$\circ$~\textbf{(9) The significance filter on the literature.} Because significant results are more likely to be written up and published, the published subset of an imprecise design overstates the effect and sometimes reverses its sign, even when every individual study was analysed correctly. The exaggeration is invisible from inside any one study but computable from the design in advance. Refs: \citealt{gelmanPowerCalculationsAssessing2014, vanzwetSignificanceFilterWinners2021, kimmelEmpiricalEvidenceWidespread2023, yangPublicationBiasImpacts2023, ioannidisWhyMostPublished2005a}.
 	
 \end{tcolorbox}
+\linenumbers
+	\newpage
 
-
-
-					\begin{figure}
+\begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figure_1.pdf} 
-	\caption{Schematic overview of the current scientific workflow (blue circle) with its related problems (red text) and how some of them can be anticipated with the help of data simulation (three-step-loop in yellow). The critical step is the translation of a verbal hypothesis into a mechanistic model expressed in mathematical terms. We believe that this 'simulation loop'  fosters a better understanding of underlying processes founded in theory, clear predictions that can be evaluated and overall better science. The questions summarized in the green box should be addressed in the simulation loop before continuing on the blue circle, e.g. prior to the start of real data gathering/exploration.}
-	\label{fig:fig_1xxx}
+	\includegraphics[width=\textwidth]{workflow}
+	\caption{The simulation loop within the conventional research workflow. The lower row shows the familiar sequence from research question to conclusion, with a dashed return path indicating that conclusions raise new questions. The simulation loop (upper panel) is inserted between forming a hypothesis and collecting data, and runs entirely before any observation is made. Its three steps are to translate the hypothesis into an explicit generative model, to simulate and plot the data that model implies, and to iterate the design against a target precision for the parameter of interest. Arrows within the loop run in both directions: simulated data that look implausible send one back to the model, and a design that cannot deliver useful precision sends one back to the question. Numbered markers show the stage at which each pitfall of Box~1 arises. Filled markers ($\bullet$) are pitfalls a design choice can fix, and which the loop therefore addresses directly; open markers ($\circ$) are those it can expose or quantify but not resolve. The loop is placed where it is because sample size, treatment levels, predictor range and measurement effort together fix what a study can reveal, and no later choice of analysis recovers information the design did not collect.}
+	\label{fig:workflow}
 \end{figure}
-
-
-
 
 
 

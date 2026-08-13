@@ -3,53 +3,46 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Simulation_manuscript.aux
 The style file: ecolett.bst
 Database file #1: Art_simulation.bib
-Warning--I didn't find a database entry for "gelman2014"
-Warning--I didn't find a database entry for "rothman2018"
-Warning--I didn't find a database entry for "wolkovich2026"
-Warning--I didn't find a database entry for "gelman2020workflow"
-Warning--I didn't find a database entry for "schad2021"
-Warning--I didn't find a database entry for "direnzo2023"
-Warning--I didn't find a database entry for "morris2019"
 Warning--empty journal in romeijnPhilosophyStatistics2014
-You've used 51 entries,
+You've used 53 entries,
             2997 wiz_defined-function locations,
-            1012 strings with 17027 characters,
-and the built_in function-call counts, 30465 in all, are:
-= -- 2431
-> -- 1510
-< -- 30
-+ -- 607
-- -- 528
-* -- 2388
-:= -- 5049
-add.period$ -- 151
-call.type$ -- 51
-change.case$ -- 430
-chr.to.int$ -- 51
-cite$ -- 52
-duplicate$ -- 2039
-empty$ -- 2035
-format.name$ -- 671
-if$ -- 5733
+            1018 strings with 17361 characters,
+and the built_in function-call counts, 31510 in all, are:
+= -- 2520
+> -- 1546
+< -- 32
++ -- 621
+- -- 540
+* -- 2465
+:= -- 5220
+add.period$ -- 157
+call.type$ -- 53
+change.case$ -- 444
+chr.to.int$ -- 53
+cite$ -- 54
+duplicate$ -- 2115
+empty$ -- 2112
+format.name$ -- 693
+if$ -- 5935
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 472
-newline$ -- 257
-num.names$ -- 204
-pop$ -- 789
+missing$ -- 488
+newline$ -- 267
+num.names$ -- 212
+pop$ -- 815
 preamble$ -- 1
-purify$ -- 380
+purify$ -- 392
 quote$ -- 0
-skip$ -- 579
+skip$ -- 601
 stack$ -- 0
-substring$ -- 1560
-swap$ -- 1120
+substring$ -- 1615
+swap$ -- 1160
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 456
+type$ -- 474
 warning$ -- 1
-while$ -- 229
+while$ -- 237
 width$ -- 0
-write$ -- 658
-(There were 8 warnings)
+write$ -- 684
+(There was 1 warning)
