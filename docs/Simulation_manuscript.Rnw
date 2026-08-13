@@ -653,7 +653,7 @@ This is why we treat Step~1 as the step that repays most attention, and the one 
 The loop is only useful to a reader if they can disagree with it productively. That requires reporting the assumptions, not just the resulting design. The checklist below lists what we think a paper or proposal should state; all of it fits comfortably in a short methods paragraph plus a supplement.
 
 The same three steps extend without modification to two-group comparisons, generalised responses such as counts and proportions, and hierarchical or repeated-measures designs; only the generative model and the analysis model change. The Supplement works through a nested design in which a fixed budget of plots is allocated across sites in five different ways, a case where no closed-form guidance exists and the differences in precision are substantial.
-
+\nolinenumbers
 \begin{mytextbox}[title=\textbf{Checklist: what to report from a simulation loop}]
 	\begin{enumerate}[leftmargin=*, itemsep=0.4em, topsep=0.4em]
 		
@@ -673,6 +673,7 @@ The same three steps extend without modification to two-group comparisons, gener
 		
 	\end{enumerate}
 \end{mytextbox}
+\linenumbers
 
 \section{Outlook}
 \label{sec:outlook}
