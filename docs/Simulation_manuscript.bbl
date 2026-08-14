@@ -1,4 +1,4 @@
-\begin{thebibliography}{53}
+\begin{thebibliography}{50}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Amrhein \emph{et~al.}(2019)Amrhein, Gelman, Greenland \&
@@ -27,34 +27,22 @@ Arif, S. \& MacNeil, M.A. (2023).
   causal inference in ecology.
 \newblock \emph{Ecological Monographs}, 93, e1554.
 
-\bibitem[{Baker(2016)}]{baker500ScientistsLift2016}
-Baker, M. (2016).
-\newblock 1,500 scientists lift the lid on reproducibility.
-\newblock \emph{Nature}, 533, 452--454.
-
 \bibitem[{Barnett \emph{et~al.}(2005)Barnett, {van der Pols} \&
   Dobson}]{barnettRegressionMeanWhat2005}
 Barnett, A.G., {van der Pols}, J.C. \& Dobson, A.J. (2005).
 \newblock Regression to the mean: What it is and how to deal with it.
 \newblock \emph{International Journal of Epidemiology}, 34, 215--220.
 
+\bibitem[{Bolker(2019)}]{bolker5StochasticSimulation2019}
+Bolker, B.M. (2019).
+\newblock 5. {{Stochastic Simulation}} and {{Power Analysis}}.
+\newblock In: \emph{Ecological {{Models}} and {{Data}} in {{R}}}.
+\newblock Princeton University Press, pp. 147--168.
+
 \bibitem[{Box(1976)}]{boxScienceStatistics1976}
 Box, G.E.P. (1976).
 \newblock Science and {{Statistics}}.
 \newblock \emph{Journal of the American Statistical Association}, 71, 791--799.
-
-\bibitem[{Camerer \emph{et~al.}(2018)Camerer, Dreber, Holzmeister, Ho, Huber,
-  Johannesson, Kirchler, Nave, Nosek, Pfeiffer, Altmejd, Buttrick, Chan, Chen,
-  Forsell, Gampa, Heikensten, Hummer, Imai, Isaksson, Manfredi, Rose,
-  Wagenmakers \& Wu}]{camererEvaluatingReplicabilitySocial2018}
-Camerer, C.F., Dreber, A., Holzmeister, F., Ho, T.H., Huber, J., Johannesson,
-  M., Kirchler, M., Nave, G., Nosek, B.A., Pfeiffer, T., Altmejd, A., Buttrick,
-  N., Chan, T., Chen, Y., Forsell, E., Gampa, A., Heikensten, E., Hummer, L.,
-  Imai, T., Isaksson, S., Manfredi, D., Rose, J., Wagenmakers, E.J. \& Wu, H.
-  (2018).
-\newblock Evaluating the replicability of social science experiments in
-  {{Nature}} and {{Science}} between 2010 and 2015.
-\newblock \emph{Nature Human Behaviour}, 2, 637--644.
 
 \bibitem[{Cumming(2013)}]{cummingUnderstandingNewStatistics2013}
 Cumming, G. (2013).
@@ -151,11 +139,6 @@ Kimmel, K., Avolio, M.L. \& Ferraro, P.J. (2023).
 \newblock Empirical evidence of widespread exaggeration bias and selective
   reporting in ecology.
 \newblock \emph{Nature Ecology \& Evolution}, 7, 1525--1536.
-
-\bibitem[{Kunda(1990)}]{kundaCaseMotivatedReasoning1990}
-Kunda, Z. (1990).
-\newblock The case for motivated reasoning.
-\newblock \emph{Psychological Bulletin}, 108, 480--498.
 
 \bibitem[{Lakens(2022)}]{lakensSampleSizeJustification2022a}
 Lakens, D. (2022).
@@ -291,11 +274,6 @@ Touchon, J.C. \& McCoy, M.W. (2016).
 Tukey, J.W. (1977).
 \newblock Exploratory data analysis.
 \newblock \emph{Reading/Addison-Wesley}.
-
-\bibitem[{Tversky \& Kahneman(1974)}]{tverskyJudgmentUncertaintyHeuristics1974}
-Tversky, A. \& Kahneman, D. (1974).
-\newblock Judgment under {{Uncertainty}}: {{Heuristics}} and {{Biases}}.
-\newblock \emph{Science}, 185, 1124--1131.
 
 \bibitem[{{van Zwet} \& Cator(2021)}]{vanzwetSignificanceFilterWinners2021}
 {van Zwet}, E.W. \& Cator, E.A. (2021).

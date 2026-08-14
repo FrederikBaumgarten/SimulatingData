@@ -4,45 +4,45 @@ The top-level auxiliary file: Simulation_manuscript.aux
 The style file: ecolett.bst
 Database file #1: Art_simulation.bib
 Warning--empty journal in romeijnPhilosophyStatistics2014
-You've used 53 entries,
+You've used 50 entries,
             2997 wiz_defined-function locations,
-            1018 strings with 17361 characters,
-and the built_in function-call counts, 31510 in all, are:
-= -- 2520
-> -- 1546
-< -- 32
-+ -- 621
-- -- 540
-* -- 2465
-:= -- 5220
-add.period$ -- 157
-call.type$ -- 53
-change.case$ -- 444
-chr.to.int$ -- 53
-cite$ -- 54
-duplicate$ -- 2115
-empty$ -- 2112
-format.name$ -- 693
-if$ -- 5935
+            993 strings with 16365 characters,
+and the built_in function-call counts, 28914 in all, are:
+= -- 2349
+> -- 1324
+< -- 31
++ -- 535
+- -- 459
+* -- 2221
+:= -- 4777
+add.period$ -- 149
+call.type$ -- 50
+change.case$ -- 404
+chr.to.int$ -- 50
+cite$ -- 51
+duplicate$ -- 1976
+empty$ -- 1987
+format.name$ -- 603
+if$ -- 5478
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 488
-newline$ -- 267
-num.names$ -- 212
-pop$ -- 815
+missing$ -- 443
+newline$ -- 253
+num.names$ -- 200
+pop$ -- 742
 preamble$ -- 1
-purify$ -- 392
+purify$ -- 353
 quote$ -- 0
-skip$ -- 601
+skip$ -- 582
 stack$ -- 0
-substring$ -- 1615
-swap$ -- 1160
-text.length$ -- 1
+substring$ -- 1506
+swap$ -- 1068
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 474
+type$ -- 447
 warning$ -- 1
-while$ -- 237
+while$ -- 223
 width$ -- 0
-write$ -- 684
+write$ -- 647
 (There was 1 warning)
