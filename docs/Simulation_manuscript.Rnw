@@ -252,7 +252,7 @@ Simulation itself is not new in ecology and evolution, and our contribution is n
 	\newpage
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth]{figure_1}
+	\includegraphics[width=\textwidth]{workflow}
 	\caption{The simulation loop within the conventional research workflow. The lower row shows the familiar sequence from research question to conclusion, with a dashed return path indicating that conclusions raise new questions. The simulation loop (upper panel) is inserted between forming a hypothesis and collecting data, and runs entirely before any observation is made. Its three steps are to translate the hypothesis into an explicit generative model, to simulate and plot the data that model implies, and to iterate the design against a target precision for the parameter of interest. Arrows within the loop run in both directions: simulated data that look implausible send one back to the model, and a design that cannot deliver useful precision sends one back to the question. Numbered markers show the stage at which each pitfall of Box~1 arises. Filled markers ($\bullet$) are pitfalls a design choice can fix, and which the loop therefore addresses directly; open markers ($\circ$) are those it can expose or quantify but not resolve. The loop is placed where it is because sample size, treatment levels, predictor range and measurement effort together fix what a study can reveal, and no later choice of analysis recovers information the design did not collect.}
 	\label{fig:workflow}
 \end{figure}
